@@ -2,30 +2,27 @@
 
 {% block content %}
 <div class="container">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Region
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Europe</a>
-              <a class="dropdown-item" href="#">North-America</a>
-              <a class="dropdown-item" href="#">Asia</a>
-            </div>
-          </li>
-    </ul>
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Type
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Apartment</a>
-              <a class="dropdown-item" href="#">House</a>
-              <a class="dropdown-item" href="#">Bungalow</a>
-            </div>
-          </li>
-    </ul>
+<label>Price</label>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Country
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Spain</a>
+    <a class="dropdown-item" href="#">Iceland</a>
+    <a class="dropdown-item" href="#">United States</a>
+    <a class="dropdown-item" href="#">Sweden</a>
+  </div>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Type
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Bungalow</a>
+    <a class="dropdown-item" href="#">Apartment</a>
+    <a class="dropdown-item" href="#">Studio Apartment</a>
+    <a class="dropdown-item" href="#">Boat</a>
+  </div>
+    <input class="form-control" type="text" placeholder="From">
+    <input class="form-control" type="text" placeholder="To">
 </div>
 {% endblock %}
 
