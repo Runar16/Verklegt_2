@@ -1,3 +1,4 @@
+'''
 from django.db import models
 
 # Create your models here.
@@ -16,3 +17,4 @@ class Property(models.model):
 class PropertyImage(models.model):
     image = models.CharField(max_length=999)
     property = models.ForeignKey(Property, on_delete=models.CASCADE())
+'''
