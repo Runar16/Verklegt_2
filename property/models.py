@@ -1,4 +1,3 @@
-'''
 from django.db import models
 
 # Create your models here.
@@ -20,9 +19,5 @@ class Property(models.Model):
 
 class PropertyImage(models.Model):
     image = models.CharField(max_length=999)
-<<<<<<< HEAD
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
-=======
-    property = models.ForeignKey(Property, on_delete=models.CASCADE())
-'''
->>>>>>> 5fe9de76d2ba82eb255480ae9ad7b53536b95f9f
+
