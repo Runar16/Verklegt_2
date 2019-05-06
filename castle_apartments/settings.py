@@ -60,6 +60,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -69,15 +70,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'castle_apartments.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgres',
+        'NAME': 'uyvssvcq',
+        'USER': 'uyvssvcq',
+        'PASSWORD': 'o9Ce-2H0O83ZFfuK6r1IJUJ_RcBDUGQS',
+        'HOST': 'balarama.db.elephantsql.com',
+        'PORT': '5432'
+        }
 }
 
 
