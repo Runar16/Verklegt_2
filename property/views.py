@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 # Create your views here.
-def properties_index(request):
-    return HttpResponse("Hello from the property index function")
+def index(request):
+    return render(request, 'propertty/index.html')

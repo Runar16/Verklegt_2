@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 # Create your views here.
-def users_index(request):
-    return HttpResponse("Hello from the user index function")
+def index(request):
+    return render(request, 'user/index.html')
 

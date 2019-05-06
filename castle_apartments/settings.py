@@ -54,7 +54,7 @@ ROOT_URLCONF = 'castle_apartments.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'castle_apartments.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgres',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'uyvssvcq',
         'USER': 'uyvssvcq',
         'PASSWORD': 'o9Ce-2H0O83ZFfuK6r1IJUJ_RcBDUGQS',
