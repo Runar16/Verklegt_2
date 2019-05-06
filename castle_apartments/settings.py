@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'castle_apartments.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgres',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'uyvssvcq',
         'USER': 'uyvssvcq',
         'PASSWORD': 'o9Ce-2H0O83ZFfuK6r1IJUJ_RcBDUGQS',
