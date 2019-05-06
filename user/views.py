@@ -5,5 +5,5 @@ def index(request):
     return render(request, 'user/index.html')
 
 def realtors(request):
-    return render(request, 'users/realtors.html')
+    return render(request, 'user/realtors.html')
 
