@@ -4,3 +4,6 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'user/index.html')
 
+def realtors(request):
+    return render(request, 'users/realtors.html')
+
