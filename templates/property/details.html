@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ property.street_name }} {{ property.street_number }} {{ property.price }}</h1>
-    <p>{{ property.property_description }}</p>
-    <p>{{ property.zip }} {{ property.city }} {{ property.country }}</p>
-    <p>{{ property.type }} {{ property.size }} {{ property.rooms }}</p>
+    <h1>{{ property.street_name }} {{ property.street_number }} Price: {{ property.price }}</h1>
+    <p>Description: {{ property.property_description }}</p>
+    <p>ZIP: {{ property.zip }}</p>
+    <p>City{{ property.city }}</p>
+    <p>ZIP: {{ property.zip }}</p>
+    <p>Country {{ property.country }}</p>
+    <p>Type: {{ property.type }}</p>
+    <p>Size: {{ property.size }}</p>
+    <p>Rooms: {{ property.rooms }}</p>
     {% for property_image in property.propertyimage_set.all %}
         <img src="{{ property_image.image }}" class="property-img">
     {% endfor %}
