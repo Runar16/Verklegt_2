@@ -3,12 +3,18 @@
 }
 
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: ghostwhite;
-  color: black;
-  text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: ghostwhite;
+    color: black;
+    text-align: center;
 }
 
+#search_container{
+  padding: 3%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
