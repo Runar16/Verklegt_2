@@ -2,14 +2,33 @@
     background: linear-gradient(to right bottom, #3e53e1, #4465e5, #4f75e8, #5d85e9, #6d94e9, #66a3f0, #64b1f5, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1) fixed;
 }
 
-footer {
+.footer {
     position: fixed;
-    left: 0;
-    bottom: 0;
+    left: 0px;
+    bottom: 2px; /* hvít lína fyrir neðan footer */
     width: 100%;
-    background-color: ghostwhite;
-    color: black;
+    background-color: dodgerblue;
+    height: 3.3rem;
+    color: white;
     text-align: center;
+}
+
+.footercontainer {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    padding-bottom: 8px;
+}
+.footeritem {
+    margin: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border:0px;
+}
+.mail {
+    color: white;
+
 }
 
 #search_container{
@@ -17,4 +36,8 @@ footer {
   border-style: solid;
   border-width: 1px;
   border-color: black;
+}
+
+.carousel-inner > .carousel-item {
+   height: 700px;
 }
