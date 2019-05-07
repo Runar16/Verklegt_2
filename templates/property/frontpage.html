@@ -1,28 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-<label>Price</label>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Country
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Spain</a>
-    <a class="dropdown-item" href="#">Iceland</a>
-    <a class="dropdown-item" href="#">United States</a>
-    <a class="dropdown-item" href="#">Sweden</a>
+<div class="container" id="search_container">
+  <div class="row">
+      <div class="col-5"> </div>
+      <div class="col"> Price </div>
   </div>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Type
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Bungalow</a>
-    <a class="dropdown-item" href="#">Apartment</a>
-    <a class="dropdown-item" href="#">Studio Apartment</a>
-    <a class="dropdown-item" href="#">Boat</a>
-  </div>
-    <input class="form-control" type="text" placeholder="From">
-    <input class="form-control" type="text" placeholder="To">
+  <form class="form-inline" method="post">
+      <div class="row">
+          <div class="col">
+            <select class="custom-select">
+              <option selected>Country</option>
+              <option value="1">Iceland</option>
+              <option value="2">England</option>
+              <option value="3">Sweden</option>
+            </select>
+          </div>
+            <div class="col">
+                <select class="custom-select">
+                  <option selected>Type</option>
+                  <option value="1">Apartment</option>
+                  <option value="2">Boat</option>
+                  <option value="3">Bungalow</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" placeholder="From">
+                <input type="text" placeholder="To">
+            </div>
+      </div>
+  </form>
+</div>
+
+<div class="row">
+{% for property in properties %}
+    {% include 'property/single_property.html' with property=property %}
+{% endfor %}
 </div>
 {% endblock %}
-

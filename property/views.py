@@ -1,5 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from property.models import Property
 
-# Create your views here.
+
 def index(request):
-    return render(request, 'property/frontpage.html')
+    context = {'properties': Property.objects.all().order_by('price')}
+    return render(request, 'property/frontpage.html', context)
+
+
+def get_property_by_id(request, id):
+    return render(request, 'property/details.html', {
+        'property': get_object_or_404(Property, pk=id)
+    })
