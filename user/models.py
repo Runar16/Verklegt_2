@@ -15,13 +15,6 @@ class Profile(models.Model):
     ssn = models.CharField(max_length=10, blank=True)
 
 
-class Realtor(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=20, blank=True)
-    profile_picture = models.CharField(max_length=999, blank=True)
-    license_number = models.IntegerField(blank=True)
-
-
 class History(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
