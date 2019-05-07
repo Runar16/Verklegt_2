@@ -32,7 +32,9 @@
   </form>
 </div>
 
+<div class="row">
 {% for property in properties %}
     {% include 'property/single_property.html' with property=property %}
 {% endfor %}
+</div>
 {% endblock %}
