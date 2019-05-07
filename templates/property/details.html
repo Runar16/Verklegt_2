@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ property.street_name }} {{ property.street_number }} {{ property.price }}</h1>
+    <p>{{ property.property_description }}</p>
+    <p>{{ property.zip }} {{ property.city }} {{ property.country }}</p>
+    <p>{{ property.type }} {{ property.size }} {{ property.rooms }}</p>
+    {% for property_image in property.propertyimage_set.all %}
+        <img src="{{ property_image.image }}" class="property-img">
+    {% endfor %}
+{% endblock %}
