@@ -91,5 +91,14 @@
 }
 
 .carousel-inner > .carousel-item {
-   height: 700px;
+   height: 500px;
+}
+
+#property {
+    max-width: 65%;
+}
+
+#property_description {
+    display: inline;
+
 }
