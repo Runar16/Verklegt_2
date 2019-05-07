@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!-- W.I.P. -->
+
+{% block content %}
+    <div>
+        <ul>
+            <li>
+                <!--Image-->
+                <img class="profile_picture", src={{realtor.profile_picture}}, alt="Profile picture">
+                <!--ATH CLASS-->
+            </li>
+            <li>
+                <h5>{{realtor.name}}</h5>
+                <p>Phone: {{realtor.phone}}</p>
+                <p>Email: {{realtor.email}}</p>
+                <p>Licence number: {{realtor.licence_number}}</p>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

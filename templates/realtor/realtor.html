@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <head>
+        <title>Realtors</title>
+    </head>
+    <body>
+        <h2>Welcome to the realtors site!</h2>
+        <p>Here is a full list of all active realtors.</p>
+    </body>
+
+    <!-- Afritað úr 'single property', vantar þannig fyrir realtors.
+    <div class="row">
+    {% for realtor in realtor %}
+        {% include 'realtor/single_realtor.html' with realtor=realtor %}
+    {% endfor %}
+    </div>
+    -->
+
+{% endblock %}
