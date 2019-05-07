@@ -3,8 +3,10 @@
 }
 
 .footer {
-    position: fixed;
+    position: relative;
+    bottom: 0;
     left: 0px;
+    right: 0px;
     bottom: 2px; /* hvít lína fyrir neðan footer */
     width: 100%;
     background-color: dodgerblue;
@@ -15,6 +17,46 @@
 
     font-size: 1.2rem;
 }
+
+.navbar {
+    position: relative;
+    top: 0;
+    left: 0px;
+    right: 0px;
+    bottom: 10px; /* hvít lína fyrir neðan header */
+    width: 100%;
+    background-color: dodgerblue;
+    color: white;
+    text-align: center;
+
+
+    font-size: 1.2rem;
+}
+.navbar-brand {
+    text-align: center;
+    color: white;
+}
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+    color: white;
+}
+.login {
+    color: white;
+}
+
+
+.login-buttons {
+
+    display: inline-flex;
+    justify-content: flex-end;
+    padding-left: 85%;
+    flex-direction: row-reverse;
+    position:fixed;
+
+
+}
+
 
 .footercontainer {
 
