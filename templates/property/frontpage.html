@@ -31,4 +31,8 @@
       </div>
   </form>
 </div>
+
+{% for property in properties %}
+    {% include 'property/single_property.html' with property=property %}
+{% endfor %}
 {% endblock %}
