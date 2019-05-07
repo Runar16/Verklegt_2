@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-<label>Price</label>
+<div class="row">
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Country
   </button>
@@ -21,8 +21,15 @@
     <a class="dropdown-item" href="#">Studio Apartment</a>
     <a class="dropdown-item" href="#">Boat</a>
   </div>
-    <input class="form-control" type="text" placeholder="From">
-    <input class="form-control" type="text" placeholder="To">
+  <div class="col">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="From">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="To">
+    </div>
+  </div>
+</div>
 </div>
 {% endblock %}
 

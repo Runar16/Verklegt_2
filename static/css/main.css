@@ -1,4 +1,4 @@
-...body {
+.gradient {
     background: linear-gradient(to right bottom, #3e53e1, #4465e5, #4f75e8, #5d85e9, #6d94e9, #66a3f0, #64b1f5, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1) fixed;
 }
 
@@ -11,3 +11,4 @@ footer {
   color: black;
   text-align: center;
 }
+
