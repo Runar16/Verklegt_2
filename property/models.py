@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Property(models.Model):
     street_name = models.CharField(max_length=255)
@@ -19,4 +17,5 @@ class Property(models.Model):
 
 class PropertyImage(models.Model):
     image = models.CharField(max_length=999)
+    image_tag = models.CharField(max_length=999, blank=True)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)

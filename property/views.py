@@ -3,7 +3,8 @@ from property.models import Property
 
 
 def index(request):
-    return render(request, 'property/frontpage.html')
+    context = {'properties': Property.objects.all().order_by('price')}
+    return render(request, 'property/frontpage.html', context)
 
 
 def get_property_by_id(request, id):
