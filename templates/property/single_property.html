@@ -1,7 +1,13 @@
 <div class="property">
     <a href="/property/{{ property.id }}">
-        <!--<img class="property_image" src="{{ property.propertyimage_set.first.image }}"/>--!>
-        <h4>{{ property.street_name }} {{ property.street_number }}</h4>
-        <p>{{ property.price }}</p>
+        <div class="col-sm-6">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ property.propertyimage_set.first.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ property.street_name }} {{ property.street_number }}</h5>
+                    <p class="card-text">{{ property.price }} kr</p>
+                </div>
+            </div>
+        </div>
     </a>
 </div>
