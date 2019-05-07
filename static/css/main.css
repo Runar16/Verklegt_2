@@ -8,23 +8,33 @@
     bottom: 2px; /* hvít lína fyrir neðan footer */
     width: 100%;
     background-color: dodgerblue;
-    height: 3.3rem;
+    height: 3rem;
     color: white;
     text-align: center;
+
+
+    font-size: 1.2rem;
 }
 
 .footercontainer {
+
+    width: 100%;
     display: inline-flex;
     justify-content: space-between;
     flex-direction: row;
 
-    padding-bottom: 8px;
+
+
+
 }
 .footeritem {
     margin: 0px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1em;
+    padding-right: 1em;
     border:0px;
+    flex-wrap: wrap;
+
+
 }
 .mail {
     color: white;
