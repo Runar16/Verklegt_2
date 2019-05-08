@@ -11,40 +11,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="top-navigation b-menu  trans">
+        <div class="navflexcontainer">
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'frontpage' %}">Home <span class="sr-only">(current)</span></a>
-          </li>
-            <li class="nav-item active">
-            <a class="nav-link" href="{% url 'realtor' %}">Realtors <span class="sr-only">(current)</span></a>
-          </li>
+            <div><a href="{% url 'frontpage' %}" class="login">Home</a></div>
 
-            <a class="navbar-brand" href="#">Castle Apartments</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-            </button>
+                    <div><a href="{% url 'realtor' %}" class="login">Relators</a></div>
+                    <div>
+                    <a href="#" class="navbar-brand">Castle Apartments</a>
+                    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button> I KNOW NOTHING-->
+                    </div>
+                    <div><a href="#" class="login">About Us</a></div>
 
-
-            <!-- <li class="nav-item active">
-            <a class="nav-link" href="#">Log In <span class="sr-only">(current)</span></a>
-          </li> -->
-            <div class="login-buttons">
-            <li class="nav-item active">
-            <a class="login" href="#">About Us <span class="sr-only">(current)</span></a>
-          </li>
-            {% if user.is_authenticated %}
-                <li><a class="login" href="{%url 'logout' %}">Logout</a></li>
+                    {% if user.is_authenticated %}
+                <div><a class="login" href="{%url 'profile' %}">Profile</a></div>
+                <div><a class="login" href="{%url 'logout' %}">Logout</a></div>
             {% else %}
-                <li><a class="login" href="{% url 'login' %}">Login</a></li>
-                <li><a class="login" href="{% url 'register' %}">Register</a></li>
+                <div><a class="login" href="{% url 'login' %}">Login</a></div>
+                <div><a class="login" href="{% url 'register' %}">Register</a></div>
             {% endif %}
+
+
             </div>
-        </ul>
-      </div>
-    </nav>
+
+</nav>
         {% block content %}
 
         {% endblock %}
