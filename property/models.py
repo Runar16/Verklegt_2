@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Property(models.Model):
     street_name = models.CharField(max_length=255)
     street_number = models.CharField(max_length=10)
@@ -22,6 +23,6 @@ class PropertyImage(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
 
 
-'''class Order(models.Model):
+class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    sold_property = models.ForeignKey(Property, on_delete=None)'''
+    sold_property = models.ForeignKey(Property, on_delete=None)
