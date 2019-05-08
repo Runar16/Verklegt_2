@@ -1,8 +1,27 @@
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from property.models import Property
 
 
 def index(request):
+    if 'search_filter' in request.GET:
+        search_filter = request.GET['search_filter']
+        properties = [{
+            'id': x.id,
+            'street_name': x.street_name,
+            'street_number': x.street_number,
+            'property_description': x.property_description,
+            'zip': x.zip,
+            'city': x.city,
+            'country': x.country,
+            'type': x.type,
+            'size': x.size,
+            'rooms': x.rooms,
+            'price': x.price,
+            'is_active': x.is_active,
+            'first_image': x.propertyimage_set.first().image
+        }for x in Property.objects.filter(street_name__icontains=search_filter)]
+        return JsonResponse({'data': properties})
     context = {'properties': Property.objects.all().order_by('price')}
     return render(request, 'property/frontpage.html', context)
 
