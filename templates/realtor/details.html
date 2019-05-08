@@ -1,13 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
 
-<!DOCTYPE>
-<html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/realtor.css' %}">
-</head>
 {% block content %}
-<body>
     <div>
         <ul class="profile_list">
             <li>
@@ -16,15 +9,13 @@
                 <!--ATH CLASS-->
             </li>
             <li>
-                <h5>{{realtor.name}}</h5>
-                <p class="test_text">Phone: {{realtor.phone_number}}</p>
+                <h5>{{realtor.user.first_name}}</h5>
+                <p>Phone: {{realtor.phone_number}}</p>
                 <p>Email: {{realtor.user.email}}</p>
                 <p>Licence number: {{realtor.license_number}}</p>
             </li>
         </ul>
     </div>
-</body>
 {% endblock %}
-</html>
 
 
