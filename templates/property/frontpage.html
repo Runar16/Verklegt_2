@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="container" id="frontpage_container">
 <div class="container" id="search_container">
   <div class="row">
       <div class="col-5"> </div>
@@ -32,9 +33,10 @@
   </form>
 </div>
 
-<div class="row">
+<div class="row" id="property_container">
 {% for property in properties %}
     {% include 'property/single_property.html' with property=property %}
 {% endfor %}
 </div>
+    </div>
 {% endblock %}

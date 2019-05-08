@@ -95,10 +95,33 @@
 }
 
 #property {
-    max-width: 65%;
+    min-width: 70%;
 }
 
 #property_description {
     display: inline;
 
+}
+
+.col > .table {
+    max-width: 1%;
+}
+
+.card {
+    overflow: hidden;
+    margin-bottom: 10%;
+}
+
+.card-img-top {
+    width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+}
+
+#frontpage_container {
+    min-width: 70%;
+}
+
+#property_container {
+    padding: 2%;
 }
