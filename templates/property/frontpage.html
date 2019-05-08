@@ -33,7 +33,7 @@
   </form>
 </div>
 
-<div class="row" id="property_container">
+<div class="card-group" id="property_container" style="margin: 0 auto; width: 68%;">
 {% for property in properties %}
     {% include 'property/single_property.html' with property=property %}
 {% endfor %}

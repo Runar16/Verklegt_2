@@ -119,9 +119,5 @@
 }
 
 #frontpage_container {
-    min-width: 70%;
-}
-
-#property_container {
-    padding: 2%;
+    min-width: 100%;
 }
