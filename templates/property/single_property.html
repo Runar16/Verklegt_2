@@ -3,9 +3,9 @@
         <div class="col-sm-6">
             <div class="card" style="width: 18rem;">
                 <img src="{{ property.propertyimage_set.first.image }}" class="card-img-top" alt="{{ property.propertyimage_set.first.image_tag }}">
+                <h3 class="card-header d-flex" style="background: dodgerblue; text-align: center; color: white">{{ property.price|floatformat:"0" }}kr.</h3>
                 <div class="card-body">
                     <h5 class="card-title">{{ property.street_name }} {{ property.street_number }}</h5>
-                    <p class="card-text">{{ property.price }} kr</p>
                 </div>
             </div>
         </div>
