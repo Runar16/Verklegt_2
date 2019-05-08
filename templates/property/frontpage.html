@@ -3,6 +3,12 @@
 {% block content %}
     <div class="container" id="frontpage_container">
 <div class="container" id="search_container">
+    <div class="input-group">
+        <input type="search" class="form-control" id="search-box", placeholder="Enter your search here"/>
+        <div class="input-group-btn">
+            <button type="button" id="search-btn" class="btn btn-default">Search</button>
+        </div>
+    </div>
   <div class="row">
       <div class="col-5"> </div>
       <div class="col"> Price </div>
@@ -33,7 +39,7 @@
   </form>
 </div>
 
-<div class="card-group" id="property_container" style="margin: 0 auto; width: 80%;">
+<div class="card-group properties" id="property_container" style="margin: 0 auto; width: 68%;">
 {% for property in properties %}
     {% include 'property/single_property.html' with property=property %}
 {% endfor %}

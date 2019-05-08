@@ -1,0 +1,16 @@
+.realtor_photo{
+    width: 200px;
+    height: 400px;
+}
+
+.test_text{
+    color: yellow;
+}
+
+.profile_list{
+    list-style-type: none;
+}
+
+body{
+    background-color: blue;
+}

@@ -1,20 +1,30 @@
 {% extends 'base.html' %}
-<!-- W.I.P. -->
+{% load static %}
 
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/realtor.css' %}">
+</head>
 {% block content %}
+<body>
     <div>
-        <ul>
+        <ul class="profile_list">
             <li>
                 <!--Image-->
-                <img class="profile_picture", src={{realtor.profile_picture}}, alt="Profile picture">
+                <img height="200", width="200" , src={{realtor.profile_picture}}, alt="Profile picture">
                 <!--ATH CLASS-->
             </li>
             <li>
                 <h5>{{realtor.name}}</h5>
-                <p>Phone: {{realtor.user.phone}}</p>
+                <p class="test_text">Phone: {{realtor.phone_number}}</p>
                 <p>Email: {{realtor.user.email}}</p>
-                <p>Licence number: {{realtor.licence_number}}</p>
+                <p>Licence number: {{realtor.license_number}}</p>
             </li>
         </ul>
     </div>
+</body>
 {% endblock %}
+</html>
+
+
