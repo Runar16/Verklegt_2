@@ -18,24 +18,52 @@
     font-size: 1.2rem;
 }
 
-.navbar {
+.top-navigation{
     position: relative;
     top: 0;
     left: 0px;
     right: 0px;
     bottom: 10px; /* hvít lína fyrir neðan header */
     width: 100%;
-    background-color: dodgerblue;
-    color: white;
+    background-color: dodgerblue !important;
+    color: white !important;
     text-align: center;
 
 
     font-size: 1.2rem;
 }
+
+
 .navbar-brand {
     text-align: center;
     color: white;
 }
+.navflexcontainer {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+
+}
+.navstart {
+    display: inline-flex;
+    justify-content: flex-start;
+    padding-right: 5rem;
+
+}
+.navmid {
+    display: inline-flex;
+    justify-content: center;
+
+}
+
+.navend {
+    display: inline-flex;
+    justify-content: flex-end;
+    padding-left: 5rem;
+
+
+}
+
 .nav-link {
     display: block;
     padding: .5rem 1rem;
@@ -50,9 +78,6 @@
 
     display: inline-flex;
     justify-content: flex-end;
-    padding-left: 85%;
-    flex-direction: row-reverse;
-    position:fixed;
 
 
 }
