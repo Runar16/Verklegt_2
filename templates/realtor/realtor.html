@@ -9,12 +9,11 @@
         <p>Here is a full list of all active realtors.</p>
     </body>
 
-    <!-- Afritað úr 'single property', vantar þannig fyrir realtors.
+    <!-- Afritað úr 'single property', vantar þannig fyrir realtors. -->
     <div class="row">
     {% for realtor in realtors %}
         {% include 'realtor/single_realtor.html' with realtor=realtor %}
     {% endfor %}
     </div>
-    -->
 
 {% endblock %}
