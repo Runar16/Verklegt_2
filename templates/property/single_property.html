@@ -2,10 +2,17 @@
     <a href="/property/{{ property.id }}">
         <div class="col-sm-6">
             <div class="card" style="width: 18rem;">
-                <img src="{{ property.propertyimage_set.first.image }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ property.street_name }} {{ property.street_number }}</h5>
-                    <p class="card-text">{{ property.price }} kr</p>
+                <img src="{{ property.propertyimage_set.first.image }}" class="card-img-top" alt="{{ property.propertyimage_set.first.image_tag }}">
+                <div class="card-header" style="height: 50px; position: absolute; text-align: center; background: dodgerblue; border-bottom-right-radius: 10px; opacity: 0.8"><h4 style="color: white; opacity: 1;">{{ property.price|floatformat:"0" }}kr.</h4></div>
+                <div class="card-body" style="padding: 0">
+                    <div class="block-container" style="width: 50%; float: left; padding: 10px 0 10px 10px">
+                        <span style="display: block;">{{ property.street_name }} {{ property.street_number }}</span>
+                        <span style="display: block; padding-top: 10px">{{ property.city }}, {{ property.zip }}</span>
+                    </div>
+                    <div class="block-container" style="width: 50%; float: left; text-align: right; padding: 10px 10px 10px 0">
+                        <span style="display: block;">{{ property.size }}m&sup2;</span>
+                        <span style="display: block; padding-top: 10px">{{ property.type }}</span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -4,9 +4,9 @@
             <div class="card" style="width: 18rem;">
                 <img src="{{ realtor.profile_picture }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{ realtor.name }}</h5>
-                    <p class="card-text">{{ realtor.phone }}</p>
-                    <p class="card-text">{{ realtor.email }}</p>
+                    <h5 class="card-title">{{ realtor.user.name }}</h5>
+                    <p class="card-text">{{ realtor.user.phone }}</p>
+                    <p class="card-text">{{ realtor.user.email }}</p>
                 </div>
             </div>
         </div>
