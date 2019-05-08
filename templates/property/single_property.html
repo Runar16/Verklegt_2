@@ -2,7 +2,7 @@
     <a href="/property/{{ property.id }}">
         <div class="col-sm-6">
             <div class="card" style="width: 18rem;">
-                <img src="{{ property.propertyimage_set.first.image }}" class="card-img-top" alt="...">
+                <img src="{{ property.propertyimage_set.first.image }}" class="card-img-top" alt="{{ property.propertyimage_set.first.image_tag }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ property.street_name }} {{ property.street_number }}</h5>
                     <p class="card-text">{{ property.price }} kr</p>
