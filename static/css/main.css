@@ -146,3 +146,34 @@
 #frontpage_container {
     min-width: 100%;
 }
+
+
+.card-body {
+    color: black;
+}
+
+.card:hover {
+    opacity: 0.9;
+}
+
+#property-card-header {
+    height: 50px;
+    position: absolute;
+    text-align: center;
+    background: dodgerblue;
+    border-bottom-right-radius: 10px;
+    opacity: 0.8;
+}
+
+.left-block-container {
+    width: 50%;
+    float: left;
+    padding: 10px 0 10px 10px;
+}
+
+.right-block-container {
+    width: 50%;
+    float: left;
+    text-align: right;
+    padding: 10px 10px 10px 0;
+}
