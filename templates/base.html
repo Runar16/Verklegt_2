@@ -26,7 +26,8 @@
                     <div><a href="#" class="login">About Us</a></div>
 
                     {% if user.is_authenticated %}
-                <div><<a class="login" href="{%url 'logout' %}">Logout</a></div>
+                <div><a class="login" href="{%url 'profile' %}">Profile</a></div>
+                <div><a class="login" href="{%url 'logout' %}">Logout</a></div>
             {% else %}
                 <div><a class="login" href="{% url 'login' %}">Login</a></div>
                 <div><a class="login" href="{% url 'register' %}">Register</a></div>
