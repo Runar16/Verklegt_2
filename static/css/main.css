@@ -143,10 +143,6 @@
     min-height: 200px;
 }
 
-#frontpage_container {
-    min-width: 100%;
-}
-
 
 .card-body {
     color: black;
@@ -177,3 +173,4 @@
     text-align: right;
     padding: 10px 10px 10px 0;
 }
+
