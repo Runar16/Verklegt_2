@@ -22,6 +22,6 @@ class PropertyImage(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
 
 
-'''class Order(models.Model):
+class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    sold_property = models.ForeignKey(Property, on_delete=None)'''
+    sold_property = models.ForeignKey(Property, on_delete=None)
