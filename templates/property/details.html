@@ -65,6 +65,9 @@
                   <th scope="row">Rooms</th>
                   <td>{{ property.rooms }}</td>
                 </tr>
+                <td>
+                    <button type="button" action="{ url 'payment_info' }"> B U Y   N O W </button>
+                </td>
               </tbody>
             </table>
         </div>
@@ -73,8 +76,9 @@
         <p id="property_description">{{ property.property_description }}</p>
         <h1>{{ property.price|floatformat:"0" }}kr</h1>
 
+
         <div>
-            {% include 'realtor/single_realtor.html' with property.realtor_id as realtor.id %}
+            {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
         </div>
 
     </div>
