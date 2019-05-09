@@ -18,16 +18,22 @@
             <a href="{% url 'realtor' %}" class="navbar-element">Relators</a>
             <a href="{% url 'frontpage' %}" class="navbar-logo"><img src="/static/images/Logo.png" alt="Castle Apartments Logo" style="width: 300px;"></a>
             <a href="#" class="navbar-element">About Us</a>
-            {% if user.is_authenticated %}
-                <a href="{%url 'profile' %}" class="navbar-element">Profile</a>
-                <a href="{%url 'logout' %}" class="navbar-element">Log-Out</a>
-            {% else %}
-                <a href="{% url 'login' %}" class="navbar-element">Log-In</a>
-                <a href="{% url 'register' %}" class="navbar-element">Register</a>
-            {% endif %}
+            <ul class="nav navbar-element">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
+                    <div class="dropdown-menu">
+                        {% if user.is_authenticated %}
+                            <a href="{%url 'profile' %}" class="dropdown-item">Profile</a>
+                            <a href="{%url 'logout' %}" class="dropdown-item">Log-Out</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="dropdown-item">Log-In</a>
+                            <a href="{% url 'register' %}" class="dropdown-item">Register</a>
+                        {% endif %}
+                    </div>
+                </li>
+            </ul>
         </div>
-
-</nav>
+    </nav>
         {% block content %}
 
         {% endblock %}
