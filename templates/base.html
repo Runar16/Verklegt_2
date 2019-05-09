@@ -16,12 +16,14 @@
         <div class="navbar-container" style="display: flex; flex-wrap: wrap;">
             <a href="{% url 'frontpage' %}" class="navbar-element">Home</a>
             <a href="{% url 'realtor' %}" class="navbar-element">Relators</a>
-            <a href="{% url 'frontpage' %}" class="navbar-logo"><img src="http://puu.sh/DpWkk/4211874ff7.png" alt="Castle Apartments Logo" style="width: 300px;"></a>
+            <a href="{% url 'frontpage' %}" class="navbar-logo"><img src="/static/images/Logo.png" alt="Castle Apartments Logo" style="width: 300px;"></a>
             <a href="#" class="navbar-element">About Us</a>
             {% if user.is_authenticated %}
                 <a href="{%url 'profile' %}" class="navbar-element">Profile</a>
+                <a href="{%url 'logout' %}" class="navbar-element">Log-Out</a>
             {% else %}
                 <a href="{% url 'login' %}" class="navbar-element">Log-In</a>
+                <a href="{% url 'register' %}" class="navbar-element">Register</a>
             {% endif %}
         </div>
 
