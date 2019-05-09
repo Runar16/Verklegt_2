@@ -115,23 +115,6 @@
   border-color: black;
 }
 
-.carousel-inner > .carousel-item {
-   height: 500px;
-}
-
-#property {
-    min-width: 70%;
-}
-
-#property_description {
-    display: inline;
-
-}
-
-.col > .table {
-    max-width: 1%;
-}
-
 .card {
     overflow: hidden;
     margin-bottom: 10%;
@@ -174,3 +157,8 @@
     padding: 10px 10px 10px 0;
 }
 
+.navbar-element {
+    color: white;
+    width: 20%;
+    padding: 15px 0 10px 0;
+}
