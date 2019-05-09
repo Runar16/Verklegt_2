@@ -14,7 +14,7 @@ def index(request):
             'zip': x.zip.get_zip(),
             'city': x.zip.get_city(),
             'country': x.country,
-            'type': x.type,
+            'type': x.type.get_type(),
             'size': x.size,
             'rooms': x.rooms,
             'price': x.price,

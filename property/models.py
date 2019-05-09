@@ -6,7 +6,7 @@ from realtor.models import Realtor
 class PropertyType(models.Model):
     type = models.CharField(max_length=100, primary_key=True)
 
-    def __str__(self):
+    def get_type(self):
         return "%s" % self.type
 
 
