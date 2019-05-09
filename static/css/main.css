@@ -159,6 +159,9 @@
 
 .navbar-element {
     color: white;
-    width: 20%;
-    padding: 15px 0 10px 0;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
