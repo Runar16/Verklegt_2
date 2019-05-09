@@ -27,7 +27,7 @@
                 <select class="custom-select">
                   <option selected>Type</option>
                   <option value="1">Apartment</option>
-                  <option value="2">Boat</option>
+                  <option value="2">Boat</option>x
                   <option value="3">Bungalow</option>
                 </select>
             </div>
@@ -39,7 +39,7 @@
   </form>
 </div>
 
-<div class="card-group">
+<div class="card-group" style="margin: 0 auto; width: 68%">
 {% for property in properties %}
     {% include 'property/single_property.html' with property=property %}
 {% endfor %}
