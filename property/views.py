@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
-from property.models import Property
+from property.models import Property, PropertyZip, PropertyType
 
 
 def index(request):
@@ -22,7 +22,10 @@ def index(request):
             'first_image': x.propertyimage_set.first().image
         }for x in Property.objects.filter(street_name__icontains=search_filter)]
         return JsonResponse({'data': properties})
-    context = {'properties': Property.objects.all().order_by('price')}
+    context = {'properties': Property.objects.all().order_by('price'),
+               'zips': PropertyZip.objects.all().order_by('zip'),
+               'types': PropertyType.objects.all().order_by('type')
+               }
     return render(request, 'property/frontpage.html', context)
 
 
