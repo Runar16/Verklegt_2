@@ -3,12 +3,24 @@ $(document).ready(function () {
         e.preventDefault();
         var searchText = $('#search-box').val();
         var zipVal = $('#zipSelect').val();
+        var typeVal = $('#typeSelect').val();
         let url_str = "";
-        if(searchText !== ""){
-            url_str += '?search_filter=' + searchText;
-        }
+        url_str += '?search_filter=' + searchText;
         if(zipVal !== 'ZIP'){
-            url_str += '?zip_filter=' + zipVal;
+            if(url_str === "") {
+                url_str += '?zip_filter=' + zipVal;
+            }
+            else{
+                url_str += '&zip_filter=' + zipVal;
+            }
+        }
+        if(typeVal !== 'Type'){
+            if(url_str === "") {
+                url_str += '?type_filter=' + typeVal;
+            }
+            else{
+                url_str += '&type_filter=' + typeVal;
+            }
         }
         $.ajax({
             url: url_str,

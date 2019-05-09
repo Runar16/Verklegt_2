@@ -24,9 +24,8 @@
             </select>
           </div>
             <div class="col">
-                <select class="custom-select">
+                <select class="custom-select" id="typeSelect">
                   <option selected>Type</option>
-
                     {% for type in types %}
                         <option value="{{ type.type }}">{{ type.type }}</option>
                     {% endfor %}
