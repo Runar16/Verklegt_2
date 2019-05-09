@@ -7,11 +7,11 @@
                     <div class="card-body" style="padding: 0">
                         <div class="left-block-container">
                             <span style="display: block;">{{ property.street_name }} {{ property.street_number }}</span>
-                            <span style="display: block; padding-top: 10px">{{ property.zip_id_set.first.city }}, {{ property.zip_id_set.first.zip }}</span>
+                            <span style="display: block; padding-top: 10px">{{ property.zip.get_city }}, {{ property.zip.get_zip }}</span>
                         </div>
                         <div class="right-block-container">
                             <span style="display: block;">{{ property.size }}m&sup2;</span>
-                            <span style="display: block; padding-top: 10px">{{ property.type_id_set.first.type }}</span>
+                            <span style="display: block; padding-top: 10px">{{ property.type.get_type }}</span>
                         </div>
                 </div>
             </div>
