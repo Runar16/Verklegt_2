@@ -6,10 +6,19 @@ from realtor.models import Realtor
 class PropertyType(models.Model):
     type = models.CharField(max_length=100, primary_key=True)
 
+    def __str__(self):
+        return "%s" % self.type
+
 
 class PropertyZip(models.Model):
     zip = models.IntegerField(primary_key=True)
     city = models.CharField(max_length=100)
+
+    def get_city(self):
+        return "%s" % self.city
+
+    def get_zip(self):
+        return "%s" % self.zip
 
 
 class Property(models.Model):
