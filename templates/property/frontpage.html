@@ -16,19 +16,20 @@
   <form class="form-inline" method="post">
       <div class="row">
           <div class="col">
-            <select class="custom-select">
-              <option selected>Country</option>
-              <option value="1">Iceland</option>
-              <option value="2">England</option>
-              <option value="3">Sweden</option>
+            <select class="custom-select" id="zipSelect">
+              <option selected>ZIP</option>
+                {% for zip in zips %}
+                    <option value="{{ zip.zip }}">{{ zip.zip }}</option>
+                {% endfor %}
             </select>
           </div>
             <div class="col">
                 <select class="custom-select">
                   <option selected>Type</option>
-                  <option value="1">Apartment</option>
-                  <option value="2">Boat</option>x
-                  <option value="3">Bungalow</option>
+
+                    {% for type in types %}
+                        <option value="{{ type.type }}">{{ type.type }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="col">
