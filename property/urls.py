@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.index, name="frontpage"),
     path('property', views.index, name="property-index"),
-    path('<int:id>', views.get_property_by_id, name="property_details")
+    path('<int:id>', views.get_property_by_id, name="property_details"),
+    path('purchase', views.customer_info, name="customer_info"),
 ]
