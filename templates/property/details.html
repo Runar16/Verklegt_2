@@ -73,9 +73,5 @@
         <p id="property_description">{{ property.property_description }}</p>
         <h1>{{ property.price|floatformat:"0" }}kr</h1>
 
-        {% for realtor in realtors %}
-            {% include 'realtor/single_realtor.html' with realtor=property.realtor_id %}
-        {% endfor %}
-
     </div>
 {% endblock %}

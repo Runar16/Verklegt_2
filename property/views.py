@@ -30,3 +30,9 @@ def get_property_by_id(request, id):
     return render(request, 'property/details.html', {
         'property': get_object_or_404(Property, pk=id)
     })
+
+def customer_info(request):
+    return render(request, 'property/customer_info.html')
+
+def payment_info(request):
+    return render(request, 'property/payment_info.html')

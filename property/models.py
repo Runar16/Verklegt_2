@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from realtor.models import Realtor
 
 
 class Property(models.Model):
@@ -14,7 +15,7 @@ class Property(models.Model):
     rooms = models.IntegerField(blank=True)
     price = models.FloatField()
     is_active = models.BooleanField()
-    # TODO add realtor foreign key
+    realtor = models.ForeignKey(Realtor, default=Realtor.DEFAULT_REALTOR, on_delete=models.SET_DEFAULT)
 
 
 class PropertyImage(models.Model):
@@ -24,5 +25,11 @@ class PropertyImage(models.Model):
 
 
 class Order(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    sold_property = models.ForeignKey(Property, on_delete=None)
+    customer = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    sold_property = models.ForeignKey(Property, null=True, on_delete=models.SET_NULL)
+    buyer_ssn = models.CharField(max_length=10)
+    sold_street_name = models.CharField(max_length=255)
+    sold_street_number = models.CharField(max_length=10)
+    realtor_licence_num = models.IntegerField(blank=True)
+    sold_zip = models.CharField(max_length=10)
+    sale_date = models.DateField(auto_now_add=True)
