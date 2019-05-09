@@ -40,7 +40,7 @@
   </form>
 </div>
 
-<div class="card-group properties" style="margin: 0 auto; width: 68%">
+<div class="card-group properties" style="display: flex; justify-content: center">
 {% for property in properties %}
     {% include 'property/single_property.html' with property=property %}
 {% endfor %}
