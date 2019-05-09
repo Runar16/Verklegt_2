@@ -13,29 +13,17 @@
 </head>
 <body>
     <nav class="top-navigation b-menu  trans">
-        <div class="navflexcontainer">
-
-            <div><a href="{% url 'frontpage' %}" class="login">Home</a></div>
-
-                    <div><a href="{% url 'realtor' %}" class="login">Relators</a></div>
-                    <div>
-                    <a href="#" class="navbar-brand">Castle Apartments</a>
-                    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button> I KNOW NOTHING-->
-                    </div>
-                    <div><a href="#" class="login">About Us</a></div>
-
-                    {% if user.is_authenticated %}
-                <div><a class="login" href="{%url 'profile' %}">Profile</a></div>
-                <div><a class="login" href="{%url 'logout' %}">Logout</a></div>
+        <div class="navbar-container" style="display: flex; flex-wrap: wrap;">
+            <a href="{% url 'frontpage' %}" style="width: 20%">Home</a>
+            <a href="{% url 'realtor' %}" style="width: 20%">Relators</a>
+            <a href="{% url 'frontpage' %}" style="width: 20%">Castle Apartments</a>
+            <a href="#" style="width: 20%">About Us</a>
+            {% if user.is_authenticated %}
+                <a href="{%url 'profile' %}" style="width: 20%">Profile</a>
             {% else %}
-                <div><a class="login" href="{% url 'login' %}">Login</a></div>
-                <div><a class="login" href="{% url 'register' %}">Register</a></div>
+                <a href="{% url 'login' %}" style="width: 20%">Log-In</a>
             {% endif %}
-
-
-            </div>
+        </div>
 
 </nav>
         {% block content %}
