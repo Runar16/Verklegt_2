@@ -3,14 +3,22 @@ from django.contrib.auth.models import User
 from realtor.models import Realtor
 
 
+class PropertyType(models.Model):
+    type = models.CharField(max_length=100, primary_key=True)
+
+
+class PropertyZip(models.Model):
+    zip = models.IntegerField(primary_key=True)
+    city = models.CharField(max_length=100)
+
+
 class Property(models.Model):
     street_name = models.CharField(max_length=255)
     street_number = models.CharField(max_length=10)
     property_description = models.CharField(max_length=2000)
-    zip = models.CharField(max_length=10)
-    city = models.CharField(max_length=100, blank=True)
-    country = models.CharField(max_length=100)
-    type = models.CharField(max_length=100, blank=True)
+    zip = models.ForeignKey(PropertyZip, on_delete=models.CASCADE)
+    country = models.CharField(max_length=100, default='Iceland')
+    type = models.ForeignKey(PropertyType, on_delete=models.CASCADE)
     size = models.IntegerField()
     rooms = models.IntegerField(blank=True)
     price = models.FloatField()
