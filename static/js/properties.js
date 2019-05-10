@@ -2,8 +2,28 @@ $(document).ready(function () {
     $('#search-btn').on('click', function (e) {
         e.preventDefault();
         var searchText = $('#search-box').val();
+        var zipVal = $('#zipSelect').val();
+        var typeVal = $('#typeSelect').val();
+        let url_str = "";
+        url_str += '?search_filter=' + searchText;
+        if(zipVal !== 'ZIP'){
+            if(url_str === "") {
+                url_str += '?zip_filter=' + zipVal;
+            }
+            else{
+                url_str += '&zip_filter=' + zipVal;
+            }
+        }
+        if(typeVal !== 'Type'){
+            if(url_str === "") {
+                url_str += '?type_filter=' + typeVal;
+            }
+            else{
+                url_str += '&type_filter=' + typeVal;
+            }
+        }
         $.ajax({
-            url: '?search_filter=' + searchText,
+            url: url_str,
             type: 'GET',
             success: function (resp) {
                 display_searched(resp);
@@ -34,5 +54,4 @@ function display_searched(resp) {
             </div>`
     });
     $('.properties').html(newHtml.join(''));
-    $('#search-box').val('');
 }

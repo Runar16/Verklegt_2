@@ -4,9 +4,18 @@ from property.models import Property, PropertyZip, PropertyType
 
 
 def index(request):
+    ret_properties = []
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
-        properties = [{
+        try:
+            zip_filter = request.GET['zip_filter']
+        except KeyError:
+            zip_filter = ""
+        try:
+            type_filter = request.GET['type_filter']
+        except KeyError:
+            type_filter = ""
+        filtered_properties = [{
             'id': x.id,
             'street_name': x.street_name,
             'street_number': x.street_number,
@@ -20,8 +29,13 @@ def index(request):
             'price': x.price,
             'is_active': x.is_active,
             'first_image': x.propertyimage_set.first().image
-        }for x in Property.objects.filter(street_name__icontains=search_filter)]
-        return JsonResponse({'data': properties})
+        }for x in Property.objects.filter(street_name__icontains=search_filter,
+                                          zip__zip__contains=str(zip_filter),
+                                          type__type__contains=type_filter
+                                          )
+        ]
+        return JsonResponse({'data': filtered_properties})
+
     context = {'properties': Property.objects.all().order_by('price'),
                'zips': PropertyZip.objects.all().order_by('zip'),
                'types': PropertyType.objects.all().order_by('type')
