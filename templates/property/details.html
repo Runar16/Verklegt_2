@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="container" id="property">
-        <h1>{{ property.street_name }} {{ property.street_number }},<h5> {{ property.zip.get_zip }} {{ property.zip.get_city }}</h5></h1>
+        <h1 id="address">{{ property.street_name }} {{ property.street_number }},<h5> {{ property.zip.get_zip }} {{ property.zip.get_city }}</h5></h1>
         <div class="row">
             <div class="col">
             <div id="carousel" class="carousel slide" data-ride="carousel">
@@ -71,17 +71,23 @@
         </div>
 
               <div>
+                  <h5 class="realtor_title">Realtor:</h5>
                 {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
               </div>
 
         </div>
-        <a id="buy_button" href = "{% url 'customer_info' %}"> BUY NOW </a>
-
-        <br>
-        <p id="property_description">{{ property.property_description }}</p>
-        <h1>{{ property.price|floatformat:"0" }}kr</h1>
 
 
+        <table id="info_table">
+            <tbody>
+                <td id="info_block"><p id="property_description">{{ property.property_description }}</p>
+                <h1>{{ property.price|floatformat:"0" }}kr</h1></td>
+
+                <td id="info_block">
+                    <a id="buy_button" href = "{% url 'customer_info' %}"> BUY NOW </a>
+                </td>
+            </tbody>
+        </table>
 
     </div>
 {% endblock %}
