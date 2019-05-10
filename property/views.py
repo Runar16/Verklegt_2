@@ -1,10 +1,13 @@
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile
 from property.models import Property, PropertyZip, PropertyType
 
 
 def index(request):
-    ret_properties = []
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
         try:
@@ -48,8 +51,35 @@ def get_property_by_id(request, id):
         'property': get_object_or_404(Property, pk=id)
     })
 
+
 def customer_info(request):
-    return render(request, 'property/customer_info.html')
+    return render(request, 'property/contact_info.html')
+
 
 def payment_info(request):
     return render(request, 'property/payment_info.html')
+
+
+def about_us(request):
+    return render(request, 'about_us.html')
+
+
+@login_required
+@transaction.atomic
+def contact_info(request):
+    if request.method == 'POST':
+        user_form = ContactInfoUser(request.POST, instance=request.user)
+        profile_form = ContactInfoProfile(request.POST, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('payment_info')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        user_form = ContactInfoUser(instance=request.user)
+        profile_form = ContactInfoProfile(instance=request.user.profile)
+    return render(request, 'property/contact_info.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
