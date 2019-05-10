@@ -159,7 +159,6 @@
 
 .navbar-element {
     color: white;
-    text-effect: ;
     width: 15%;
     display: flex;
     flex-direction: column;
@@ -167,7 +166,13 @@
 }
 
 .navbar-element:hover{
-    color: white;
+    color: white !important;
+    background-color: #1e4eff;
+    text-decoration: none;
+}
+
+.nav-link:hover{
+    color: white !important;
     background-color: #1e4eff;
     text-decoration: none;
 }
