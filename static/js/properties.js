@@ -29,8 +29,8 @@ $(document).ready(function () {
                 display_searched(resp);
             },
             error: function (xhr, status, error) {
-                // TODO show toastr
-                console.error(error)
+                $('.toast').toast('show');
+                console.error(error);
             }
 
         })
