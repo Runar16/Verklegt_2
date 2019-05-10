@@ -2,7 +2,7 @@ from django.forms import ModelForm, widgets
 from user.models import Profile
 from django.contrib.auth.models import User
 
-
+#goat
 class ContactInfoUser(ModelForm):
     class Meta:
         model = User
