@@ -3,6 +3,17 @@
 {% block content %}
     <div class="frontpage_container">
 <div class="container" id="search_container">
+    <div class="toast" data-autohide="false">
+        <div class="toast" data-autohide="false">
+            <div class="toast-header">
+                <strong class="mr-auto text-primary">Search Error</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+            </div>
+            <div class="toast-body">
+                An error occured performing your search
+            </div>
+        </div>
+    </div>
     <div class="input-group">
         <input type="search" class="form-control" id="search-box" placeholder="Enter your search here"/>
         <div class="input-group-btn">
