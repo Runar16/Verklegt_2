@@ -1,10 +1,13 @@
+#address{
+    padding-top: 20px;
+}
+
 #buy_button{
-    margin-left: 1rem;
-    margin-top: 4rem;
-    padding-left: 1.5rem;
     color: white;
     background-color: orangered;
     border: 5px solid orange;
+    padding: 2rem;
+    overflow-wrap: unset;
 }
 
 #property_description {
@@ -26,3 +29,17 @@
 #property {
     min-width: 70%;
 }
+
+#info_table{
+    table-layout: fixed;
+    width: 600px;
+}
+
+#info_block{
+    width: 400px;
+}
+
+.realtor_title{
+    font-size: 1.5rem;
+}
+

@@ -60,6 +60,10 @@ def payment_info(request):
     return render(request, 'property/payment_info.html')
 
 
+def review_purchase(request):
+    return render(request, 'property/review_purchase.html')
+
+
 def about_us(request):
     return render(request, 'about_us.html')
 

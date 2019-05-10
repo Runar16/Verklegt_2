@@ -2,8 +2,10 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from user.forms.profile_form import ProfileForm, UserForm
+from user.models import History
 
 
 def index(request):
@@ -41,3 +43,13 @@ def profile(request):
         'user_form': user_form,
         'profile_form': profile_form
     })
+
+
+def update_history(request):
+    if request.method == 'POST':
+        history = History.objects.get()
+        history.user_id = request.POST['user_id']
+        history.property_id = request.POST['property_id']
+        history.save()
+        message = 'Insert successful'
+    return HttpResponse(message)
