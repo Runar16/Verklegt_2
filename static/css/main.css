@@ -1,23 +1,13 @@
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
 .gradient {
     background: linear-gradient(to right bottom, #3e53e1, #4465e5, #4f75e8, #5d85e9, #6d94e9, #66a3f0, #64b1f5, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1) fixed;
 }
-
-.footer {
-    position: relative;
-    bottom: 0;
-    left: 0px;
-    right: 0px;
-    bottom: 2px; /* hvít lína fyrir neðan footer */
-    width: 100%;
-    background-color: dodgerblue;
-    height: 3rem;
-    color: white;
-    text-align: center;
-
-
-    font-size: 1.2rem;
-}
-
 .top-navigation{
     position: relative;
     top: 0;
@@ -28,12 +18,8 @@
     background-color: dodgerblue !important;
     color: white !important;
     text-align: center;
-
-
     font-size: 1.2rem;
 }
-
-
 .navbar-brand {
     text-align: center;
     color: white;
@@ -42,28 +28,21 @@
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-
 }
 .navstart {
     display: inline-flex;
     justify-content: flex-start;
     padding-right: 5rem;
-
 }
 .navmid {
     display: inline-flex;
     justify-content: center;
-
 }
-
 .navend {
     display: inline-flex;
     justify-content: flex-end;
     padding-left: 5rem;
-
-
 }
-
 .nav-link {
     display: block;
     padding: .5rem 1rem;
@@ -72,69 +51,34 @@
 .login {
     color: white;
 }
-
-
 .login-buttons {
-
     display: inline-flex;
     justify-content: flex-end;
-
-
-}
-
-
-.footercontainer {
-
-    width: 100%;
-    display: inline-flex;
-    justify-content: space-between;
-    flex-direction: row;
-
-
-
-
-}
-.footeritem {
-    margin: 0px;
-    padding-left: 1em;
-    padding-right: 1em;
-    border:0px;
-    flex-wrap: wrap;
-
-
 }
 .mail {
     color: white;
-
 }
-
 #search_container{
   padding: 3%;
   border-style: solid;
   border-width: 1px;
   border-color: black;
 }
-
 .card {
     overflow: hidden;
     margin-bottom: 10%;
 }
-
 .card-img-top {
     width: 200px;
     max-height: 200px;
     min-height: 200px;
 }
-
-
 .card-body {
     color: black;
 }
-
 .card:hover {
     opacity: 0.9;
 }
-
 #property-card-header {
     height: 50px;
     position: absolute;
@@ -143,20 +87,17 @@
     border-bottom-right-radius: 10px;
     opacity: 0.8;
 }
-
 .left-block-container {
     width: 50%;
     float: left;
     padding: 10px 0 10px 10px;
 }
-
 .right-block-container {
     width: 50%;
     float: left;
     text-align: right;
     padding: 10px 10px 10px 0;
 }
-
 .navbar-element {
     color: white;
     width: 15%;
@@ -164,4 +105,30 @@
     flex-direction: column;
     justify-content: center;
 }
-
+.navbar-element:hover, .nav-link:hover{
+    color: white !important;
+    background-color: #1e4eff;
+    text-decoration: none;
+}
+.content {
+    flex: 1 0 auto;
+}
+.footer {
+    flex-shrink: 0;
+    background-color: dodgerblue;
+    text-align: center;
+    color: white;
+}
+.footercontainer {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.footeritem {
+    margin: 0px;
+    padding-left: 1em;
+    padding-right: 1em;
+    border:0px;
+    flex-wrap: wrap;
+}
