@@ -30,7 +30,7 @@
             </div>
         </div>
     <p style="width: 50%">
-        <a class="btn btn-light" data-toggle="collapse" href="#advancedSearch" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-link" data-toggle="collapse" href="#advancedSearch" role="button" aria-expanded="false" aria-controls="collapseExample" style="color: black">
             Advanced Search&darr;
         </a>
     </p>
@@ -54,7 +54,7 @@
     </div>
     </div>
 
-    <div class="card-group properties" style="display: flex; justify-content: center">
+    <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto">
     {% for property in properties %}
         {% include 'property/single_property.html' with property=property %}
     {% endfor %}
