@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% if user.is_authenticated %}
+        <p id="user_id">{{ user.id }}</p>
+        <p id="property_id">{{ property.id }}</p>
+        <body onload="history_submit({{ user.id }}, {{ property.id }})">
+{% else %}
+
+{% endif %}
     <div class="container" id="property">
         <h1>{{ property.street_name }} {{ property.street_number }},<h5> {{ property.zip.get_zip }} {{ property.zip.get_city }}</h5></h1>
         <div class="row">
