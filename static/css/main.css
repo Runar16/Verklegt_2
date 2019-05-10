@@ -159,9 +159,15 @@
 
 .navbar-element {
     color: white;
+    text-effect: ;
     width: 15%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.navbar-element:hover{
+    color: white;
+    background-color: #1e4eff;
+    text-decoration: none;
+}
