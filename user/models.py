@@ -20,7 +20,7 @@ class Profile(models.Model):
 class History(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
-    datetime_stamp = models.DateTimeField(auto_now=True)
+    datetime_stamp = models.DateTimeField()
 
     class Meta:
         unique_together = (("user", "property"),)
