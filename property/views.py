@@ -53,3 +53,6 @@ def customer_info(request):
 
 def payment_info(request):
     return render(request, 'property/payment_info.html')
+
+def about_us(request):
+    return render(request, 'about_us.html')
