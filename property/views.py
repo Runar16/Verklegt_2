@@ -4,7 +4,6 @@ from property.models import Property, PropertyZip, PropertyType
 
 
 def index(request):
-    ret_properties = []
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
         try:
