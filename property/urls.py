@@ -7,5 +7,6 @@ urlpatterns = [
     path('property', views.index, name="property-index"),
     path('<int:id>', views.get_property_by_id, name="property_details"),
     path('purchase', views.contact_info, name="contact_info"),
-    path('payment', views.payment_info, name="payment_info")
+    path('payment', views.payment_info, name="payment_info"),
+    path('review_purchase', views.review_purchase, name="review_purchase")
 ]
