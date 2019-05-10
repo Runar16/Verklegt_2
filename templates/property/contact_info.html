@@ -1,48 +1,56 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-<h1>Contact information</h1>
-{% load widget_tweaks %}
-<form method="post" novalidate>
-    {% csrf_token %}
 
-    {% for hidden_field in form.hidden_fields %}
-        {{ hidden_field }}
-    {% endfor %}
-
-    {% if form.non_field_errors %}
-        <div class="alert alert-danger" role="alert">
-            {% for error in form.non_field_errors %}
-                {{ error }}
-            {% endfor %}
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <hr class="mt-0 mb-4">
+          <h1>Contact information</h1>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-6">
+                    {{ user_form.first_name|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ user_form.last_name|as_crispy_field }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    {{ user_form.email|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ profile_form.phone_number|as_crispy_field }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3">
+                    {{ profile_form.street_name|as_crispy_field }}
+                  </div>
+                  <div class="col-3">
+                    {{ profile_form.street_number|as_crispy_field }}
+                  </div>
+                  <div class="col-4">
+                    {{ profile_form.city|as_crispy_field }}
+                  </div>
+                  <div class="col-2">
+                    {{ profile_form.zip|as_crispy_field }}
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                    {{ profile_form.country|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ profile_form.ssn|as_crispy_field }}
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-success">Save person</button>
+            </form>
         </div>
-    {% endif %}
-
-    {% for field in form.visible_fields %}
-        <div class="form-group">
-        {{ field.label_tag }}
-
-        {% if form.is_bound %}
-            {% if field.errors %}
-                {% render_field field class="form-control is-invalid" %}
-                {% for error in field.errors %}
-                    <div class="invalid-feedback">
-                        {{ error }}
-                    </div>
-                {% endfor %}
-            {% else %}
-                {% render_field field class="form-control is-valid" %}
-            {% endif %}
-        {% else %}
-            {% render_field field class="form-control" %}
-        {% endif %}
-
-        {% if field.help_text %}
-            <small class="form-text text-muted">{{ field.help_text }}</small>
-        {% endif %}
+      </div>
     </div>
-    {% endfor %}
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 {% endblock %}

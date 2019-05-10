@@ -1,18 +1,3 @@
-        object.onload = function () {history_submit(user_id, property_id)};
-        function history_submit(user_id, property_id) {
-            document.getElementById("user_id").style.display = "none";
-            document.getElementById("property_id").style.display = "none";
-            console.log(user_id);
-            console.log(property_id);
-            $.ajax({
-             url: '/update_history/',
-             data: [{'user_id': user_id}, {'property_id': property_id}],
-             type: 'POST'
-           }).done(function(response){
-             console.log(response);
-           });
-        }
-
 $(document).ready(function () {
     $('#search-btn').on('click', function (e) {
         e.preventDefault();

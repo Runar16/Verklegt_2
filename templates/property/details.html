@@ -2,9 +2,11 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <p id="user_id">{{ user.id }}</p>
-        <p id="property_id">{{ property.id }}</p>
-        <body onload="history_submit({{ user.id }}, {{ property.id }})">
+        <form class="form form-horizontal" method="post">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+        </form>
 {% else %}
 
 {% endif %}

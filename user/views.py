@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_protect
+
 from user.forms.profile_form import ProfileForm, UserForm
 from user.models import History
 
@@ -45,6 +47,7 @@ def profile(request):
     })
 
 
+@csrf_protect
 def update_history(request):
     if request.method == 'POST':
         history = History.objects.get()

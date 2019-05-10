@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'property.apps.PropertyConfig',
     'user.apps.UserConfig',
     'realtor.apps.RealtorConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,5 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = '/user/login'
 LOGIN_REDIRECT_URL = '/user/profile'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
