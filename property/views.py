@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile
+from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo
 from property.models import Property, PropertyZip, PropertyType
 
 
@@ -57,7 +57,9 @@ def customer_info(request):
 
 
 def payment_info(request):
-    return render(request, 'property/payment_info.html')
+    return render(request, 'property/payment_info.html', {
+        'payment_form': PaymentInfo(),
+    })
 
 
 def review_purchase(request):

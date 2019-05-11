@@ -141,3 +141,7 @@
     width: 50%;
     float: left
 }
+
+.asteriskField {
+    display: none;
+}

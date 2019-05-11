@@ -1,6 +1,7 @@
 from django.forms import ModelForm, widgets
 from user.models import Profile
 from django.contrib.auth.models import User
+from django import forms
 
 
 class ContactInfoUser(ModelForm):
@@ -27,3 +28,26 @@ class ContactInfoProfile(ModelForm):
             'country': widgets.TextInput(attrs={'class': 'form-control'}),
             'ssn': widgets.TextInput(attrs={'class': 'form-control'})
         }
+
+
+class PaymentInfo(forms.Form):
+    MONTHS = (
+        (1, "January"),
+        (2, "February"),
+        (3, "March"),
+        (4, "April"),
+        (5, "May"),
+        (6, "June"),
+        (7, "July"),
+        (8, "August"),
+        (9, "September"),
+        (10, "October"),
+        (11, "November"),
+        (12, "December"),
+    )
+    full_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Full name (on card)'}))
+    card_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Card number'}))
+    expiration_month = forms.ChoiceField(choices=MONTHS, label="Expiration month", initial='', widget=forms.Select())
+    expiration_year = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '2019'}), max_length=4)
+    cvv = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'CVV'}), max_length=3)
+
