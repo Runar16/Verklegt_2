@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'realtor.apps.RealtorConfig',
     'crispy_forms',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
