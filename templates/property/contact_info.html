@@ -1,56 +1,54 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-8">
-          <hr class="mt-0 mb-4">
-          <h1>Contact information</h1>
-            <form method="post" novalidate>
-                {% csrf_token %}
-                <div class="row">
-                  <div class="col-6">
-                    {{ user_form.first_name|as_crispy_field }}
-                  </div>
-                  <div class="col-6">
-                    {{ user_form.last_name|as_crispy_field }}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-6">
-                    {{ user_form.email|as_crispy_field }}
-                  </div>
-                  <div class="col-6">
-                    {{ profile_form.phone_number|as_crispy_field }}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-3">
-                    {{ profile_form.street_name|as_crispy_field }}
-                  </div>
-                  <div class="col-3">
-                    {{ profile_form.street_number|as_crispy_field }}
-                  </div>
-                  <div class="col-4">
-                    {{ profile_form.city|as_crispy_field }}
-                  </div>
-                  <div class="col-2">
-                    {{ profile_form.zip|as_crispy_field }}
-                  </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                    {{ profile_form.country|as_crispy_field }}
-                  </div>
-                  <div class="col-6">
-                    {{ profile_form.ssn|as_crispy_field }}
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-success">Save person</button>
-            </form>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <hr class="mt-0 mb-4">
+                <h1>Contact information</h1>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-6">
+                            {{ user_form.first_name|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ user_form.last_name|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            {{ user_form.email|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ profile_form.phone_number|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            {{ profile_form.street_name|as_crispy_field }}
+                        </div>
+                        <div class="col-3">
+                            {{ profile_form.street_number|as_crispy_field }}
+                        </div>
+                        <div class="col-4">
+                            {{ profile_form.city|as_crispy_field }}
+                        </div>
+                        <div class="col-2">
+                            {{ profile_form.zip|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            {{ profile_form.country|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ profile_form.ssn|as_crispy_field }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save person</button>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-
 {% endblock %}

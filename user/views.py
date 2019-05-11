@@ -1,6 +1,7 @@
 from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.db import transaction
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -56,3 +57,20 @@ def update_history(request):
         history.save()
         message = 'Insert successful'
     return HttpResponse(message)
+
+
+def change_password(request):
+    if request.method == 'POST':
+        password_form = PasswordChangeForm(request.user, request.POST)
+        if password_form.is_valid():
+            user = password_form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_password')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        password_form = PasswordChangeForm(request.user)
+    return render(request, 'user/change_password.html', {
+        'password_form': password_form
+    })
