@@ -12,8 +12,8 @@
                         <div class="col-6">
                             {{ user_form.username|as_crispy_field }}
                         </div>
-                        <div class="col-6">
-                            <a id="change_password_button" href = "{% url 'change_password' %}"> Change Password </a>
+                        <div class="col-6" style="text-align: center; margin: auto; background-color: dodgerblue;">
+                            <a id="change_password_button" href = "{% url 'change_password' %}" style="color: white;"> Change Password </a>
                         </div>
                     </div>
                     <div class="row">
@@ -58,8 +58,10 @@
                         <div class="col-6">
                             {{ profile_form.profile_picture|as_crispy_field }}
                         </div>
+                        <div class="col-6" style="text-align: center; margin: auto;">
+                            <button type="submit" class="btn btn-success" >Save person</button>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-success">Save person</button>
                 </form>
             </div>
         </div>

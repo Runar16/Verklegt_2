@@ -31,39 +31,38 @@
                 <input type="text" placeholder="To" class="form-control" style="width: 20%; display: inline">
             </div>
         </div>
-    <p style="width: 50%">
-        <a class="btn btn-link" data-toggle="collapse" href="#advancedSearch" role="button" aria-expanded="false" aria-controls="collapseExample" style="color: black; padding: 0">
-            Advanced Search&darr;
-        </a>
-    </p>
-    <div class="collapse" id="advancedSearch">
-      <div class="card card-body" style="margin: 0">
-            <div style="text-align: center">
-                <div style="text-align: center; width: 50%; float: left">
-                    Size in m&sup2;
-                </div>
-                <div style="text-align: center; width: 50%; float: left">
-                    Number of rooms
-                </div>
-                <div style="width: 50%; float: left">
-                    <input type="text" placeholder="Size" class="form-control" style="width: 40%; margin: 0 auto">
-                </div>
-                <div style="width: 50%; float: left">
-                    <input type="text" placeholder="Rooms" class="form-control" style="width: 40%; margin: 0 auto">
+            <p style="width: 50%">
+                <a class="btn btn-link" data-toggle="collapse" href="#advancedSearch" role="button" aria-expanded="false" aria-controls="collapseExample" style="color: black; padding: 0">
+                    Advanced Search&darr;
+                </a>
+            </p>
+            <div class="collapse" id="advancedSearch">
+                <div class="card card-body" style="margin: 0">
+                    <div style="text-align: center">
+                        <div style="text-align: center; width: 50%; float: left">
+                            Size in m&sup2;
+                        </div>
+                        <div style="text-align: center; width: 50%; float: left">
+                            Number of rooms
+                        </div>
+                        <div style="width: 50%; float: left">
+                            <input type="text" placeholder="Size" class="form-control" style="width: 40%; margin: 0 auto">
+                        </div>
+                        <div style="width: 50%; float: left">
+                            <input type="text" placeholder="Rooms" class="form-control" style="width: 40%; margin: 0 auto">
+                        </div>
+                    </div>
                 </div>
             </div>
-      </div>
+            <div style="text-align: right">
+                <button type="button" id="search-btn" class="btn btn-primary">Search</button>
+            </div>
+        </div>
     </div>
-    <div style="text-align: right">
-        <button type="button" id="search-btn" class="btn btn-primary">Search</button>
-    </div>
-    </div>
-    </div>
-
     <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto">
-    {% for property in properties %}
-        {% include 'property/single_property.html' with property=property %}
-    {% endfor %}
+        {% for property in properties %}
+            {% include 'property/single_property.html' with property=property %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

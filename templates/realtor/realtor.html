@@ -1,19 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <head>
-        <title>Realtors</title>
-    </head>
-    <body>
+    <div style="text-align: center;">
         <h2>Welcome to the realtors site!</h2>
         <p>Here is a full list of all active realtors.</p>
-    </body>
-
-    <!-- Afritað úr 'single property', vantar þannig fyrir realtors. -->
-    <div class="row">
-    {% for realtor in realtors %}
-        {% include 'realtor/single_realtor.html' with realtor=realtor %}
-    {% endfor %}
     </div>
-
+    <!-- Afritað úr 'single property', vantar þannig fyrir realtors. -->
+    <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto;">
+        {% for realtor in realtors %}
+            {% include 'realtor/single_realtor.html' with realtor=realtor %}
+        {% endfor %}
+    </div>
 {% endblock %}
