@@ -2,44 +2,23 @@
     padding-top: 20px;
 }
 
-#buy_button{
-    color: white;
-    background-color: orangered;
-    border: 5px solid orange;
-    padding: 2rem;
-    overflow-wrap: unset;
-}
-
-#property_description {
-    display: inline;
-}
-
-.carousel-inner > .carousel-item {
-   height: 300px;
-}
-
-.carousel-inner active{
-    heigt: 200px
-}
-
-.col > .table {
-    max-width: 1%;
-}
-
 #property {
-    min-width: 70%;
+    min-width: 90%;
 }
 
 #info_table{
+    width: 20%;
     table-layout: fixed;
-    width: 600px;
+    margin-left: 2%;
 }
 
-#info_block{
-    width: 400px;
+#carousel {
+    width: 60%;
+    float: left;
 }
 
-.realtor_title{
-    font-size: 1.5rem;
+.carousel-item img {
+    object-fit: cover;
+    width: 80%;
+    height: 70%;
 }
-

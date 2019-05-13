@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="frontpage_container">
+
     <div class="search-container shadow bg-white rounded" style="padding-bottom: 2%">
         <h4 style="padding: 1%">Find Property</h4>
     <div style="width: 90%; margin: 0 auto">
@@ -64,5 +64,5 @@
             {% include 'property/single_property.html' with property=property %}
         {% endfor %}
     </div>
-</div>
+
 {% endblock %}
