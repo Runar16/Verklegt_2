@@ -1,8 +1,17 @@
-<div class="media">
-  <img src="{{ realtor.profile_picture }}" class="align-self-start mr-3" alt="Realtor Picture" style="max-width: 300px">
-  <div class="media-body">
-    <h5 class="mt-0">{{ realtor.user.first_name }} {{ realtor.user.last_name }}</h5>
-    <p>Phone: {{ realtor.phone_number }}</p>
-    <p>Email: {{ realtor.user.email }}</p>
-  </div>
-</div>
+<a href="/realtor/{{ realtor.id }}" class="shadow bg-white rounded" id="single-realtor">
+    <div class="media">
+        <div>
+            <img src="{{ realtor.profile_picture }}" class="align-self-start" alt="Realtor Picture" id="realtor-media-picture">
+        </div>
+      <div class="media-body">
+        <h5 class="media-header">{{ realtor.user.first_name }} {{ realtor.user.last_name }}</h5>
+          <p class="gray-line"></p>
+          <div id="realtor-contact-information">
+              <p class="contact-information-type"> Phone </p>
+              <p class="contact-information-value"> {{ realtor.phone_number }} </p>
+              <p class="contact-information-type"> Email </p>
+              <p class="contact-information-value"> {{ realtor.user.email }} </p>
+          </div>
+      </div>
+    </div>
+</a>

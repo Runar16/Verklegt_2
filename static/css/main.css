@@ -4,8 +4,8 @@
 .top-navigation{
     position: relative;
     top: 0;
-    left: 0px;
-    right: 0px;
+    left: 0;
+    right: 0;
     bottom: 10px; /* hvít lína fyrir neðan header */
     width: 100%;
     background-color: dodgerblue !important;
@@ -107,7 +107,7 @@
     background-color: dodgerblue;
     text-align: center;
     color: white;
-    padding: 1em 0em;
+    padding: 1em 0;
 }
 .footercontainer {
     width: 100%;
@@ -116,19 +116,16 @@
     flex-direction: row;
 }
 .footeritem {
-    margin: 0px;
+    margin: 0;
     padding-left: 1em;
     padding-right: 1em;
-    border:0px;
+    border:0;
     flex-wrap: wrap;
 }
 
 .search-container {
     width: 50%;
     margin: 1% auto;
-
-    border-style: solid;
-    border-width: 2px;
     border-radius: 5px
 }
 
@@ -144,4 +141,53 @@
 
 .asteriskField {
     display: none;
+}
+
+.media:hover {
+    opacity: 0.8;
+}
+
+#single-realtor {
+    border-radius: 5px;
+    width: 30%;
+    margin: 1%;
+    padding: 0;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit
+}
+
+#realtor-media-picture {
+    object-fit: cover;
+    height: 200px;
+    max-width: 200px;
+    float: left
+}
+
+.gray-line {
+    background: gray;
+    height: 1px;
+    width: 75%;
+    margin: 0 auto
+}
+
+.media-header {
+    text-align: center;
+    margin: 3%
+}
+
+#realtor-contact-information{
+    margin: 8% 0 0 12%
+}
+
+.contact-information-type{
+    margin: 0;
+    font-weight: 500;
+    color: dodgerblue;
+}
+
+.contact-information-value {
+    margin: 0;
+    text-indent: 7px;
+    font-size: 14px
 }
