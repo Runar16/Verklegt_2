@@ -8,5 +8,5 @@ def index(request):
 
 def get_realtor_by_id(request, id):
     return render(request, 'realtor/details.html', {
-        'realtor': get_object_or_404(Realtor, pk=id)
+        'realtor': get_object_or_404(Realtor, pk=id),
     })

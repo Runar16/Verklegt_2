@@ -44,6 +44,7 @@
                 <span class="sr-only">Next</span>
               </a>
             </div>
+    <div>
             <table class="table" id="info_table">
               <tbody>
                 <tr>
@@ -72,7 +73,6 @@
                 </tr>
               </tbody>
             </table>
-        <div>
             <a class="btn btn-danger" href = "{% url 'contact_info' %}"> BUY NOW </a>
             <div>
                 {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
