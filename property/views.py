@@ -7,6 +7,7 @@ import datetime
 from django.db import IntegrityError
 from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo
 from property.models import Property, PropertyZip, PropertyType
+from realtor.models import Realtor
 from user.models import History
 
 
@@ -61,6 +62,7 @@ def get_property_by_id(request, id):
     return render(request, 'property/details.html', {
         'property': get_object_or_404(Property, pk=id)
     })
+
 
 def get_property_by_realtor_id(request, id):
     return render(request, 'realtor/details.html', {
