@@ -47,7 +47,7 @@
               </a>
             </div>
         </div>
-        <div class="col">
+        <div class="col" style="max-width: 30%">
             <table class="table">
               <tbody>
                 <tr>
@@ -78,28 +78,14 @@
               </tbody>
             </table>
         </div>
-
-              <div>
-                  <h5 class="realtor_title">Realtor:</h5>
-                {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
-              </div>
-
         </div>
-
+    <div>
+        <div>
+            {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
+        </div>
+        <p id="info_block"><p id="property_description">{{ property.property_description }}</p>
+        <h1>{{ property.price|floatformat:"0" }}kr</h1>
         <a id="buy_button" href = "{% url 'contact_info' %}"> BUY NOW </a>
-
-
-
-        <table id="info_table">
-            <tbody>
-                <td id="info_block"><p id="property_description">{{ property.property_description }}</p>
-                <h1>{{ property.price|floatformat:"0" }}kr</h1></td>
-
-                <td id="info_block">
-                    <a id="buy_button" href = "{% url 'contact_info' %}"> BUY NOW </a>
-                </td>
-            </tbody>
-        </table>
-
+    </div>
     </div>
 {% endblock %}
