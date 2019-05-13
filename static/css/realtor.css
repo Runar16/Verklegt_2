@@ -1,12 +1,52 @@
-.realtor_photo{
-    width: 200px;
-    height: 400px;
+.media:hover {
+    opacity: 0.8;
 }
 
-.test_text{
-    color: yellow;
+#single-realtor {
+    border-radius: 5px;
+    width: 30%;
+    margin: 1%;
+    padding: 0;
+    overflow: hidden;
 }
 
-.profile_list{
-    list-style-type: none;
+#realtor-media-picture {
+    object-fit: cover;
+    height: 200px;
+    max-width: 200px;
+    float: left
 }
+
+.gray-line {
+    background: gray;
+    height: 1px;
+    width: 75%;
+    margin: 0 auto
+}
+
+.media-header {
+    text-align: center;
+    margin: 3%
+}
+
+#realtor-contact-information{
+    margin: 8% 0 0 12%
+}
+
+.contact-information-type{
+    margin: 0;
+    font-weight: 500;
+    color: dodgerblue;
+}
+
+.contact-information-value {
+    margin: 0;
+    text-indent: 7px;
+    font-size: 14px
+}
+
+#single-realtor > a{
+    text-decoration: none;
+    color: inherit
+}
+
