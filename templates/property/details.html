@@ -77,15 +77,22 @@
 
               </tbody>
             </table>
+            <form method="post">
+                {% csrf_token %}
+                {{ cart_form }}
+                <input type="hidden" name="user_id" value="{{user.id}}" />
+                <input type="hidden" name="property_id" value="{{property.id}}" />
+                {{ cart_form.property }}
+                <button type="submit" class="btn btn-success">Add to cart</button>
+            </form>
         </div>
         </div>
     <div>
         <div>
             {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
+            </div>
+            <p id="info_block"><p id="property_description">{{ property.property_description }}</p>
+            <h1>{{ property.price|floatformat:"0" }}kr</h1>
         </div>
-        <p id="info_block"><p id="property_description">{{ property.property_description }}</p>
-        <h1>{{ property.price|floatformat:"0" }}kr</h1>
-        <a id="buy_button" href = "{% url 'contact_info' %}"> BUY NOW </a>
-    </div>
     </div>
 {% endblock %}

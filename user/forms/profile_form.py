@@ -1,5 +1,5 @@
 from django.forms import ModelForm, widgets
-from user.models import Profile
+from user.models import Profile, Cart
 from django.contrib.auth.models import User
 
 
@@ -29,3 +29,10 @@ class UserForm(ModelForm):
             'last_name': widgets.TextInput(attrs={'class': 'form-control'}),
             'email': widgets.TextInput(attrs={'class': 'form-control'})
         }
+
+
+class CartForm(ModelForm):
+    class Meta:
+        model = Cart
+        exclude = ['id']
+        fields = ['property', 'user']

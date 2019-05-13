@@ -60,7 +60,7 @@ def payment_info(request):
 
 def review_purchase(request):
     pay_info = PaymentInfo(request.POST)
-    return render(request, 'property/review_purchase.html', {"pay_info": pay_info, "property": property})
+    return render(request, 'property/review_purchase.html', {"pay_info": pay_info})
 
 
 def about_us(request):
