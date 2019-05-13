@@ -1,5 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    <div class="container" style="display: flex; flex-direction: row">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <hr class="mt-0 mb-4">
+                <h1>Payment information</h1>
+                <div class="row">
+                    <div class="col-4" name="card_number">
+                        <h4>Property information</h4>
+                        {% include 'property/single_property.html' with property=property %}
+                    </div>
+                    <div class="col-4">
+                        <h4>Customer information</h4>
+                        {{ user.username }}
+                    </div>
+                    <div class="col-4">
+                        <h4>Pricing information</h4>
+                        {{ pay_info.card_number.value }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

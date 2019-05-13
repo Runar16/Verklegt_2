@@ -12,8 +12,8 @@
                         <div class="col-6">
                             {{ user_form.username|as_crispy_field }}
                         </div>
-                        <div class="col-6" style="text-align: center; margin: auto; background-color: dodgerblue;">
-                            <a id="change_password_button" href = "{% url 'change_password' %}" style="color: white;"> Change Password </a>
+                        <div class="col-6" style="display: flex; justify-content: center; align-items: center">
+                            <a id="change_password_button" href = "{% url 'change_password' %}" class="btn btn-primary"> Change Password </a>
                         </div>
                     </div>
                     <div class="row">
