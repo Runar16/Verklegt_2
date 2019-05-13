@@ -6,7 +6,7 @@
             <div class="col-8">
                 <hr class="mt-0 mb-4">
                 <h1>Payment information</h1>
-                <form method="post" novalidate>
+                <form method="post" novalidate action="{% url 'review_purchase'%}">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-6">

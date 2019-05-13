@@ -52,10 +52,6 @@ def get_property_by_id(request, id):
     })
 
 
-def customer_info(request):
-    return render(request, 'property/contact_info.html')
-
-
 def payment_info(request):
     return render(request, 'property/payment_info.html', {
         'payment_form': PaymentInfo(),
@@ -63,7 +59,8 @@ def payment_info(request):
 
 
 def review_purchase(request):
-    return render(request, 'property/review_purchase.html')
+    pay_info = PaymentInfo(request.POST)
+    return render(request, 'property/review_purchase.html', {"pay_info": pay_info, "property": property})
 
 
 def about_us(request):
