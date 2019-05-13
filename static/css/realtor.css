@@ -1,12 +1,23 @@
-.realtor_photo{
-    width: 200px;
-    height: 400px;
+#realtor_photo{
+    margin-top: 3rem;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    float: left;
 }
 
-.test_text{
-    color: yellow;
+#realtor_info{
+    margin-top: 3rem;
+    margin-left: 2rem;
+    padding: 0px;
 }
 
-.profile_list{
-    list-style-type: none;
+.realtor_item{
+    margin-bottom: 0rem;
+    margin-left: 1rem;
 }
+
+#realtor_name{
+    margin-bottom: 0.5rem;
+}
+

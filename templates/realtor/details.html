@@ -1,21 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
-        <ul class="profile_list">
-            <li>
+    <div class="container">
+        <div class="row">
                 <!--Image-->
-                <img style="height: 200px; width: 200px" src={{realtor.profile_picture}}, alt="Profile picture">
+                <img id="realtor_photo" src={{realtor.profile_picture}}, alt="Profile picture">
                 <!--ATH CLASS-->
-            </li>
-            <li>
-                <h5>{{realtor.user.first_name}}</h5>
-                <p>Phone: {{realtor.phone_number}}</p>
-                <p>Email: {{realtor.user.email}}</p>
-                <p>Licence number: {{realtor.license_number}}</p>
-            </li>
-        </ul>
+
+                <div id="realtor_info">
+                    <h5 id="realtor_name">{{realtor.user.first_name}}</h5>
+                    <p class="realtor_item">Phone: {{realtor.phone_number}}</p>
+                    <p class="realtor_item">Email: {{realtor.user.email}}</p>
+                </div>
+        </div>
     </div>
+
+    <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto">
+        <p>hæ</p>
+        {% for property in properties %}
+            {% include 'property/single_property.html' with property=property %}
+        {% endfor %}
+    </div>
+
 {% endblock %}
 
 
