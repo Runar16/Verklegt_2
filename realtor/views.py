@@ -8,9 +8,7 @@ def index(request):
 
 
 def get_realtor_by_id(request, id):
-    realtor = get_object_or_404(Realtor, pk=id)
-    properties = Property.objects.filter(realtor_id__exact=id)
     return render(request, 'realtor/details.html', {
-        'realtor': realtor,
-        'properties': properties
+        'realtor': get_object_or_404(Realtor, pk=id),
+        'properties': Property.objects.filter(realtor_id__exact=id)
     })
