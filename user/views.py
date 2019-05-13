@@ -2,12 +2,14 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth.models import User
 from django.db import transaction
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 
-from user.forms.profile_form import ProfileForm, UserForm
+from property.models import Property
+from user.forms.profile_form import ProfileForm, UserForm, CartForm
 from user.models import History
 
 
@@ -45,6 +47,22 @@ def profile(request):
     return render(request, 'user/profile.html', {
         'user_form': user_form,
         'profile_form': profile_form
+    })
+
+
+def add_to_cart(request):
+    if request.method == 'POST':
+        form = CartForm()
+        user_id = request.POST['user_id']
+        form.user = get_object_or_404(User, pk=user_id)
+        property_id = request.POST['property_id']
+        form.property = get_object_or_404(Property, pk=property_id)
+        if form.is_valid:
+            form.save()
+            return redirect('')
+    return render(request, 'property/details.html', {
+        'cart_form': CartForm(),
+        'user': request.user
     })
 
 

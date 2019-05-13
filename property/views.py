@@ -3,8 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
+import datetime
+from django.db import IntegrityError
 from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo
 from property.models import Property, PropertyZip, PropertyType
+from user.models import History
 
 
 def index(request):
@@ -47,6 +50,14 @@ def index(request):
 
 
 def get_property_by_id(request, id):
+    if request.user.is_authenticated:
+        current_user = request.user.id
+        timestamp = datetime.datetime.now()
+        try:
+            History.objects.create(property_id=id, user_id=current_user, datetime_stamp=timestamp)
+        except IntegrityError:
+            existing_history_obj = History.objects.get(property_id=id, user_id=current_user)
+            History.objects.filter(pk=existing_history_obj.id).update(datetime_stamp=timestamp)
     return render(request, 'property/details.html', {
         'property': get_object_or_404(Property, pk=id)
     })
@@ -60,7 +71,7 @@ def payment_info(request):
 
 def review_purchase(request):
     pay_info = PaymentInfo(request.POST)
-    return render(request, 'property/review_purchase.html', {"pay_info": pay_info, "property": property})
+    return render(request, 'property/review_purchase.html', {"pay_info": pay_info})
 
 
 def about_us(request):
