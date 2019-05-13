@@ -62,6 +62,11 @@ def get_property_by_id(request, id):
         'property': get_object_or_404(Property, pk=id)
     })
 
+def get_property_by_realtor_id(request, id):
+    return render(request, 'realtor/details.html', {
+        'properties': Property.objects.all().filter(realtor_id=id)
+    })
+
 
 def payment_info(request):
     return render(request, 'property/payment_info.html', {
