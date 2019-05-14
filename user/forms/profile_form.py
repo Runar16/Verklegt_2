@@ -15,7 +15,7 @@ class ProfileForm(ModelForm):
             'zip': widgets.TextInput(attrs={'class': 'form-control'}),
             'city': widgets.TextInput(attrs={'class': 'form-control'}),
             'country': widgets.TextInput(attrs={'class': 'form-control'}),
-            'ssn': widgets.TextInput(attrs={'class': 'form-control'})
+            'ssn': widgets.NumberInput(attrs={'class': 'form-control'})
         }
 
 
@@ -27,7 +27,7 @@ class UserForm(ModelForm):
             'username': widgets.TextInput(attrs={'class': 'form-control'}),
             'first_name': widgets.TextInput(attrs={'class': 'form-control'}),
             'last_name': widgets.TextInput(attrs={'class': 'form-control'}),
-            'email': widgets.TextInput(attrs={'class': 'form-control'})
+            'email': widgets.EmailInput(attrs={'class': 'form-control'})
         }
 
 

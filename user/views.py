@@ -74,6 +74,5 @@ def change_password(request):
         'password_form': password_form
     })
 
-
 def profile(request):
     return render(request, 'user/profile.html')

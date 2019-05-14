@@ -1,28 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container" style="display: flex; flex-direction: row">
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <hr class="mt-0 mb-4">
-                <h1>Payment information</h1>
-                <div class="row">
-                    <div class="col-4" name="card_number">
-                        <h4>Property information</h4>
-                        {% for property in properties.all %}
-                            {% include 'property/single_property.html' with property=property %}
-                        {% endfor %}
-                    </div>
-                    <div class="col-4">
-                        <h4>Customer information</h4>
-                        {{ user.username }}
-                    </div>
-                    <div class="col-4">
-                        <h4>Pricing information</h4>
-                        {{ pay_info.card_number.value }}
-                    </div>
-                </div>
-            </div>
+    <h1>Confirm</h1>
+    <div style="display: flex; justify-content: center;">
+        <div>
+            <h4>Property information</h4>
+            {% for property in properties.all %}
+                        <h6>{{ property.street_name }} {{ property.street_number }}, {{ property.zip.get_city }} {{ property.zip.get_zip }}</h6>
+                                Size: {{ property.size }}<br>
+                                Type: {{ property.type.get_type }}<br>
+                                Rooms: {{ property.rooms }}
+            {% endfor %}
+        </div>
+        <div>
+            <h4>Customer information</h4>
+            Name: {{ pay_info.full_name }}
+            Mail: {{ user.email }}
+            Phone: {{ profile.phone_number }}
+            Address
+        </div>
+        <div>
+            <h4>Pricing information</h4>
+            {{ pay_info.card_number.value }}
         </div>
     </div>
 {% endblock %}
