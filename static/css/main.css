@@ -147,3 +147,34 @@
 .asteriskField {
     display: none;
 }
+
+.decorated{
+     overflow: hidden;
+     text-align: center;
+    padding-bottom: 1%;
+ }
+
+.decorated > span{
+    position: relative;
+    display: inline-block;
+
+}
+
+.decorated > span:before, .decorated > span:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    border-bottom: 1px solid;
+
+    width: 500px;
+    margin: 0 30px;
+}
+
+.decorated > span:before{
+    right: 100%;
+
+}
+
+.decorated > span:after{
+    left: 100%;
+}
