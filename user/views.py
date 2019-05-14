@@ -85,6 +85,6 @@ def cart(request):
 
 
 def profile(request):
-    context = {'user_info': Profile.objects.filter(user=request.user.id)}
+    context = {'user_info': request.user.profile}
     return render(request, 'user/profile.html', context)
 
