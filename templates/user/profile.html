@@ -3,26 +3,25 @@
 {% block content %}
     <div class="container">
         <div class="row">
-                <!--Image-->
 
-                <img id="realtor_photo" src='{{user.profile_picture}}' alt="Profile picture">
-                <!--ATH CLASS-->
+                <!--Image-->
+                <img id="realtor_photo" src="{{ user_info.profile_picture }}" alt="Profile picture">
 
                 <div id="realtor_info">
                     <h5 id="realtor_name">{{user.first_name}} {{ user.last_name }}</h5>
                     <p class="realtor_item">Phone: {{ user_info.phone_number }}</p>
                     <p class="realtor_item">Email: {{ user.email }}</p>
+                    <p class="realtor_item">Town: {{ user_info.zip }} {{ user_info.town }}</p>
                 </div>
         </div>
                     <button type="button" class="btn btn-secondary" onclick="window.location.href = '{% url 'edit_profile' %}'">Edit Profile</button>
     </div>
 
     <div id="realtor_properties">
-        <h5 style="text-align: center; color: darkslategrey;">Recently viewed</h5>
         <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto;">
 
             <!-- RECENTLY VIEWED -->
-            <p>recently viewed</p>
+            {% include 'property/recently_viewed.html' %}
 
         </div>
     </div>

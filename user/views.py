@@ -75,6 +75,7 @@ def change_password(request):
         'password_form': password_form
     })
 
+
 def profile(request):
     context = {'user_info': Profile.objects.filter(user=request.user.id)}
     return render(request, 'user/profile.html', context)
