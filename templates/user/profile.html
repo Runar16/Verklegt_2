@@ -1,69 +1,31 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+
 {% block content %}
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <hr class="mt-0 mb-4">
-                <h1>Profile</h1>
-                <form method="post" novalidate>
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-6">
-                            {{ user_form.username|as_crispy_field }}
-                        </div>
-                        <div class="col-6" style="display: flex; justify-content: center; align-items: center">
-                            <a id="change_password_button" href = "{% url 'change_password' %}" class="btn btn-primary"> Change Password </a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            {{ user_form.email|as_crispy_field }}
-                        </div>
-                        <div class="col-6">
-                            {{ profile_form.phone_number|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            {{ user_form.first_name|as_crispy_field }}
-                        </div>
-                        <div class="col-6">
-                            {{ user_form.last_name|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">
-                            {{ profile_form.street_name|as_crispy_field }}
-                        </div>
-                        <div class="col-3">
-                            {{ profile_form.street_number|as_crispy_field }}
-                        </div>
-                        <div class="col-4">
-                            {{ profile_form.city|as_crispy_field }}
-                        </div>
-                        <div class="col-2">
-                            {{ profile_form.zip|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            {{ profile_form.country|as_crispy_field }}
-                        </div>
-                        <div class="col-6">
-                            {{ profile_form.ssn|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            {{ profile_form.profile_picture|as_crispy_field }}
-                        </div>
-                        <div class="col-6" style="text-align: center; margin: auto;">
-                            <button type="submit" class="btn btn-success" >Save person</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <div class="row">
+                <!--Image-->
+                <img id="realtor_photo" src={{user.profile_picture}}, alt="Profile picture">
+                <!--ATH CLASS-->
+
+                <div id="realtor_info">
+                    <h5 id="realtor_name">{{user.first_name}} {{ user.last_name }}</h5>
+                    <p class="realtor_item">Phone: {{profile.phone_number}}</p>
+                    <p class="realtor_item">Email: {{user.email}}</p>
+                </div>
+                <a id="edit_profile_button" href="{% url 'edit_profile' %}">Edit Profile</a>
         </div>
     </div>
+
+    <div id="realtor_properties">
+        <h5 style="text-align: center; color: darkslategrey;">Recently viewed</h5>
+        <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto;">
+
+            <!-- RECENTLY VIEWED -->
+            <p>recently viewed</p>
+
+        </div>
+    </div>
+
 {% endblock %}
+
+

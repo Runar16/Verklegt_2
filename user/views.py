@@ -27,7 +27,7 @@ def register(request):
 
 @login_required
 @transaction.atomic
-def profile(request):
+def edit_profile(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.profile)
@@ -35,13 +35,13 @@ def profile(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Your profile was successfully updated!')
-            return redirect('profile')
+            return redirect('edit_profile')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
-    return render(request, 'user/profile.html', {
+    return render(request, 'user/change_profile.html', {
         'user_form': user_form,
         'profile_form': profile_form
     })
@@ -85,3 +85,7 @@ def change_password(request):
     return render(request, 'user/change_password.html', {
         'password_form': password_form
     })
+
+
+def profile(request):
+    return render(request, 'user/profile.html')
