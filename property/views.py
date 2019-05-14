@@ -9,7 +9,7 @@ from django.utils import timezone
 
 from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo, CartForm
 from property.models import Property, PropertyZip, PropertyType
-from user.models import History, Cart
+from user.models import History, Cart, Profile
 
 
 def index(request):
@@ -91,11 +91,13 @@ def payment_info(request):
 
 def review_purchase(request):
     pay_info = PaymentInfo(request.POST)
+    properties = Property.objects.filter(cart__user=request.user.id)
     return render(request, 'property/review_purchase.html',
                   {
                       "pay_info": pay_info,
-                      "properties": Property.objects.filter(cart__user=request.user.id),
-                      "user": request.user
+                      "properties": properties,
+                      "user": request.user,
+                      "profile": Profile.objects.get(user=request.user.id)
                   })
 
 
