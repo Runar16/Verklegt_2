@@ -1,7 +1,14 @@
 #edit_profile_button{
-
+    margin-top: 3rem;
+    float: right;
     background-color: gainsboro;
-    border: 1px solid gray;
-    height: auto;
-    width: auto;
+    border: 2px solid darkgray;
+    height: min-content;
+    width: 85px;
+}
+
+.btn.btn-secondary{
+    margin-top: 3rem;
+    margin-left: 5rem;
+    height: 40px;
 }

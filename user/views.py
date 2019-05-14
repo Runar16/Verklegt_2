@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from user.forms.profile_form import ProfileForm, UserForm
 from user.models import History
+from user.models import Profile
 
 
 def index(request):
@@ -76,4 +77,6 @@ def change_password(request):
 
 
 def profile(request):
-    return render(request, 'user/profile.html')
+    context = {'user_info': Profile.objects.filter(user=request.user.id)}
+    return render(request, 'user/profile.html', context)
+

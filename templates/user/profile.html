@@ -4,16 +4,16 @@
     <div class="container">
         <div class="row">
                 <!--Image-->
-                <img id="realtor_photo" src={{user.profile_picture}}, alt="Profile picture">
+                <img id="realtor_photo" src={{ user_info.profile_picture }}, alt="Profile picture">
                 <!--ATH CLASS-->
 
                 <div id="realtor_info">
                     <h5 id="realtor_name">{{user.first_name}} {{ user.last_name }}</h5>
-                    <p class="realtor_item">Phone: {{profile.phone_number}}</p>
-                    <p class="realtor_item">Email: {{user.email}}</p>
+                    <p class="realtor_item">Phone: {{ user_info.phone_number }}</p>
+                    <p class="realtor_item">Email: {{ user.email }}</p>
                 </div>
-                <a id="edit_profile_button" href="{% url 'edit_profile' %}">Edit Profile</a>
         </div>
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href = '{% url 'edit_profile' %}'">Edit Profile</button>
     </div>
 
     <div id="realtor_properties">
