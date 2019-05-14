@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-import datetime
 from django.db import IntegrityError
 from django.utils import timezone
 
