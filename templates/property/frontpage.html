@@ -61,7 +61,9 @@
     </div>
     <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto">
         {% for property in properties %}
-            {% include 'property/single_property.html' with property=property %}
+            {% if property.is_active %}
+                {% include 'property/single_property.html' with property=property %}
+            {% endif %}
         {% endfor %}
     </div>
     {% include 'property/recently_viewed.html' %}

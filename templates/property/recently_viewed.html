@@ -5,7 +5,9 @@
     {% if user.is_authenticated %}
         {% for property in history %}
             {% if forloop.counter < 5 %}
-                {% include 'property/single_property.html' with property=property.property %}
+                {% if property.is_active %}
+                    {% include 'property/single_property.html' with property=property.property %}
+                {% endif %}
             {% endif %}
         {% endfor %}
     {% endif %}
