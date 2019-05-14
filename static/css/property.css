@@ -26,3 +26,14 @@
 .info_row{
     margin-right: 5rem;
 }
+
+#property_description{
+    margin-top: 3rem;
+    margin-left: 5rem;
+    margin-right: 0rem;
+    width: 40%;
+}
+
+#property_realtor{
+    display: inline;
+}
