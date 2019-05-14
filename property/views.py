@@ -5,10 +5,9 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 import datetime
 from django.db import IntegrityError
-from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo
+from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo, CartForm
 from property.models import Property, PropertyZip, PropertyType
-from realtor.models import Realtor
-from user.models import History
+from user.models import History, Cart
 
 
 def index(request):
@@ -45,7 +44,8 @@ def index(request):
 
     context = {'properties': Property.objects.all().order_by('price'),
                'zips': PropertyZip.objects.all().order_by('zip'),
-               'types': PropertyType.objects.all().order_by('type')
+               'types': PropertyType.objects.all().order_by('type'),
+               'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')
                }
     return render(request, 'property/frontpage.html', context)
 
@@ -53,6 +53,11 @@ def index(request):
 def get_property_by_id(request, id):
     if request.user.is_authenticated:
         current_user = request.user.id
+        if request.method == 'POST':
+            try:
+                Cart.objects.create(property_id=id, user_id=current_user)
+            except IntegrityError:
+                pass
         timestamp = datetime.datetime.now()
         try:
             History.objects.create(property_id=id, user_id=current_user, datetime_stamp=timestamp)
@@ -60,9 +65,9 @@ def get_property_by_id(request, id):
             existing_history_obj = History.objects.get(property_id=id, user_id=current_user)
             History.objects.filter(pk=existing_history_obj.id).update(datetime_stamp=timestamp)
     return render(request, 'property/details.html', {
-        'property': get_object_or_404(Property, pk=id)
+        'property': get_object_or_404(Property, pk=id),
+        'cart_form': CartForm()
     })
-
 
 def get_property_by_realtor_id(request, id):
     return render(request, 'realtor/details.html', {

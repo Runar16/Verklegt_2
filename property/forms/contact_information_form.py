@@ -1,5 +1,5 @@
 from django.forms import ModelForm, widgets
-from user.models import Profile
+from user.models import Profile, Cart
 from django.contrib.auth.models import User
 from django import forms
 
@@ -50,4 +50,10 @@ class PaymentInfo(forms.Form):
     expiration_month = forms.ChoiceField(choices=MONTHS, label="Expiration month", initial='', widget=forms.Select())
     expiration_year = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '2019'}), max_length=4)
     cvv = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'CVV'}), max_length=3)
+
+
+class CartForm(ModelForm):
+    class Meta:
+        model = Cart
+        exclude = ['id', 'property', 'user']
 

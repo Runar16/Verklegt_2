@@ -31,8 +31,4 @@ class UserForm(ModelForm):
         }
 
 
-class CartForm(ModelForm):
-    class Meta:
-        model = Cart
-        exclude = ['id']
-        fields = ['property', 'user']
+

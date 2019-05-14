@@ -6,8 +6,8 @@ from django.db import transaction
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
-from user.forms.profile_form import ProfileForm, UserForm, CartForm
-from user.models import History, Cart
+from user.forms.profile_form import ProfileForm, UserForm
+from user.models import History
 
 
 def index(request):
@@ -44,18 +44,6 @@ def edit_profile(request):
     return render(request, 'user/change_profile.html', {
         'user_form': user_form,
         'profile_form': profile_form
-    })
-
-
-def add_to_cart(request):
-    print(request.method)
-    if request.method == 'POST':
-        property_id = request.POST.get('property_id', None)
-        print(property_id)
-        Cart.objects.create(property_id=property_id, user_id=request.user.id)
-        return HttpResponse(message)
-    return render(request, 'property/details.html', {
-        'cart_form': CartForm()
     })
 
 
