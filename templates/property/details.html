@@ -85,8 +85,8 @@
             <div>
                 <p id="property_description">{{ property.property_description }}</p>
 
-                <div id="property_realtor">
-                {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
+                <div class="property_realtor">
+                    {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
                 </div>
             </div>
         </div>
