@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% block content %}
     {% if user.is_authenticated %}
         <form class="form form-horizontal" method="post">
@@ -87,7 +87,7 @@
     <div>
         <div>
             <p><p id="property_description">{{ property.property_description }}</p>
-            <h1>{{ property.price|floatformat:"0" }}kr</h1>
+            <h1>{{ property.price|floatformat:"0"|intcomma }}kr</h1>
         </div>
     </div>
 {% endblock %}
