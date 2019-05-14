@@ -4,10 +4,10 @@ from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import IntegrityError
+from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo, CartForm, \
+    OrderForm
+from property.models import Property, PropertyZip, PropertyType, Order
 from django.utils import timezone
-
-from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo, CartForm
-from property.models import Property, PropertyZip, PropertyType
 from user.models import History, Cart, Profile
 
 
@@ -83,20 +83,52 @@ def get_property_by_realtor_id(request, id):
 
 
 def payment_info(request):
+    if request.method == 'POST':
+        form = PaymentInfo(data=request.POST)
+        if form.is_valid():
+            request.session['pay_info'] = form.data
+            return redirect('review_purchase')
     return render(request, 'property/payment_info.html', {
         'payment_form': PaymentInfo(),
     })
 
 
 def review_purchase(request):
-    pay_info = PaymentInfo(request.POST)
-    properties = Property.objects.filter(cart__user=request.user.id)
+    total = 0
+    user = request.user
+    profile = Profile.objects.get(user=user.id)
+    pay_info = request.session.get('pay_info')
+    timestamp = timezone.now()
+    properties = Property.objects.filter(cart__user=user.id)
+    for pro in properties:
+        total += pro.price
+    if request.method == 'POST':
+        try:
+            for prop in properties:
+                Order.objects.create(
+                    buyer_ssn=profile.ssn,
+                    sold_street_name=prop.street_name,
+                    sold_street_number=prop.street_number,
+                    realtor_licence_num=prop.realtor.get_licence(),
+                    sold_zip=prop.zip.get_zip(),
+                    sale_date=timestamp,
+                    customer=user,
+                    sold_property=prop
+                )
+                Property.objects.filter(pk=prop.id).update(is_active=False)
+                Cart.objects.filter(property=prop.id, user=user.id).delete()
+                History.objects.filter(property=prop.id).delete()
+                return redirect('frontpage')
+        except IntegrityError:
+            pass
     return render(request, 'property/review_purchase.html',
                   {
                       "pay_info": pay_info,
                       "properties": properties,
-                      "user": request.user,
-                      "profile": Profile.objects.get(user=request.user.id)
+                      "user": user,
+                      "profile": profile,
+                      "total": total,
+                      "confirm_form": OrderForm
                   })
 
 
