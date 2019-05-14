@@ -13,7 +13,7 @@ class ContactInfoUser(ModelForm):
         widgets = {
             'first_name': widgets.TextInput(attrs={'class': 'form-control'}),
             'last_name': widgets.TextInput(attrs={'class': 'form-control'}),
-            'email': widgets.TextInput(attrs={'class': 'form-control'})
+            'email': widgets.EmailInput(attrs={'class': 'form-control'})
         }
 
 
@@ -28,7 +28,7 @@ class ContactInfoProfile(ModelForm):
             'zip': widgets.TextInput(attrs={'class': 'form-control'}),
             'city': widgets.TextInput(attrs={'class': 'form-control'}),
             'country': widgets.TextInput(attrs={'class': 'form-control'}),
-            'ssn': widgets.TextInput(attrs={'class': 'form-control'})
+            'ssn': widgets.NumberInput(attrs={'class': 'form-control'})
         }
 
 
@@ -48,10 +48,10 @@ class PaymentInfo(forms.Form):
         (12, "December"),
     )
     full_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Full name (on card)'}))
-    card_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Card number'}))
+    card_number = forms.CharField(widget=forms.NumberInput(attrs={'placeholder': 'Card number'}))
     expiration_month = forms.ChoiceField(choices=MONTHS, label="Expiration month", initial='', widget=forms.Select())
-    expiration_year = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '2019'}), max_length=4)
-    cvv = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'CVV'}), max_length=3)
+    expiration_year = forms.CharField(widget=forms.NumberInput(attrs={'placeholder': '2019'}), max_length=4)
+    cvv = forms.CharField(widget=forms.NumberInput(attrs={'placeholder': 'CVV'}), max_length=3)
 
 
 class CartForm(ModelForm):
