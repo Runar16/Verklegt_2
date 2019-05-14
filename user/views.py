@@ -6,6 +6,8 @@ from django.db import transaction
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
+
+from property.models import Property
 from user.forms.profile_form import ProfileForm, UserForm
 from user.models import History
 from user.models import Profile
@@ -74,6 +76,13 @@ def change_password(request):
     return render(request, 'user/change_password.html', {
         'password_form': password_form
     })
+
+
+def cart(request):
+    return render(request, 'user/cart.html', {
+        'properties': Property.objects.filter(cart__user=request.user.id)
+    })
+
 
 def profile(request):
     context = {'user_info': Profile.objects.filter(user=request.user.id)}
