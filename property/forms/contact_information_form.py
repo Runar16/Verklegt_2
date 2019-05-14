@@ -1,4 +1,6 @@
 from django.forms import ModelForm, widgets
+
+from property.models import Order
 from user.models import Profile, Cart
 from django.contrib.auth.models import User
 from django import forms
@@ -57,3 +59,17 @@ class CartForm(ModelForm):
         model = Cart
         exclude = ['id', 'property', 'user']
 
+
+class OrderForm(ModelForm):
+    class Meta:
+        model = Order
+        exclude = [
+                    'id',
+                    'buyer_ssn',
+                    'sold_street_name',
+                    'sold_street_number',
+                    'realtor_licence_num',
+                    'sold_zip', 'sale_date',
+                    'customer',
+                    'sold_property'
+                   ]

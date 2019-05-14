@@ -8,3 +8,6 @@ class Realtor(models.Model):
     phone_number = models.CharField(max_length=20, blank=True)
     profile_picture = models.CharField(max_length=999, blank=True)
     license_number = models.IntegerField(blank=True)
+
+    def get_licence(self):
+        return "%s" % self.license_number

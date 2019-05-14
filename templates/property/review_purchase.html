@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load humanize %}
 {% block content %}
     <h1>Confirm</h1>
     <div style="display: flex; justify-content: center;">
@@ -13,15 +13,26 @@
             {% endfor %}
         </div>
         <div>
-            <h4>Customer information</h4>
-            Name: {{ pay_info.full_name }}
-            Mail: {{ user.email }}
-            Phone: {{ profile.phone_number }}
-            Address
+            <h4>Overview</h4>
+            Name: {{ pay_info.full_name }}<br>
+            Mail: {{ user.email }}<br>
+            Phone: {{ profile.phone_number }}<br>
+            Address: {{ profile.street_name }} {{ profile.street_number }}<br>
+            Country: {{ profile.country }}<br>
+            SSN: {{ profile.ssn }}<br>
+            Credit Card Number: {{ pay_info.card_number}}
         </div>
         <div>
-            <h4>Pricing information</h4>
-            {{ pay_info.card_number.value }}
+            <h4>Payment information</h4>
+            {% for property in properties %}
+                {{ property.street_name }} {{ property.street_number }} Price: {{ property.price|floatformat:"0"|intcomma }}<br>
+            {% endfor %}
+            {{ total|floatformat:"0"|intcomma }}
         </div>
+        <form method="post">
+            {% csrf_token %}
+            {{ confirm_form }}
+            <button type="submit" class="btn btn-success">Confirm Purchase</button>
+        </form>
     </div>
 {% endblock %}
