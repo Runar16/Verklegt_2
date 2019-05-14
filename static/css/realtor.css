@@ -12,6 +12,14 @@
     padding: 0px;
 }
 
+#realtor_properties{
+    border-top: 1px solid black;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
 .realtor_item{
     margin-bottom: 0rem;
     margin-left: 1rem;
@@ -73,4 +81,3 @@
     color: inherit;
 
 }
-
