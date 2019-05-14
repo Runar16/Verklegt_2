@@ -85,6 +85,7 @@ def cart(request):
 
 
 def profile(request):
-    context = {'user_info': request.user.profile}
+    context = {'user_info': request.user.profile,
+               'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')}
     return render(request, 'user/profile.html', context)
 
