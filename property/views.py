@@ -5,6 +5,8 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 import datetime
 from django.db import IntegrityError
+from django.utils import timezone
+
 from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo, CartForm
 from property.models import Property, PropertyZip, PropertyType
 from user.models import History, Cart
@@ -63,7 +65,7 @@ def get_property_by_id(request, id):
                 Cart.objects.create(property_id=id, user_id=current_user)
             except IntegrityError:
                 pass
-        timestamp = datetime.datetime.now()
+        timestamp = timezone.now()
         try:
             History.objects.create(property_id=id, user_id=current_user, datetime_stamp=timestamp)
         except IntegrityError:
