@@ -81,7 +81,8 @@ def get_property_by_realtor_id(request, id):
         'properties': Property.objects.all().filter(realtor_id=id)
     })
 
-
+@login_required
+@transaction.atomic
 def payment_info(request):
     if request.method == 'POST':
         form = PaymentInfo(data=request.POST)
@@ -92,7 +93,8 @@ def payment_info(request):
         'payment_form': PaymentInfo(),
     })
 
-
+@login_required
+@transaction.atomic
 def review_purchase(request):
     total = 0
     user = request.user
