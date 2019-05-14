@@ -44,6 +44,7 @@
                 <span class="sr-only">Next</span>
               </a>
             </div>
+    </div>
     <div>
         <h2>{{ property.price|floatformat:"0"|intcomma }}kr</h2>
             <table class="table" id="info_table">
@@ -78,8 +79,8 @@
                 {% csrf_token %}
                 {{ cart_form }}
                 <button type="submit" class="btn btn-success" style="float: left; margin-right: 2%">Add to cart</button>
+                <button type="submit" class="btn btn-danger" name='buy_now' style="float: left; margin-right: 2%">Buy Now</button>
             </form>
-            <a class="btn btn-danger" href = "{% url 'contact_info' %}"> BUY NOW </a>
             <div>
                 {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
             </div>
