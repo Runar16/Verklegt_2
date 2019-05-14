@@ -69,6 +69,7 @@ def get_property_by_id(request, id):
         'cart_form': CartForm()
     })
 
+
 def get_property_by_realtor_id(request, id):
     return render(request, 'realtor/details.html', {
         'properties': Property.objects.all().filter(realtor_id=id)
@@ -83,7 +84,12 @@ def payment_info(request):
 
 def review_purchase(request):
     pay_info = PaymentInfo(request.POST)
-    return render(request, 'property/review_purchase.html', {"pay_info": pay_info})
+    return render(request, 'property/review_purchase.html',
+                  {
+                      "pay_info": pay_info,
+                      "properties": Property.objects.filter(cart__user=request.user.id),
+                      "user": request.user
+                  })
 
 
 def about_us(request):

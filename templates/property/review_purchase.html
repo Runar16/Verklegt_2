@@ -9,7 +9,9 @@
                 <div class="row">
                     <div class="col-4" name="card_number">
                         <h4>Property information</h4>
-                        {% include 'property/single_property.html' with property=property %}
+                        {% for property in properties.all %}
+                            {% include 'property/single_property.html' with property=property %}
+                        {% endfor %}
                     </div>
                     <div class="col-4">
                         <h4>Customer information</h4>
