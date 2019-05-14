@@ -64,6 +64,8 @@ def get_property_by_id(request, id):
                 Cart.objects.create(property_id=id, user_id=current_user)
             except IntegrityError:
                 pass
+            if 'buy_now' in request.POST:
+                return redirect('contact_info')
         timestamp = timezone.now()
         try:
             History.objects.create(property_id=id, user_id=current_user, datetime_stamp=timestamp)
