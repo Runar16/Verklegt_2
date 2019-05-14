@@ -98,7 +98,7 @@ def review_purchase(request):
     user = request.user
     profile = Profile.objects.get(user=user.id)
     pay_info = request.session.get('pay_info')
-    timestamp = datetime.datetime.now()
+    timestamp = timezone.now()
     properties = Property.objects.filter(cart__user=user.id)
     for pro in properties:
         total += pro.price
