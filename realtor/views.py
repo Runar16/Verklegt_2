@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from property.models import Property
 from realtor.models import Realtor
 
+
 def index(request):
     context = {'realtors': Realtor.objects.filter().select_related()}
     return render(request, 'realtor/realtor.html', context)
