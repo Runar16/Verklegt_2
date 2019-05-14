@@ -41,12 +41,17 @@ def index(request):
                                           )
         ]
         return JsonResponse({'data': filtered_properties})
-
-    context = {'properties': Property.objects.all().order_by('price'),
-               'zips': PropertyZip.objects.all().order_by('zip'),
-               'types': PropertyType.objects.all().order_by('type'),
-               'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')
+    if request.user.is_authenticated:
+        context = {'properties': Property.objects.all().order_by('price'),
+            'zips': PropertyZip.objects.all().order_by('zip'),
+            'types': PropertyType.objects.all().order_by('type'),
+            'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')
                }
+    else:
+        context = {'properties': Property.objects.all().order_by('price'),
+                   'zips': PropertyZip.objects.all().order_by('zip'),
+                   'types': PropertyType.objects.all().order_by('type'),
+                   }
     return render(request, 'property/frontpage.html', context)
 
 
