@@ -64,5 +64,10 @@
             {% include 'property/single_property.html' with property=property %}
         {% endfor %}
     </div>
+    {% if user.is_authenticated %}
+        {% for property in history %}
+            {% include 'property/single_property.html' with property=property.property %}
+        {% endfor %}
+    {% endif %}
 
 {% endblock %}

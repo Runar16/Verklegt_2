@@ -44,7 +44,8 @@ def index(request):
 
     context = {'properties': Property.objects.all().order_by('price'),
                'zips': PropertyZip.objects.all().order_by('zip'),
-               'types': PropertyType.objects.all().order_by('type')
+               'types': PropertyType.objects.all().order_by('type'),
+               'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')
                }
     return render(request, 'property/frontpage.html', context)
 
@@ -67,7 +68,6 @@ def get_property_by_id(request, id):
         'property': get_object_or_404(Property, pk=id),
         'cart_form': CartForm()
     })
-
 
 def get_property_by_realtor_id(request, id):
     return render(request, 'realtor/details.html', {
