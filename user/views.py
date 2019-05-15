@@ -33,7 +33,10 @@ def register(request):
 def edit_profile(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        print("i am the law")
+        print(request.FILES)
+        profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
@@ -41,6 +44,7 @@ def edit_profile(request):
             return redirect('edit_profile')
         else:
             messages.error(request, 'Please correct the error below.')
+
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
@@ -94,3 +98,18 @@ def profile(request):
                'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')}
     return render(request, 'user/profile.html', context)
 
+
+def upload_image(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        image = request.FILES
+        profile_form = ProfileForm(request.POST, image or None, instance=request.user.profile)
+        if profile_form.is_valid() and user_form.is_valid():
+            if image is not None:
+                new_profile = profile_form.save()
+                return new_profile
+            else:
+                return None
+
+        else:
+            return edit_profile(profile_form)
