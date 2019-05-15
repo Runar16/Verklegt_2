@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <hr class="mt-0 mb-4">
+                <h1>Profile</h1>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-6">
+                            {{ property_form.street_name|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ property_form.street_number|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            {{ property_form.property_description|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ property_form.country|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            {{ property_form.size|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ property_form.rooms|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            {{ property_form.price|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ property_form.type|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            {{ property_form.zip|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {% for form in image_form %}
+                                {{ form }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6" style="text-align: center; margin: auto;">
+                            <button type="submit" class="btn btn-success" >Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
