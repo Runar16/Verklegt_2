@@ -1,14 +1,12 @@
 <div style="width: 80%; text-align: center; margin: 0 auto">
     <h4 class="decorated"><span>Recently Viewed</span></h4>
 </div>
-<div class="card-group properties" style="justify-content: center; width: 100%; margin: 0 auto">
+<div class="card-group recently-viewed" style="justify-content: center; width: 100%; margin: 0 auto">
     {% if user.is_authenticated %}
         {% for property in history %}
-            {% if forloop.counter < 5 %}
                 {% if property.property.is_active %}
                     {% include 'property/single_property.html' with property=property.property %}
                 {% endif %}
-            {% endif %}
         {% endfor %}
     {% endif %}
 </div>
