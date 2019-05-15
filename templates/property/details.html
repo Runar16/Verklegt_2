@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
+    <head>
+        <title>{{ property.street_name }} {{ property.street_number }}</title>
+    </head>
     {% if user.is_authenticated %}
         <form class="form form-horizontal" method="post">
             {% csrf_token %}
