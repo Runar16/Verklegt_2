@@ -3,7 +3,7 @@ $(document).ready(function (){
     type: 'GET',
     url: '?heh=',
     success: function(resp){
-       var properties = resp
+       window.properties = resp
     }});
     $('#search-btn').on('click', function (e) {
         e.preventDefault();
@@ -56,7 +56,7 @@ $(document).ready(function (){
             url: '',
             type: 'GET',
             success: function (resp) {
-                display_order(resp)
+                display_searched(window.properties.reverse())
             },
             error: function (xhr, status, error) {
                 $('.toast').toast('show');
@@ -70,7 +70,6 @@ $(document).ready(function (){
 
 
 function display_searched(resp) {
-    console.log(resp.data);
     var newHtml = resp.data.map(d => {
         return `<div class="property" style="margin-right:1%">
                     <a href="/property/${d.id}">
@@ -93,4 +92,15 @@ function display_searched(resp) {
                 </div>`
     });
     $('.properties').html(newHtml.join(''));
+}
+
+function sortJson(prop, asc) {
+    props = props.sort(function(a, b) {
+        if (asc) {
+            return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        } else {
+            return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+        }
+    });
+    showResults();
 }
