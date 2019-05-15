@@ -5,12 +5,13 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import IntegrityError
 from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo, CartForm, \
-    OrderForm
+    OrderForm, FavouriteForm
 from property.models import Property, PropertyZip, PropertyType, Order
 from django.utils import timezone
-from user.models import History, Cart, Profile
+from user.models import History, Cart, Profile, Favourite
 from sys import maxsize
 from django.core.serializers import serialize
+
 
 def index(request):
     if 'search_filter' in request.GET:
@@ -116,7 +117,8 @@ def get_property_by_id(request, id):
             History.objects.filter(pk=existing_history_obj.id).update(datetime_stamp=timestamp)
     return render(request, 'property/details.html', {
         'property': get_object_or_404(Property, pk=id),
-        'cart_form': CartForm()
+        'cart_form': CartForm(),
+        'favourite_form': FavouriteForm()
     })
 
 
