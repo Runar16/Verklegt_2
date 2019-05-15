@@ -9,7 +9,7 @@ from property.forms.contact_information_form import ContactInfoUser, ContactInfo
 from property.models import Property, PropertyZip, PropertyType, Order
 from django.utils import timezone
 from user.models import History, Cart, Profile
-
+from sys import maxsize
 
 def index(request):
     if 'search_filter' in request.GET:
@@ -22,6 +22,26 @@ def index(request):
             type_filter = request.GET['type_filter']
         except KeyError:
             type_filter = ""
+        try:
+            price_from = request.GET['priceFrom_filter']
+        except KeyError:
+            price_from = 0
+        try:
+            price_to = request.GET['priceTo_filter']
+        except KeyError:
+            price_to = float("inf")
+        try:
+            size_from = request.GET['sizeFrom_filter']
+        except KeyError:
+            size_from = 0
+        try:
+            size_to = request.GET['sizeTo_filter']
+        except KeyError:
+            size_to = maxsize
+        try:
+            rooms_filter = request.GET['rooms_filter']
+        except KeyError:
+            rooms_filter = ""
         filtered_properties = [{
             'id': x.id,
             'street_name': x.street_name,
@@ -39,7 +59,12 @@ def index(request):
             'image_tag': x.property_description
         }for x in Property.objects.filter(street_name__icontains=search_filter,
                                           zip__zip__contains=str(zip_filter),
-                                          type__type__contains=type_filter
+                                          type__type__contains=type_filter,
+                                          price__gt=price_from-1,
+                                          price__lt=price_to-1,
+                                          size__gt=size_from-1,
+                                          size__lt=size_to-1,
+                                          rooms__contains=rooms_filter
                                           )
         ]
         return JsonResponse({'data': filtered_properties})
@@ -47,7 +72,7 @@ def index(request):
         context = {'properties': Property.objects.all().order_by('price'),
             'zips': PropertyZip.objects.all().order_by('zip'),
             'types': PropertyType.objects.all().order_by('type'),
-            'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')
+            'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')[:4]
                }
     else:
         context = {'properties': Property.objects.all().order_by('price'),

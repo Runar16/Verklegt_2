@@ -49,6 +49,7 @@
                             {{ profile_form.ssn|as_crispy_field }}
                         </div>
                     </div>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href= '{% url 'cart' %}'">Cancel</button>
                     <button type="submit" class="btn btn-success">Save and continue</button>
                 </form>
             </div>
