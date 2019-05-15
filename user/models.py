@@ -3,14 +3,12 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from property.models import Property
-from django.core.files.storage import FileSystemStorage
 
-fs = FileSystemStorage(location='/media/profileimage')
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20, blank=True)
-    profile_picture = models.ImageField(storage=fs, upload_to='profileimage/', default='profileimage/goat.jpg', blank=True)
+    profile_picture = models.ImageField(upload_to='profileimage/', blank=True)
     street_name = models.CharField(max_length=255, blank=True)
     street_number = models.CharField(max_length=10, blank=True)
     zip = models.CharField(max_length=10, blank=True)
