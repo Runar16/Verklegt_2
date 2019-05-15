@@ -42,7 +42,7 @@ class Property(models.Model):
 
 
 class PropertyImage(models.Model):
-    image = models.ImageField(upload_to="media/properties", verbose_name="Image")
+    image = models.ImageField(upload_to="property/images", verbose_name="Image")
     image_tag = models.CharField(max_length=999, blank=True)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
 
