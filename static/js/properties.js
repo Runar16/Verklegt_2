@@ -4,23 +4,33 @@ $(document).ready(function () {
         var searchText = $('#search-box').val();
         var zipVal = $('#zipSelect').val();
         var typeVal = $('#typeSelect').val();
+        var priceFromVal = $('#price-from-box').val();
+        var priceToVal = $('#price-to-box').val();
+        var sizeFromVal = $('#size-from-box').val();
+        var sizeToVal = $('#size-to-box').val();
+        var RoomsVal = $('#rooms-box').val();
         let url_str = "";
         url_str += '?search_filter=' + searchText;
         if(zipVal !== 'ZIP'){
-            if(url_str === "") {
-                url_str += '?zip_filter=' + zipVal;
-            }
-            else{
-                url_str += '&zip_filter=' + zipVal;
-            }
+            url_str += '&zip_filter=' + zipVal;
         }
         if(typeVal !== 'Type'){
-            if(url_str === "") {
-                url_str += '?type_filter=' + typeVal;
-            }
-            else{
-                url_str += '&type_filter=' + typeVal;
-            }
+            url_str += '&type_filter=' + typeVal;
+        }
+        if(priceFromVal !== ''){
+            url_str += '&priceFrom_filter=' + priceFromVal;
+        }
+        if(priceToVal !== ''){
+            url_str += '&priceTo_filter=' + priceToVal;
+        }
+        if(sizeFromVal !== ''){
+            url_str += '&sizeFrom_filter=' + sizeFromVal;
+        }
+        if(sizeToVal !== ''){
+            url_str += '&sizeTo_filter=' + sizeToVal;
+        }
+        if(RoomsVal !== ''){
+            url_str += '&rooms_filter=' + RoomsVal;
         }
         $.ajax({
             url: url_str,
