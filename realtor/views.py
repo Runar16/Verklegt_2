@@ -22,14 +22,22 @@ def add_property(request):
                                         form=ImageForm, extra=3)
     if request.method == 'POST':
         property_form = NewProperty(data=request.POST)
-        image_form = ImageFormSet(request.POST, request.FILES, queryset=Images.objects.none())
-        if property_form.is_valid:
+        formset = ImageFormSet(request.POST, request.FILES, queryset=PropertyImage.objects.none())
+        if property_form.is_valid and formset.is_valid():
+            property_form = property_form.save(commit=False)
+            property_form.realtor = request.user.realtor
             property_form.save()
+            for form in formset.cleaned_data:
+                image = form['image']
+                photo = PropertyImage(property=property_form, image=image, image_tag='BLA')
+                photo.save()
             return redirect('add_property')
+        else:
+            print(property_form.errors, formset.errors)
     else:
         property_form = NewProperty()
-        image_form = ImageFormSet(queryset=PropertyImage.objects.none())
+        formset = ImageFormSet(queryset=PropertyImage.objects.none())
     return render(request, 'realtor/add_property.html', {
         'property_form': property_form,
-        'image_form': image_form
+        'formset': formset
     })
