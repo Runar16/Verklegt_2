@@ -16,4 +16,9 @@
             {% include 'property/single_property.html' with property=property %}
         {% endfor %}
     </div>
+    <div id="cart_title">
+        <hr>
+        <button type="button" class="btn btn-success" style="margin-top: 1rem; margin-bottom: 6rem;" onclick="window.location.href = '{% url 'contact_info' %}'">Proceed to Checkout</button>
+
+    </div>
 {% endblock %}
