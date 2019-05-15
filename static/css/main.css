@@ -178,3 +178,10 @@
 .decorated > span:after{
     left: 100%;
 }
+
+.about_us_text{
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
