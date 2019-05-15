@@ -40,6 +40,14 @@
     overflow: hidden;
 }
 
+#realtor-property{
+    width: 100%;
+    display: inline-block;
+    margin-right: 7rem;
+    border: 1px solid dimgray;
+    padding-right:3rem;
+}
+
 #realtor-media-picture {
     object-fit: cover;
     height: 200px;

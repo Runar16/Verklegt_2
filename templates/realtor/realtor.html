@@ -9,9 +9,11 @@
         <p style="background: gray; height: 1px; width: 5%; margin: 0 auto"></p>
     </div>
     <!-- Afritað úr 'single property', vantar þannig fyrir realtors. -->
-    <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto; padding-top: 1%">
+    <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto; padding-top: 1%;">
         {% for realtor in realtors %}
-            {% include 'realtor/single_realtor.html' with realtor=realtor %}
+            <div  class="shadow bg-white rounded" id="single-realtor" style="height: 200px; display: inline-block;">
+                {% include 'realtor/single_realtor.html' with realtor=realtor %}
+            </div>
         {% endfor %}
     </div>
 {% endblock %}
