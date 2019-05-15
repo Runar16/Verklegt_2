@@ -1,4 +1,10 @@
-$(document).ready(function () {
+$(document).ready(function (){
+    $.ajax({
+    type: 'GET',
+    url: '?heh=',
+    success: function(resp){
+       window.properties = resp
+    }});
     $('#search-btn').on('click', function (e) {
         e.preventDefault();
         var searchText = $('#search-box').val();
@@ -45,24 +51,40 @@ $(document).ready(function () {
 
         })
     });
+    $('#order-by-btn').on('click', function (e) {
+        $.ajax({
+            url: '',
+            type: 'GET',
+            success: function (resp) {
+                display_searched(window.properties.reverse())
+            },
+            error: function (xhr, status, error) {
+                $('.toast').toast('show');
+                console.error(error);
+            }
+
+        })
+    });
 });
 
+
+
 function display_searched(resp) {
-     var newHtml = resp.data.map(d => {
+    var newHtml = resp.data.map(d => {
         return `<div class="property" style="margin-right:1%">
-                    <a href="/property/${ d.id }">
+                    <a href="/property/${d.id}">
                             <div class="card" style="width:20rem;">
-                                <img src="${ d.first_image }" class="card-img-top" alt="${ d.image_tag }">
-                                <div class="card-header" id="property-card-header"><h4 style="color:white; opacity: 1;">${ d.price }kr.</h4>
+                                <img src="${d.first_image}" class="card-img-top" alt="${d.image_tag}">
+                                <div class="card-header" id="property-card-header"><h4 style="color:white; opacity: 1;">${d.price}kr.</h4>
                                 </div>
                                     <div class="card-body" style="padding: 0">
                                         <div class="left-block-container">
-                                            <span style="display:block; font-weight:bold">${ d.street_name } ${ d.street_number }</span>
-                                            <span style="display:block; padding-top:10px">${ d.city }, ${ d.zip }</span>
+                                            <span style="display:block; font-weight:bold">${d.street_name} ${d.street_number}</span>
+                                            <span style="display:block; padding-top:10px">${d.city}, ${d.zip}</span>
                                         </div>
                                         <div class="right-block-container">
-                                            <span style="display:block;">${ d.size }m&sup2;</span>
-                                            <span style="display:block; padding-top:10px; font-weight:lighter">${ d.type}</span>
+                                            <span style="display:block;">${d.size}m&sup2;</span>
+                                            <span style="display:block; padding-top:10px; font-weight:lighter">${d.type}</span>
                                         </div>
                                 </div>
                             </div>
@@ -70,4 +92,15 @@ function display_searched(resp) {
                 </div>`
     });
     $('.properties').html(newHtml.join(''));
+}
+
+function sortJson(prop, asc) {
+    props = props.sort(function(a, b) {
+        if (asc) {
+            return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
+        } else {
+            return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
+        }
+    });
+    showResults();
 }

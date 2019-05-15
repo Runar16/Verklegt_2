@@ -99,9 +99,6 @@
     background-color: #1e4eff;
     text-decoration: none;
 }
-.content {
-    flex: 1 0 auto;
-}
 .footer {
     background-color: dodgerblue;
     color: white;

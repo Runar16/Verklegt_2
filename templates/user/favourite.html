@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+    <head>
+        <title>Favourites</title>
+    </head>
+    <div id="cart_title">
+        <h1>My Favourites</h1>
+
+        <h6>Total: {{ total|floatformat:"0"|intcomma }}kr</h6>
+
+        <h4 style="margin-top: 3rem;" class="decorated"><span>My Favorites</span></h4>
+    </div>
+
+    <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto">
+        {% for property in properties.all %}
+            {% include 'property/single_property.html' with property=property %}
+        {% endfor %}
+    </div>
+{% endblock %}

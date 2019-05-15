@@ -14,5 +14,6 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('edit/', views.edit_profile, name="edit_profile"),
     path('cart/', views.cart, name="cart"),
+    path('favourite/', views.favourite, name="favourite"),
     url(r'^password/$', views.change_password, name='change_password'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

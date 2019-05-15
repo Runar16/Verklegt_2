@@ -27,10 +27,16 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
                     <div class="dropdown-menu">
-                        {% if user.is_authenticated %}
-                            <a href="{%url 'profile' %}" class="dropdown-item">Profile</a>
-                            <a href="{%url 'cart' %}" class="dropdown-item">Cart</a>
-                            <a href="{%url 'logout' %}" class="dropdown-item">Log-Out</a>
+                        {% if user.is_staff %}
+                            <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+                            <a href="{% url 'cart' %}" class="dropdown-item">My Properties</a>
+                            <a href="{% url 'favourite' %}" class="dropdown-item">Favourite</a>
+                            <a href="{% url 'logout' %}" class="dropdown-item">Log-Out</a>
+                        {% elif user.is_authenticated %}
+                            <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+                            <a href="{% url 'cart' %}" class="dropdown-item">Cart</a>
+                            <a href="{% url 'favourite' %}" class="dropdown-item">Favourite</a>
+                            <a href="{% url 'logout' %}" class="dropdown-item">Log-Out</a>
                         {% else %}
                             <a href="{% url 'login' %}" class="dropdown-item">Log-In</a>
                             <a href="{% url 'register' %}" class="dropdown-item">Register</a>
@@ -49,17 +55,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="{% static 'js/properties.js' %}"></script>
-    <div aria-live="polite" aria-atomic="true" style="position: fixed; min-width: 400px; top: 90%; right: -5%">
-        <div class="toast" data-autohide="false" style="position: absolute">
-            <div class="toast-header">
-                <strong class="mr-auto text-primary">Search Error</strong>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-            </div>
-            <div class="toast-body">
-                An error occured performing your search
-            </div>
-        </div>
-    </div>
     <footer class="footer align-middle">
         <div class="footercontainer">
             <div>    <p class="footeritem">Information</p></div>

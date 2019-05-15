@@ -93,6 +93,17 @@ def cart(request):
     })
 
 
+def favourite(request):
+    total = 0
+    properties = Property.objects.filter(favourite__user=request.user.id)
+    for pro in properties:
+        total += pro.price
+    return render(request, 'user/favourite.html', {
+        'properties': Property.objects.filter(favourite__user=request.user.id),
+        'total': total
+    })
+
+
 def profile(request):
     context = {'user_info': request.user.profile,
                'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')}

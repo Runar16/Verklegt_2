@@ -17,7 +17,7 @@
         <h1 id="address">{{ property.street_name }} {{ property.street_number }},<h5> {{ property.zip.get_zip }} {{ property.zip.get_city }}</h5></h1>
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-            {% for property_image in property.propertyimage_set.all %}
+            {% for property_image in property.propertyimage_set.all.image.url %}
                 {% if forloop.first %}
                     <li data-target="#carousel_Indicators" data-slide-to="0" class="active"></li>
                 {% else %}
@@ -79,15 +79,21 @@
             </table>
             <form method="post">
                 {% csrf_token %}
+                {{ favourite_form }}
+                <button type="submit" class="btn btn-primary" style="float: left; margin-right: 2%;">Add to favourites</button>
+            </form>
+            <form method="post">
+                {% csrf_token %}
                 {{ cart_form }}
                 <button type="submit" class="btn btn-success" style="float: left; margin-right: 2%;">Add to cart</button>
                 <button type="submit" class="btn btn-danger" name='buy_now' style="float: left; margin-right: 2%; margin-bottom: 1rem;">Buy Now</button>
             </form>
+
             <br>
             <div>
                 <p id="property_description">{{ property.property_description }}</p>
 
-                <div class="property_realtor" >
+                <div class="property_realtor" style="display: inline-block"; >
                     {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
                 </div>
             </div>

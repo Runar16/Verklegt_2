@@ -1,6 +1,6 @@
 from django.forms import ModelForm, widgets
 from property.models import Property, PropertyImage
-from django import forms
+from  django import  forms
 
 
 class NewProperty(ModelForm):
