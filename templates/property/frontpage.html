@@ -62,12 +62,26 @@
             </div>
         </div>
     </div>
+    <div style="text-align: right; margin-right: 6%">
+        <button id="order-by-btn" onclick="sortProperties()" type="button" class="btn btn-link" style="color: black">Order By A-Z&darr;</button>
+    </div>
     <div class="card-group properties" style="justify-content: center; width: 100%; margin: 0 auto">
         {% for property in properties %}
             {% if property.is_active %}
                 {% include 'property/single_property.html' with property=property %}
             {% endif %}
         {% endfor %}
+    </div>
+    <div aria-live="polite" aria-atomic="true" style="position: fixed; min-width: 400px; top: 90%; right: -5%">
+        <div class="toast" data-autohide="false" style="position: absolute">
+            <div class="toast-header">
+                <strong class="mr-auto text-primary">Search Error</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+            </div>
+            <div class="toast-body">
+                An error occured performing your search
+            </div>
+        </div>
     </div>
     {% include 'property/recently_viewed.html' %}
 

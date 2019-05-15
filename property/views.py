@@ -10,6 +10,7 @@ from property.models import Property, PropertyZip, PropertyType, Order
 from django.utils import timezone
 from user.models import History, Cart, Profile
 from sys import maxsize
+from django.core.serializers import serialize
 
 def index(request):
     if 'search_filter' in request.GET:
@@ -68,17 +69,32 @@ def index(request):
                                           )
         ]
         return JsonResponse({'data': filtered_properties})
-    if request.user.is_authenticated:
-        context = {'properties': Property.objects.all().order_by('price'),
-            'zips': PropertyZip.objects.all().order_by('zip'),
-            'types': PropertyType.objects.all().order_by('type'),
-            'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')[:4]
+    context = {'zips': PropertyZip.objects.all().order_by('zip'),
+               'types': PropertyType.objects.all().order_by('type'),
+               'properties': Property.objects.all().order_by('street_name')
                }
-    else:
-        context = {'properties': Property.objects.all().order_by('price'),
-                   'zips': PropertyZip.objects.all().order_by('zip'),
-                   'types': PropertyType.objects.all().order_by('type'),
-                   }
+    if request.user.is_authenticated:
+        context['history'] = History.objects.filter(user=request.user).order_by('-datetime_stamp')[:4]
+
+    if 'heh' in request.GET:
+        filtered_properties = [{
+            'id': x.id,
+            'street_name': x.street_name,
+            'street_number': x.street_number,
+            'property_description': x.property_description,
+            'zip': x.zip.get_zip(),
+            'city': x.zip.get_city(),
+            'country': x.country,
+            'type': x.type.get_type(),
+            'size': x.size,
+            'rooms': x.rooms,
+            'price': x.price,
+            'is_active': x.is_active,
+            'first_image': x.propertyimage_set.first().image,
+            'image_tag': x.property_description
+        } for x in Property.objects.filter()]
+        return JsonResponse({'data': filtered_properties})
+
     return render(request, 'property/frontpage.html', context)
 
 
