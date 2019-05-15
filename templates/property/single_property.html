@@ -2,7 +2,7 @@
 <div class="property" style="margin-right: 1%">
     <a href="/property/{{ property.id }}">
             <div class="card" style="width: 20rem;">
-                <img src="{{ property.propertyimage_set.first.image }}" class="card-img-top" alt="{{ property.propertyimage_set.first.image_tag }}">
+                <img src="{{ property.propertyimage_set.first.image.url }}" class="card-img-top" alt="{{ property.propertyimage_set.first.image_tag }}">
                 <div class="card-header" id="property-card-header"><h4 style="color: white; opacity: 1;">{{ property.price|floatformat:"0"|intcomma }}kr.</h4>
                 </div>
                     <div class="card-body" style="padding: 0">
