@@ -56,7 +56,7 @@ def index(request):
             'rooms': x.rooms,
             'price': x.price,
             'is_active': x.is_active,
-            'first_image': x.propertyimage_set.first().image,
+            'first_image': str(x.propertyimage_set.first().image),
             'image_tag': x.property_description
         }for x in Property.objects.filter(street_name__icontains=search_filter,
                                           zip__zip__contains=str(zip_filter),
@@ -90,7 +90,7 @@ def index(request):
             'rooms': x.rooms,
             'price': x.price,
             'is_active': x.is_active,
-            'first_image': x.propertyimage_set.first().image,
+            'first_image': str(x.propertyimage_set.first().image),
             'image_tag': x.property_description
         } for x in Property.objects.filter()]
         return JsonResponse({'data': filtered_properties})

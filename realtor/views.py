@@ -19,7 +19,7 @@ def get_realtor_by_id(request, id):
 
 def add_property(request):
     ImageFormSet = modelformset_factory(PropertyImage,
-                                        form=ImageForm, extra=3)
+                                        form=ImageForm, extra=2)
     if request.method == 'POST':
         property_form = NewProperty(data=request.POST)
         formset = ImageFormSet(request.POST, request.FILES, queryset=PropertyImage.objects.none())
