@@ -27,6 +27,7 @@
                             {{ payment_form.cvv|as_crispy_field }}
                         </div>
                     </div>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href = '{% url 'contact_info' %}'">Back</button>
                     <button type="submit" class="btn btn-success">Save and continue</button>
                 </form>
             </div>
