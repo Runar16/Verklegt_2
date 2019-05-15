@@ -9,6 +9,9 @@ class PropertyType(models.Model):
     def get_type(self):
         return "%s" % self.type
 
+    def __str__(self):
+        return self.type
+
 
 class PropertyZip(models.Model):
     zip = models.IntegerField(primary_key=True)
@@ -19,6 +22,9 @@ class PropertyZip(models.Model):
 
     def get_zip(self):
         return "%s" % self.zip
+
+    def __str__(self):
+        return str(self.zip)
 
 
 class Property(models.Model):
