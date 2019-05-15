@@ -28,9 +28,10 @@
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
                     <div class="dropdown-menu">
                         {% if user.is_authenticated %}
-                            <a href="{%url 'profile' %}" class="dropdown-item">Profile</a>
-                            <a href="{%url 'cart' %}" class="dropdown-item">Cart</a>
-                            <a href="{%url 'logout' %}" class="dropdown-item">Log-Out</a>
+                            <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+                            <a href="{% url 'cart' %}" class="dropdown-item">Cart</a>
+                            <a href="{% url 'favourite' %}" class="dropdown-item">Favourite</a>
+                            <a href="{% url 'logout' %}" class="dropdown-item">Log-Out</a>
                         {% else %}
                             <a href="{% url 'login' %}" class="dropdown-item">Log-In</a>
                             <a href="{% url 'register' %}" class="dropdown-item">Register</a>
