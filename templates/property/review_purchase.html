@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-    <h1>Confirm</h1>
+    <h1 style="margin-left: 5rem; margin-top: 1rem;">Confirm</h1>
     <div style="display: flex; justify-content: center;">
-        <div>
-            <h4>Property information</h4>
+        <div class="info_row">
+            <h4 style="margin-bottom: 2rem;">Property information</h4>
             {% for property in properties.all %}
-                        <h6>{{ property.street_name }} {{ property.street_number }}, {{ property.zip.get_city }} {{ property.zip.get_zip }}</h6>
-                                Size: {{ property.size }}<br>
-                                Type: {{ property.type.get_type }}<br>
-                                Rooms: {{ property.rooms }}
+                <h6>{{ property.street_name }} {{ property.street_number }}, {{ property.zip.get_city }} {{ property.zip.get_zip }}</h6>
+                        Size: {{ property.size }} m&sup2;<br>
+                        Type: {{ property.type.get_type }}<br>
+                        Rooms: {{ property.rooms }}
+                <hr>
+
             {% endfor %}
         </div>
-        <div>
+        <div class="info_row">
             <h4>Overview</h4>
             Name: {{ pay_info.full_name }}<br>
             Mail: {{ user.email }}<br>
@@ -20,19 +22,22 @@
             Address: {{ profile.street_name }} {{ profile.street_number }}<br>
             Country: {{ profile.country }}<br>
             SSN: {{ profile.ssn }}<br>
-            Credit Card Number: {{ pay_info.card_number}}
-        </div>
-        <div>
-            <h4>Payment information</h4>
+            Credit Card Number: **** **** **** {{ pay_info.card_number|slice:"-4:" }}
+
+
+            <h4 style="margin-top: 2rem;">Payment information</h4>
             {% for property in properties %}
                 {{ property.street_name }} {{ property.street_number }} Price: {{ property.price|floatformat:"0"|intcomma }}<br>
             {% endfor %}
-            {{ total|floatformat:"0"|intcomma }}
-        </div>
-        <form method="post">
+            <hr style="margin-bottom: 0rem;">
+            <p style="font-weight: bold; display: inline; margin-top: 0rem;">Total:</p> <p style="display: inline;">{{ total|floatformat:"0"|intcomma }}</p>
+
+            <form method="post">
             {% csrf_token %}
             {{ confirm_form }}
-            <button type="submit" class="btn btn-success">Confirm Purchase</button>
-        </form>
+            <button style="margin-top:5rem;" type="submit" class="btn btn-success">Confirm Purchase</button>
+            </form>
+        </div>
+
     </div>
 {% endblock %}

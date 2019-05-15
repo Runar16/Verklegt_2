@@ -22,3 +22,19 @@
     width: 80%;
     height: 70%;
 }
+
+.info_row{
+    margin-right: 5rem;
+}
+
+#property_description{
+    display: inline-block;
+    margin-top: 3rem;
+    margin-left: 5rem;
+    margin-right: 0;
+    width: 40%;
+}
+
+#property_realtor{
+    display: inline;
+}
