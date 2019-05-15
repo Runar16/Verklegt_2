@@ -37,7 +37,7 @@ class Property(models.Model):
     size = models.IntegerField()
     rooms = models.IntegerField(blank=True)
     price = models.FloatField()
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(default=True)
     realtor = models.ForeignKey(Realtor, default=Realtor.DEFAULT_REALTOR, on_delete=models.SET_DEFAULT)
 
 
