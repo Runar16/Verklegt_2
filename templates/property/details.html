@@ -86,11 +86,17 @@
             </form>
 
             <br>
-            <div>
-                <p id="property_description">{{ property.property_description }}</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 5rem;">
+                <div>
+                    <h6>Description</h6>
+                    <p>{{ property.property_description }}</p>
+                </div>
 
-                <div class="property_realtor" style="display: inline-block" >
-                    {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
+                <div>
+                    <h6>Realtor</h6>
+                    <div id="realtor-property">
+                        {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
+                    </div>
                 </div>
             </div>
         </div>
