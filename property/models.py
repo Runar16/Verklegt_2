@@ -9,6 +9,9 @@ class PropertyType(models.Model):
     def get_type(self):
         return "%s" % self.type
 
+    def __str__(self):
+        return self.type
+
 
 class PropertyZip(models.Model):
     zip = models.IntegerField(primary_key=True)
@@ -19,6 +22,9 @@ class PropertyZip(models.Model):
 
     def get_zip(self):
         return "%s" % self.zip
+
+    def __str__(self):
+        return str(self.zip)
 
 
 class Property(models.Model):
@@ -31,12 +37,12 @@ class Property(models.Model):
     size = models.IntegerField()
     rooms = models.IntegerField(blank=True)
     price = models.FloatField()
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(default=True)
     realtor = models.ForeignKey(Realtor, default=Realtor.DEFAULT_REALTOR, on_delete=models.SET_DEFAULT)
 
 
 class PropertyImage(models.Model):
-    image = models.CharField(max_length=999)
+    image = models.ImageField(upload_to="media/properties", verbose_name="Image")
     image_tag = models.CharField(max_length=999, blank=True)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
 

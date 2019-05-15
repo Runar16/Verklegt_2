@@ -1,6 +1,9 @@
-{% extends 'base.html' %}
+f{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+    <head>
+        <title>Edit profile</title>
+    </head>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
@@ -59,7 +62,18 @@
                             {{ profile_form.profile_picture|as_crispy_field }}
                         </div>
                         <div class="col-6" style="text-align: center; margin: auto;">
-                            <button type="submit" class="btn btn-success" >Save Changes</button>
+                           <!-- <button type="submit" class="btn btn-success" >Save Changes</button> --> <!-- Gamli takkin -->
+                            <!-- kóði gunnars byrjar -->
+                            <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="save btn btn-default">Save Changes</button>
+                            </form>
+                            <div>
+                                <img src="{{ media.profileimage.goat.jpg }}" class="img-responsive">
+                            </div>
+                            <!-- kóði gunnars endar -->
+
                             <button type="button" class="btn btn-primary" onclick="window.location.href = '{% url "profile" %}'">Back</button>
                         </div>
                     </div>

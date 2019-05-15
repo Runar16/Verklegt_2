@@ -8,13 +8,13 @@ from property.models import Property
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20, blank=True)
-    profile_picture = models.ImageField(blank=True, upload_to='profile_image')
+    profile_picture = models.ImageField(upload_to='profileimage/', blank=True)
     street_name = models.CharField(max_length=255, blank=True)
     street_number = models.CharField(max_length=10, blank=True)
     zip = models.CharField(max_length=10, blank=True)
     city = models.CharField(max_length=100, blank=True)
     country = models.CharField(max_length=100, blank=True)
-    ssn = models.CharField(max_length=10, blank=True)
+    ssn = models.CharField(max_length=100, blank=True)
 
 
 class History(models.Model):
@@ -27,6 +27,14 @@ class History(models.Model):
 
 
 class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = (("user", "property"),)
+
+
+class Favourite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
 
