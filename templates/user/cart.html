@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block content %}
-    <h1 style="text-align: center; margin-top: 1rem;">My Cart</h1>
+    <div id="cart_title">
+        <h1>My Cart</h1>
 
-    <button type="button" class="btn btn-success" style="align-items: center;" onclick="window.location.href = '{% url 'contact_info' %}'">Proceed to Checkout</button>
+        <h6>Total: {{ total|floatformat:"0"|intcomma }}kr</h6>
+        <button type="button" class="btn btn-success" style="margin-top: 1rem;" onclick="window.location.href = '{% url 'contact_info' %}'">Proceed to Checkout</button>
+
+        <h4 style="margin-top: 3rem;" class="decorated"><span>My Items</span></h4>
+    </div>
 
     <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto">
         {% for property in properties.all %}

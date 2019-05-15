@@ -79,8 +79,13 @@ def change_password(request):
 
 
 def cart(request):
+    total = 0
+    properties = Property.objects.filter(cart__user=request.user.id)
+    for pro in properties:
+        total += pro.price
     return render(request, 'user/cart.html', {
-        'properties': Property.objects.filter(cart__user=request.user.id)
+        'properties': Property.objects.filter(cart__user=request.user.id),
+        'total': total
     })
 
 
