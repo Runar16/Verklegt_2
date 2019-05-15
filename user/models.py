@@ -14,7 +14,7 @@ class Profile(models.Model):
     zip = models.CharField(max_length=10, blank=True)
     city = models.CharField(max_length=100, blank=True)
     country = models.CharField(max_length=100, blank=True)
-    ssn = models.CharField(max_length=10, blank=True)
+    ssn = models.CharField(max_length=100, blank=True)
 
 
 class History(models.Model):
@@ -27,6 +27,14 @@ class History(models.Model):
 
 
 class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = (("user", "property"),)
+
+
+class Favourite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
 
