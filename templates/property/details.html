@@ -17,7 +17,7 @@
         <h1 id="address">{{ property.street_name }} {{ property.street_number }},<h5> {{ property.zip.get_zip }} {{ property.zip.get_city }}</h5></h1>
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-            {% for property_image in property.propertyimage_set.all %}
+            {% for property_image in property.propertyimage_set.all.image.url %}
                 {% if forloop.first %}
                     <li data-target="#carousel_Indicators" data-slide-to="0" class="active"></li>
                 {% else %}

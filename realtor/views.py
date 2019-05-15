@@ -1,6 +1,7 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.forms import modelformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
-from property.models import Property, PropertyZip, PropertyType, PropertyImage
+from property.models import Property, PropertyImage
 from realtor.forms.realtor_forms import NewProperty, ImageForm
 from realtor.models import Realtor
 
@@ -16,7 +17,7 @@ def get_realtor_by_id(request, id):
         'properties': Property.objects.filter(realtor_id__exact=id)
     })
 
-
+@staff_member_required
 def add_property(request):
     ImageFormSet = modelformset_factory(PropertyImage,
                                         form=ImageForm, extra=2)
