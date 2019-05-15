@@ -1,5 +1,5 @@
 from django.forms import ModelForm, widgets
-from user.models import Profile, Cart
+from user.models import Profile, Cart, Favourite
 from django.contrib.auth.models import User
 
 

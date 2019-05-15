@@ -1,7 +1,7 @@
 from django.forms import ModelForm, widgets
 
 from property.models import Order
-from user.models import Profile, Cart, Favourite
+from user.models import Profile, Cart
 from django.contrib.auth.models import User
 from django import forms
 
@@ -57,12 +57,6 @@ class PaymentInfo(forms.Form):
 class CartForm(ModelForm):
     class Meta:
         model = Cart
-        exclude = ['id', 'property', 'user']
-
-
-class FavouriteForm(ModelForm):
-    class Meta:
-        model = Favourite
         exclude = ['id', 'property', 'user']
 
 

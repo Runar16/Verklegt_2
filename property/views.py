@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import IntegrityError
 from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo, CartForm, \
-    OrderForm, FavouriteForm
+    OrderForm
 from property.models import Property, PropertyZip, PropertyType, Order
 from django.utils import timezone
 from user.models import History, Cart, Profile, Favourite
@@ -103,10 +103,16 @@ def get_property_by_id(request, id):
     if request.user.is_authenticated:
         current_user = request.user.id
         if request.method == 'POST':
-            try:
-                Cart.objects.create(property_id=id, user_id=current_user)
-            except IntegrityError:
-                pass
+            if 'favourite' in request.POST:
+                try:
+                    Favourite.objects.create(property_id=id, user_id=current_user)
+                except IntegrityError:
+                    pass
+            if 'cart' in request.POST:
+                try:
+                    Cart.objects.create(property_id=id, user_id=current_user)
+                except IntegrityError:
+                    pass
             if 'buy_now' in request.POST:
                 return redirect('contact_info')
         timestamp = timezone.now()
@@ -117,8 +123,7 @@ def get_property_by_id(request, id):
             History.objects.filter(pk=existing_history_obj.id).update(datetime_stamp=timestamp)
     return render(request, 'property/details.html', {
         'property': get_object_or_404(Property, pk=id),
-        'cart_form': CartForm(),
-        'favourite_form': FavouriteForm()
+        'cart_form': CartForm()
     })
 
 
