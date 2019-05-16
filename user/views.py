@@ -27,6 +27,8 @@ def register(request):
             user.profile.phone_number = form.cleaned_data.get('phone_number')
             user.profile.zip = form.cleaned_data.get('zip')
             user.profile.city = form.cleaned_data.get('city')
+            user.profile.street_name = form.cleaned_data.get('street_name')
+            user.profile.street_number = form.cleaned_data.get('street_number')
             user.save()
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
