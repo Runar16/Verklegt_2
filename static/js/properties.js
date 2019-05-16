@@ -136,4 +136,3 @@ var sort_by = function(field, reverse, primer){
 
 var order = true;
 var price_order = true;
-
