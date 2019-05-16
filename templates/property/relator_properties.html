@@ -1,12 +1,16 @@
 {% load humanize %}
-<div class="property" style="margin-right: 1%">
-    <a href="/property/{{ property.id }}">
+<div>
+    <a href="/property/{{ property.id }}"></a>
 
-        <div class="card" style="width: 20rem;">
+        <div class="card" style="width: 20rem; display:flex; flex-direction: row;">
+            <div class="top-block-container">
+                    <div class="card-header" id="property-card-header"><h4 style="color: white; opacity: 1;">{{ property.price|floatformat:"0"|intcomma }}kr.</h4>
+
+                </div>
             <img src="{{ property.propertyimage_set.first.image.url }}" class="card-img-top"
                  alt="{{ property.propertyimage_set.first.image_tag }}">
             <div class="card-body" style="padding: 0">
-                <div class="top">
+
                 <div class="left-block-container">
                     <span style="display: block; font-weight: bold">{{ property.street_name }} {{ property.street_number }}</span>
                     <span style="display: block; padding-top: 10px">{{ property.zip.get_city }}, {{ property.zip.get_zip }}</span>
@@ -15,7 +19,7 @@
                         {{ delete_form }}
                         <input type="hidden" name="property_id" value="{{ property.id }}">
                         <button type="submit" class="btn btn-primary" name='delete_property'
-                                style="float: left; margin-right: 2%;">Delete
+                                style="float: left; margin-right: 2%; background-color: red;">Delete
                         </button>
                     </form>
                 </div>
@@ -23,10 +27,10 @@
 
                     <span style="display: block;">{{ property.size }}m&sup2;</span>
                     <span style="display: block; padding-top: 10px; font-weight: lighter">{{ property.type.get_type }}</span>
-                    <a href="change_property/{{ property.id }}" class="btn btn-primary"> Change
+                    <a href="change_property/{{ property.id }}" class="btn btn-primary" style="background-color: chartreuse;"> Change
                         Property </a>
                 </div>
             </div>
         </div>
-    </a>
+        </div>
 </div>
