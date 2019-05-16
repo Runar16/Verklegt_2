@@ -19,31 +19,6 @@ def get_realtor_by_id(request, id):
 
 
 @staff_member_required
-def edit_profile(request):
-    if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
-        print("i am the law")
-        print(request.FILES)
-        profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
-
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-            messages.success(request, 'Your profile was successfully updated!')
-            return redirect('edit_profile')
-        else:
-            messages.error(request, 'Please correct the error below.')
-
-    else:
-        user_form = UserForm(instance=request.user)
-        profile_form = ProfileForm(instance=request.user.profile)
-    return render(request, 'user/change_profile.html', {
-        'user_form': user_form,
-        'profile_form': profile_form
-    })
-
-
-@staff_member_required
 def add_property(request):
     ImageFormSet = modelformset_factory(PropertyImage,
                                         form=ImageForm, extra=2)
