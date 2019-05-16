@@ -63,8 +63,11 @@
         </div>
     </div>
     <div style="text-align: right; margin-right: 6%">
+        <div class="spinner-border text-primary" role="status" style="width: 1rem; height: 1rem; display: none" id="order-by-loader">
+            <span class="sr-only">Loading...</span>
+        </div>
         <button id="order-by-price-btn" type="button" class="btn btn-link" style="color: black">Order By Price&darr;</button>
-        <button id="order-by-a-z-btn" type="button" class="btn btn-link" style="color: black">Order By A-Z&darr;</button>
+        <button id="order-a-z-btn" type="button" class="btn btn-link" style="color: black">Order By A-Z&darr;</button>
     </div>
     <div class="card-group properties" style="justify-content: center; width: 100%; margin: 0 auto">
         {% for property in properties %}
