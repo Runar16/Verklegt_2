@@ -8,7 +8,7 @@ from property.models import Property
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20, blank=True)
-    profile_picture = models.ImageField(upload_to='profileimage/', blank=True)
+    profile_picture = models.ImageField(upload_to='profileimage/', blank=True, default='profileimage/twitter_eggandgumdrop.0.jpg')
     street_name = models.CharField(max_length=255, blank=True)
     street_number = models.CharField(max_length=10, blank=True)
     zip = models.CharField(max_length=10, blank=True)
