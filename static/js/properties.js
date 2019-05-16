@@ -6,6 +6,7 @@ $(document).ready(function (){
        window.properties = resp
     }});
     $('#search-btn').on('click', function (e) {
+
         e.preventDefault();
         var searchText = $('#search-box').val();
         var zipVal = $('#zipSelect').val();
@@ -41,8 +42,14 @@ $(document).ready(function (){
         $.ajax({
             url: url_str,
             type: 'GET',
+            beforeSend: function(){
+                $("#search-loader").show();
+                },
             success: function (resp) {
                 display_searched(resp);
+            },
+            complete:function(){
+                $("#search-loader").hide();
             },
             error: function (xhr, status, error) {
                 $('.toast').toast('show');
