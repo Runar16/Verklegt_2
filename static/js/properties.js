@@ -69,6 +69,12 @@ $(document).ready(function (){
                 order = !order
             },
             complete:function(){
+                if(price_order === true) {
+                    $("#order-a-z-btn").html("Order By A-Z&darr;");
+                }
+                else{
+                    $("#order-a-z-btn").html("Order By A-Z&uarr;");
+                }
                 $("#order-by-loader").hide();
             },
             error: function (xhr, status, error) {
@@ -89,6 +95,12 @@ $(document).ready(function (){
                 price_order = !price_order
             },
             complete:function(){
+                if(price_order === true) {
+                    $("#order-by-price-btn").html("Order By Price&darr;");
+                }
+                else{
+                    $("#order-by-price-btn").html("Order By Price&uarr;");
+                }
                 $("#order-by-loader").hide();
             },
             error: function (xhr, status, error) {
