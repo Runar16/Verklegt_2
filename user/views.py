@@ -113,6 +113,7 @@ def cart(request):
             Cart.objects.filter(property=prop, user=user_id).delete()
         except IntegrityError:
             pass
+        return redirect('cart')
     return render(request, 'user/cart.html', {
         'properties': Property.objects.filter(cart__user=request.user.id),
         'total': total,
