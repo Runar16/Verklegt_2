@@ -25,10 +25,10 @@
                 {% endif %}
             {% endfor %}
             </ol>
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="width: 100%; height: 500px; !important;">
                 {% for property_image in property.propertyimage_set.all %}
                     {% if forloop.first %}
-                        <div class="carousel-item active">
+                        <div class="carousel-item active"> <!--active-->
                             <img class="d-block" src="{{ property_image.image.url }}" alt="{{ property_image.image_tag }}" title="{{ property_image.image_tag }}">
                         </div>
                     {% else %}
@@ -47,8 +47,9 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-        <div>
-        <h2>{{ property.price|floatformat:"0"|intcomma }}kr</h2>
+
+        <div class="container" style="display: flex block; margin-right: 5rem;">
+            <h2>{{ property.price|floatformat:"0"|intcomma }}kr</h2>
             <table class="table" id="info_table">
                 <tbody>
                     <tr>
@@ -75,30 +76,35 @@
                         <th scope="row">Rooms</th>
                         <td>{{ property.rooms }}</td>
                     </tr>
+
                 </tbody>
             </table>
-            <form method="post">
-                {% csrf_token %}
-                {{ cart_form }}
-                <button type="submit" class="btn btn-primary" name='favourite' style="float: left; margin-right: 2%;">Add to favourites</button>
-                <button type="submit" class="btn btn-success" name='cart' style="float: left; margin-right: 2%;">Add to cart</button>
-                <button type="submit" class="btn btn-danger" name='buy_now' style="float: left; margin-right: 2%; margin-bottom: 1rem;">Buy Now</button>
-            </form>
+            </div>
+
+
+            <div class="container" style="display: flex block; justify-content: right">
+                <form method="post" style="float: right; margin-right: 5rem; width: 25rem;">
+                    {% csrf_token %}
+                    {{ cart_form }}
+                    <button type="submit" class="btn btn-primary" name='favourite' style="float: left; margin-right: 2%;">Add to favourites</button>
+                    <button type="submit" class="btn btn-success" name='cart' style="float: left; margin-right: 2%;">Add to cart</button>
+                    <button type="submit" class="btn btn-danger" name='buy_now' style="float: left; margin-right: 2%; margin-bottom: 1rem;">Buy Now</button>
+                </form>
+            </div>
 
             <br>
-            <div style="display: flex; justify-content: space-between; margin-top: 5rem;">
+            <div class="container" id="property_bottom"">
                 <div>
                     <h6>Description</h6>
-                    <p>{{ property.property_description }}</p>
+                    <p style="max-width: 600px;">{{ property.property_description }}</p>
                 </div>
 
                 <div>
                     <h6>Realtor</h6>
-                    <div id="realtor-property">
+                    <div class="shadow bg-white rounded" id="realtor-property">
                         {% include 'realtor/single_realtor.html' with realtor=property.realtor %}
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 {% endblock %}

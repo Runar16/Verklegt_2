@@ -57,7 +57,7 @@ def index(request):
             'rooms': x.rooms,
             'price': x.price,
             'is_active': x.is_active,
-            'first_image': str(x.propertyimage_set.first().image),
+            'first_image': x.propertyimage_set.first().image.url,
             'image_tag': x.property_description
         }for x in Property.objects.filter(street_name__icontains=search_filter,
                                           zip__zip__contains=str(zip_filter),
@@ -77,7 +77,7 @@ def index(request):
     if request.user.is_authenticated:
         context['history'] = History.objects.filter(user=request.user).order_by('-datetime_stamp')[:4]
 
-    if 'heh' in request.GET:
+    if 'order' in request.GET:
         filtered_properties = [{
             'id': x.id,
             'street_name': x.street_name,
@@ -91,7 +91,7 @@ def index(request):
             'rooms': x.rooms,
             'price': x.price,
             'is_active': x.is_active,
-            'first_image': str(x.propertyimage_set.first().image),
+            'first_image': x.propertyimage_set.first().image.url,
             'image_tag': x.property_description
         } for x in Property.objects.filter()]
         return JsonResponse({'data': filtered_properties})
