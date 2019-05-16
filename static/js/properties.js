@@ -6,6 +6,7 @@ $(document).ready(function (){
        window.properties = resp
     }});
     $('#search-btn').on('click', function (e) {
+
         e.preventDefault();
         var searchText = $('#search-box').val();
         var zipVal = $('#zipSelect').val();
@@ -41,8 +42,14 @@ $(document).ready(function (){
         $.ajax({
             url: url_str,
             type: 'GET',
+            beforeSend: function(){
+                $("#search-loader").show();
+                },
             success: function (resp) {
                 display_searched(resp);
+            },
+            complete:function(){
+                $("#search-loader").hide();
             },
             error: function (xhr, status, error) {
                 $('.toast').toast('show');
@@ -51,15 +58,25 @@ $(document).ready(function (){
 
         })
     });
-    $('#order-a-z-btn').on('click', function (e) {
+    $('#order-a-z-btn').on('click', function () {
         $.ajax({
-            url: '',
-            type: 'GET',
-            success: function (resp) {
+            beforeSend: function(){
+                $("#order-by-loader").show();
+                },
+            success: function () {
                 window.properties.data.sort(sort_by('street_name', order, function(a){return a.toUpperCase()}));
                 display_searched(window.properties);
                 order = !order
             },
+            complete:function(){
+                if(price_order === true) {
+                    $("#order-a-z-btn").html("Order By A-Z&darr;");
+                }
+                else{
+                    $("#order-a-z-btn").html("Order By A-Z&uarr;");
+                }
+                $("#order-by-loader").hide();
+            },
             error: function (xhr, status, error) {
                 $('.toast').toast('show');
                 console.error(error);
@@ -67,14 +84,24 @@ $(document).ready(function (){
 
         })
     });
-      $('#order-by-price-btn').on('click', function (e) {
+      $('#order-by-price-btn').on('click', function () {
         $.ajax({
-            url: '',
-            type: 'GET',
-            success: function (resp) {
+            beforeSend: function(){
+                $("#order-by-loader").show();
+                },
+            success: function () {
                 window.properties.data.sort(sort_by('price', price_order, parseInt));
                 display_searched(window.properties);
                 price_order = !price_order
+            },
+            complete:function(){
+                if(price_order === true) {
+                    $("#order-by-price-btn").html("Order By Price&darr;");
+                }
+                else{
+                    $("#order-by-price-btn").html("Order By Price&uarr;");
+                }
+                $("#order-by-loader").hide();
             },
             error: function (xhr, status, error) {
                 $('.toast').toast('show');

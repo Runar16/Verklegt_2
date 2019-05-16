@@ -169,7 +169,7 @@ def review_purchase(request):
                     sold_property=prop
                 )
                 Property.objects.filter(pk=prop.id).update(is_active=False)
-                Cart.objects.filter(property=prop.id, user=user.id).delete()
+                Cart.objects.filter(property=prop.id).delete()
                 History.objects.filter(property=prop.id).delete()
                 return redirect('frontpage')
         except IntegrityError:
