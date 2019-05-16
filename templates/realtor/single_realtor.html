@@ -1,15 +1,15 @@
 <div>
-    <a href="/realtor/{{ realtor.id }}" >
+    <a href="/realtor/{{ realtor.id }}" id="realtor-link">
         <div class="media">
             <div>
-                <img src="{{ realtor.profile_picture }}" class="align-self-start" alt="Realtor Picture" id="realtor-media-picture">
+                <img src="{{ realtor.user.profile.profile_picture.url }}" class="align-self-start" alt="Realtor Picture" id="realtor-media-picture">
             </div>
           <div class="media-body">
             <h5 class="media-header">{{ realtor.user.first_name }} {{ realtor.user.last_name }}</h5>
               <p class="gray-line"></p>
               <div id="realtor-contact-information">
                   <p class="contact-information-type"> Phone </p>
-                  <p class="contact-information-value"> {{ realtor.phone_number }} </p>
+                  <p class="contact-information-value"> {{ realtor.user.profile.phone_number }} </p>
                   <p class="contact-information-type"> Email </p>
                   <p class="contact-information-value"> {{ realtor.user.email }} </p>
               </div>
