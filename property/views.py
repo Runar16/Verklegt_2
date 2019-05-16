@@ -10,7 +10,6 @@ from property.models import Property, PropertyZip, PropertyType, Order
 from django.utils import timezone
 from user.models import History, Cart, Profile, Favourite
 from sys import maxsize
-from django.core.serializers import serialize
 
 
 def index(request):
@@ -114,6 +113,10 @@ def get_property_by_id(request, id):
                 except IntegrityError:
                     pass
             if 'buy_now' in request.POST:
+                try:
+                    Cart.objects.create(property_id=id, user_id=current_user)
+                except IntegrityError:
+                    pass
                 return redirect('contact_info')
         timestamp = timezone.now()
         try:
@@ -132,6 +135,7 @@ def get_property_by_realtor_id(request, id):
         'properties': Property.objects.all().filter(realtor_id=id)
     })
 
+
 @login_required
 @transaction.atomic
 def payment_info(request):
@@ -140,9 +144,12 @@ def payment_info(request):
         if form.is_valid():
             request.session['pay_info'] = form.data
             return redirect('review_purchase')
+    else:
+        form = PaymentInfo()
     return render(request, 'property/payment_info.html', {
-        'payment_form': PaymentInfo(),
+        'payment_form': form,
     })
+
 
 @login_required
 @transaction.atomic
