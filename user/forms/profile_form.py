@@ -1,12 +1,9 @@
 from django.forms import ModelForm, widgets
-from user.models import Profile, Cart, Favourite
+from user.models import Profile
 from django.contrib.auth.models import User
-from django import forms
 
 
 class ProfileForm(ModelForm):
-    #profile_picture = forms.ImageField(label='image')
-
     class Meta:
         model = Profile
         exclude = ['id', 'user']
