@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
     <head>
@@ -8,7 +9,8 @@
         <div class="row">
 
                 <!--Image-->
-                <img id="realtor_photo" src="{{ user_info.profile_picture }}" alt="Profile picture">
+
+                <img class="rounded float-left" style="width: 200px; height: 200px" src={{ user.profile.profile_picture.url }} >
 
                 <div id="realtor_info">
                     <h5 id="realtor_name">{{user.first_name}} {{ user.last_name }}</h5>

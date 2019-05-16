@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-<!-- {% load crispy_forms_tags %} -->
+{% load crispy_forms_tags %}
 {% block content %}
     <head>
         <title>Edit profile</title>
@@ -13,7 +13,7 @@
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-6">
-                            {{ user_form.username }} <!-- |as_crispy_field -->
+                            {{ user_form.username | as_crispy_field }}
                         </div>
                         <div class="col-6" style="display: flex; justify-content: center; align-items: center">
                             <a id="change_password_button" href = "{% url 'change_password' %}" class="btn btn-primary"> Change Password </a>
@@ -21,40 +21,40 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            {{ user_form.email }} <!-- |as_crispy_field -->
+                            {{ user_form.email | as_crispy_field }}
                         </div>
                         <div class="col-6">
-                            {{ profile_form.phone_number }} <!-- |as_crispy_field -->
+                            {{ profile_form.phone_number | as_crispy_field }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            {{ user_form.first_name }} <!-- |as_crispy_field -->
+                            {{ user_form.first_name | as_crispy_field }}
                         </div>
                         <div class="col-6">
-                            {{ user_form.last_name }} <!-- |as_crispy_field -->
+                            {{ user_form.last_name | as_crispy_field }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-3">
-                            {{ profile_form.street_name }} <!-- |as_crispy_field -->
+                            {{ profile_form.street_name | as_crispy_field }}
                         </div>
                         <div class="col-3">
-                            {{ profile_form.street_number }} <!-- |as_crispy_field -->
+                            {{ profile_form.street_number }} <!-- vill ekki nota crispy field-->
                         </div>
                         <div class="col-4">
-                            {{ profile_form.city }} <!-- |as_crispy_field -->
+                            {{ profile_form.city | as_crispy_field }}
                         </div>
                         <div class="col-2">
-                            {{ profile_form.zip }} <!-- |as_crispy_field -->
+                            {{ profile_form.zip | as_crispy_field }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            {{ profile_form.country }} <!-- |as_crispy_field -->
+                            {{ profile_form.country | as_crispy_field }}
                         </div>
                         <div class="col-6">
-                            {{ profile_form.ssn }} <!-- |as_crispy_field -->
+                            {{ profile_form.ssn | as_crispy_field }}
                         </div>
                     </div>
                     <div class="row">
@@ -66,7 +66,7 @@
                             <!-- kóði gunnars byrjar -->
 
 
-                                {{ profile_form.image }} <!--| as_crispy_field -->
+                                {{ profile_form.profile_picture | as_crispy_field }}
                                 <button type="submit" class="btn btn-primary">Save Changes</button>
 
 

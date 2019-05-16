@@ -5,12 +5,12 @@ from django import forms
 
 
 class ProfileForm(ModelForm):
-    image = forms.ImageField(label='image')
+    #profile_picture = forms.ImageField(label='image')
 
     class Meta:
         model = Profile
         exclude = ['id', 'user']
-        fields = ('image','phone_number', 'street_name', 'zip', 'city', 'country', 'ssn')
+        fields = ('profile_picture', 'phone_number', 'street_name', 'zip', 'city', 'country', 'ssn')
 
         widgets = {
             'phone_number': widgets.TextInput(attrs={'class': 'form-control'}),

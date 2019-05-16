@@ -38,10 +38,13 @@ def edit_profile(request):
         profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
 
         if user_form.is_valid() and profile_form.is_valid():
+            print(profile_form.cleaned_data)
+
             user_form.save()
-            profile_form.save()
-            messages.success(request, 'Your profile was successfully updated!')
-            return redirect('edit_profile')
+            goat = profile_form.save()
+            print(goat.profile_picture)
+            #messages.success(request, 'Your profile was successfully updated!')
+
         else:
             messages.error(request, 'Please correct the error below.')
 
