@@ -75,7 +75,7 @@ def my_properties(request):
     realtor_id = request.user.realtor.id
     prop = Property.objects.filter(realtor_id__exact=realtor_id)
     if request.method == 'POST':
-        prop = request.POST['property']
+        prop = request.POST['property_id']
         try:
             Property.objects.filter(pk=prop).update(is_active=False)
             Cart.objects.filter(property=prop).delete()
