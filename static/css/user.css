@@ -18,3 +18,9 @@
     margin-bottom: 1rem;
     text-align: center;
 }
+
+.wrapped_flex_properties {
+    display: flex;
+    flex-flow: column;
+    margin: 1rem 0.5rem 2rem 0.5rem;
+}
