@@ -82,8 +82,7 @@
     font-size: 14px
 }
 
-#single-realtor > a{
+#realtor-link {
     text-decoration: none;
     color: inherit;
-
 }

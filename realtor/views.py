@@ -6,12 +6,15 @@ from property.models import Property, PropertyImage
 from realtor.forms.realtor_forms import NewProperty, ImageForm, DeleteProperty
 from realtor.models import Realtor
 from user.models import Cart, History
-
+from property.models import Order
 
 def index(request):
     context = {'realtors': Realtor.objects.filter().select_related()}
     return render(request, 'realtor/realtor.html', context)
 
+@staff_member_required
+def get_all_orders(request):
+    return render(request, 'realtor/orders.html', {'orders': Order.objects.all().order_by('sale_date')})
 
 def get_realtor_by_id(request, id):
     return render(request, 'realtor/details.html', {
@@ -75,7 +78,7 @@ def my_properties(request):
     realtor_id = request.user.realtor.id
     prop = Property.objects.filter(realtor_id__exact=realtor_id)
     if request.method == 'POST':
-        prop = request.POST['property']
+        prop = request.POST['property_id']
         try:
             Property.objects.filter(pk=prop).update(is_active=False)
             Cart.objects.filter(property=prop).delete()
