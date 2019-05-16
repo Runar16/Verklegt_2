@@ -18,6 +18,24 @@ class NewProperty(ModelForm):
         }
 
 
+class DeleteProperty(ModelForm):
+    class Meta:
+        model = Property
+        exclude = ['id',
+                   'is_active',
+                   'realtor',
+                   'street_name',
+                   'street_number',
+                   'price',
+                   'property_description',
+                   'country',
+                   'size',
+                   'rooms',
+                   'zip',
+                   'type'
+        ]
+
+
 class ImageForm(forms.ModelForm):
     image = forms.ImageField(label='Image')
     class Meta:

@@ -1,9 +1,11 @@
 from django.contrib.admin.views.decorators import staff_member_required
+from django.db import IntegrityError
 from django.forms import modelformset_factory, inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from property.models import Property, PropertyImage
-from realtor.forms.realtor_forms import NewProperty, ImageForm
+from realtor.forms.realtor_forms import NewProperty, ImageForm, DeleteProperty
 from realtor.models import Realtor
+from user.models import Cart, History
 
 
 def index(request):
@@ -66,4 +68,22 @@ def change_property(request, id):
     return render(request, 'realtor/change_property.html', {
         'property_form': property_form,
         'formset': formset
+    })
+
+
+def my_properties(request):
+    realtor_id = request.user.realtor.id
+    prop = Property.objects.filter(realtor_id__exact=realtor_id)
+    if request.method == 'POST':
+        prop = request.POST['property']
+        try:
+            Property.objects.filter(pk=prop).update(is_active=False)
+            Cart.objects.filter(property=prop).delete()
+            History.objects.filter(property=prop).delete()
+        except IntegrityError:
+            pass
+    return render(request, 'realtor/my_properties.html', {
+        'realtor': get_object_or_404(Realtor, pk=realtor_id),
+        'properties': prop,
+        'delete_form': DeleteProperty()
     })
