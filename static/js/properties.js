@@ -51,12 +51,30 @@ $(document).ready(function (){
 
         })
     });
-    $('#order-by-btn').on('click', function (e) {
+    $('#order-a-z-btn').on('click', function (e) {
         $.ajax({
             url: '',
             type: 'GET',
             success: function (resp) {
-                display_searched(window.properties.reverse())
+                window.properties.data.sort(sort_by('street_name', order, function(a){return a.toUpperCase()}));
+                display_searched(window.properties);
+                order = !order
+            },
+            error: function (xhr, status, error) {
+                $('.toast').toast('show');
+                console.error(error);
+            }
+
+        })
+    });
+      $('#order-by-price-btn').on('click', function (e) {
+        $.ajax({
+            url: '',
+            type: 'GET',
+            success: function (resp) {
+                window.properties.data.sort(sort_by('price', price_order, parseInt));
+                display_searched(window.properties);
+                price_order = !price_order
             },
             error: function (xhr, status, error) {
                 $('.toast').toast('show');
@@ -71,7 +89,9 @@ $(document).ready(function (){
 
 function display_searched(resp) {
     var newHtml = resp.data.map(d => {
-        return `<div class="property" style="margin-right:1%">
+        d.price = numberWithCommas(d.price);
+        return `
+<div class="property" style="margin-right:1%">
                     <a href="/property/${d.id}">
                             <div class="card" style="width:20rem;">
                                 <img src="${d.first_image}" class="card-img-top" alt="${d.image_tag}">
@@ -94,13 +114,24 @@ function display_searched(resp) {
     $('.properties').html(newHtml.join(''));
 }
 
-function sortJson(prop, asc) {
-    props = props.sort(function(a, b) {
-        if (asc) {
-            return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
-        } else {
-            return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
-        }
-    });
-    showResults();
+
+//https://stackoverflow.com/a/979325
+
+var sort_by = function(field, reverse, primer){
+   var key = primer ?
+       function(x) {return primer(x[field])} :
+       function(x) {return x[field]};
+
+   reverse = !reverse ? 1 : -1;
+
+   return function (a, b) {
+       return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+     }
+};
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+var order = true;
+var price_order = true;
