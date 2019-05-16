@@ -15,14 +15,20 @@
 
     <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto">
         {% for property in properties.all %}
-            {% include 'property/single_property.html' with property=property %}
-            <form method="post">
-                {% csrf_token %}
-                {{ delete_form }}
-                <input type="hidden" name="property_id" value="{{ property.id }}" />
-                <button type="submit" class="btn btn-primary" name='add_to_cart' style="float: left; margin-right: 2%;">Add To Cart</button>
-                <button type="submit" class="btn btn-primary" name='delete_property' style="float: left; margin-right: 2%;">Delete</button>
-            </form>
+            <div style="display: flex; flex-flow: column; margin-top:1rem; margin-left:0.5rem; margin-right:0.5rem; margin-bottom:2rem;">
+                <div>
+                    {% include 'property/single_property.html' with property=property %}
+                </div>
+                <div>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ delete_form }}
+                        <input type="hidden" name="property_id" value="{{ property.id }}" />
+                        <button type="submit" class="btn btn-primary" name='add_to_cart' style="float: left; margin-right: 2%;">Add To Cart</button>
+                        <button type="submit" class="btn btn-primary" name='delete_property' style="float: left; margin-right: 2%;">Delete</button>
+                    </form>
+                </div>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}
