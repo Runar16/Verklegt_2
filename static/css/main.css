@@ -54,12 +54,16 @@
 .card {
     overflow: hidden;
     margin-bottom: 10%;
+
 }
 .card-img-top {
     width: 200px;
     max-height: 200px;
     min-height: 200px;
 }
+
+
+
 .card-body {
     color: black;
 }

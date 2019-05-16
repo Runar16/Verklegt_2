@@ -1,23 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-    <a id="add_property_button" href = "{% url 'add_property' %}" class="btn btn-primary"> Add Property </a>
+    <!--<a id="add_property_button" href = "{% url 'add_property' %}" class="btn btn-primary"> Add Property </a> -->
     <div id="realtor_properties">
         <h4 class="decorated"><span>Properties</span></h4>
-        <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto;">
-            {% for property in properties %}
-                {% if property.is_active %}
-                    {% include 'property/single_property.html' with property=property %}
-                    <div>
-                        <a href="change_property/{{ property.id }}" class="btn btn-primary"> Change Property </a>
-                    </div>
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ delete_form }}
-                        <input type="hidden" name="property_id" value="{{ property.id }}" />
-                        <button type="submit" class="btn btn-primary" name='delete_property' style="float: left; margin-right: 2%;">Delete</button>
-                    </form>
-                {% endif %}
-            {% endfor %}
+        <div class="yes" style="justify-content: center; width: 80%; margin: 0 auto;">
+            <div class="card" style="background-color: midnightblue">
+
+                {% for property in properties %}
+                    {% if property.is_active %}
+
+                            {% include 'property/relator_properties.html' with property=property %}
+
+
+
+                    {% endif %}
+
+                {% endfor %}
+
+
+            </div>
+
         </div>
     </div>
 {% endblock %}
