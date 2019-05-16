@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_protect
 
 from property.models import Property
 from user.forms.profile_form import ProfileForm, UserForm
+from user.forms.register_form import RegisterProfileForm
 from user.models import History
 from user.models import Profile
 
@@ -20,11 +21,20 @@ def index(request):
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
-        if form.is_valid:
+        profile_form = RegisterProfileForm(data=request.POST)
+        if form.is_valid() and profile_form.is_valid():
             form.save()
+            profile_form.save(commit=False)
+            profile_form.user = form
             return redirect('login')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = UserCreationForm()
+        profile_form = RegisterProfileForm()
     return render(request, 'user/register.html', {
-        'form': UserCreationForm()
+        'form': form,
+        'profile_form': profile_form,
     })
 
 
