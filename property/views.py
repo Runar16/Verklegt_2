@@ -114,6 +114,10 @@ def get_property_by_id(request, id):
                 except IntegrityError:
                     pass
             if 'buy_now' in request.POST:
+                try:
+                    Cart.objects.create(property_id=id, user_id=current_user)
+                except IntegrityError:
+                    pass
                 return redirect('contact_info')
         timestamp = timezone.now()
         try:
