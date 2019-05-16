@@ -13,7 +13,7 @@
 {% else %}
 
 {% endif %}
-    <div class="container" id="property" style="height: 100%">
+    <div class="container" id="property" style="align-content: center">
         <h1 id="address">{{ property.street_name }} {{ property.street_number }},<h5> {{ property.zip.get_zip }} {{ property.zip.get_city }}</h5></h1>
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -25,7 +25,7 @@
                 {% endif %}
             {% endfor %}
             </ol>
-            <div class="carousel-inner" style="width: 100%; height: 500px; !important;">
+            <div class="carousel-inner" style="height: 500px; !important;">
                 {% for property_image in property.propertyimage_set.all %}
                     {% if forloop.first %}
                         <div class="carousel-item active"> <!--active-->
@@ -48,7 +48,7 @@
             </a>
         </div>
 
-        <div class="container" style="display: flex block; margin-right: 5rem;">
+        <div class="container" id="property_info_section">
             <h2>{{ property.price|floatformat:"0"|intcomma }}kr</h2>
             <table class="table" id="info_table">
                 <tbody>
@@ -79,11 +79,11 @@
 
                 </tbody>
             </table>
-            </div>
+        </div>
 
 
-            <div class="container" style="display: flex block; justify-content: right">
-                <form method="post" style="float: right; margin-right: 5rem; width: 25rem;">
+            <div class="container" style="justify-content: right;">
+                <form method="post">
                     {% csrf_token %}
                     {{ cart_form }}
                     <button type="submit" class="btn btn-primary" name='favourite' style="float: left; margin-right: 2%;">Add to favourites</button>

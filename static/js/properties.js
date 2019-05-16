@@ -6,6 +6,7 @@ $(document).ready(function (){
        window.properties = resp
     }});
     $('#search-btn').on('click', function (e) {
+
         e.preventDefault();
         var searchText = $('#search-box').val();
         var zipVal = $('#zipSelect').val();
@@ -41,24 +42,14 @@ $(document).ready(function (){
         $.ajax({
             url: url_str,
             type: 'GET',
+            beforeSend: function(){
+                $("#search-loader").show();
+                },
             success: function (resp) {
                 display_searched(resp);
             },
-            error: function (xhr, status, error) {
-                $('.toast').toast('show');
-                console.error(error);
-            }
-
-        })
-    });
-    $('#order-a-z-btn').on('click', function (e) {
-        $.ajax({
-            url: '',
-            type: 'GET',
-            success: function (resp) {
-                window.properties.data.sort(sort_by('street_name', order, function(a){return a.toUpperCase()}));
-                display_searched(window.properties);
-                order = !order
+            complete:function(){
+                $("#search-loader").hide();
             },
             error: function (xhr, status, error) {
                 $('.toast').toast('show');
@@ -67,22 +58,36 @@ $(document).ready(function (){
 
         })
     });
-      $('#order-by-price-btn').on('click', function (e) {
-        $.ajax({
-            url: '',
-            type: 'GET',
-            success: function (resp) {
-                window.properties.data.sort(sort_by('price', price_order, parseInt));
-                display_searched(window.properties);
-                price_order = !price_order
-            },
-            error: function (xhr, status, error) {
-                $('.toast').toast('show');
-                console.error(error);
+    $('#order-a-z-btn').on('click', function () {
+        $("#order-by-loader").show();
+        window.properties.data.sort(sort_by('street_name', order, function(a){return a.toUpperCase()}));
+        setTimeout(function() {
+            display_searched(window.properties);
+            order = !order;
+            if (price_order === true) {
+                $("#order-a-z-btn").html("Order By A-Z&darr;");
+            } else {
+                $("#order-a-z-btn").html("Order By A-Z&uarr;");
             }
-
-        })
+            $("#order-by-loader").hide();
+        }, 500)
     });
+    
+      $('#order-by-price-btn').on('click', function () {
+          $("#order-by-loader").show();
+          window.properties.data.sort(sort_by('price', price_order, parseInt));
+          setTimeout(function(){
+              $("#order-by-loader").hide();
+              display_searched(window.properties);
+              price_order = !price_order;
+              if(price_order === true) {
+                  $("#order-by-price-btn").html("Order By Price&darr;");
+              }
+              else{
+                  $("#order-by-price-btn").html("Order By Price&uarr;");
+              }
+              }, 500);
+        })
 });
 
 
@@ -131,3 +136,4 @@ var sort_by = function(field, reverse, primer){
 
 var order = true;
 var price_order = true;
+
