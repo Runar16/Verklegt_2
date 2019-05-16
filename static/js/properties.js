@@ -63,30 +63,30 @@ $(document).ready(function (){
         window.properties.data.sort(sort_by('street_name', order, function(a){return a.toUpperCase()}));
         setTimeout(function() {
             display_searched(window.properties);
-            order = !order;
-            if (price_order === true) {
-                $("#order-a-z-btn").html("Order By A-Z&darr;");
-            } else {
+            if (order === true) {
                 $("#order-a-z-btn").html("Order By A-Z&uarr;");
+            } else {
+                $("#order-a-z-btn").html("Order By A-Z&darr;");
             }
             $("#order-by-loader").hide();
+            order = !order;
         }, 500)
     });
-    
+
       $('#order-by-price-btn').on('click', function () {
           $("#order-by-loader").show();
           window.properties.data.sort(sort_by('price', price_order, parseInt));
           setTimeout(function(){
-              $("#order-by-loader").hide();
               display_searched(window.properties);
-              price_order = !price_order;
               if(price_order === true) {
                   $("#order-by-price-btn").html("Order By Price&darr;");
               }
               else{
                   $("#order-by-price-btn").html("Order By Price&uarr;");
               }
-              }, 500);
+              $("#order-by-loader").hide();
+              price_order = !price_order;
+          }, 500);
         })
 });
 
