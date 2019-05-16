@@ -6,29 +6,11 @@
         <title>Cart</title>
     </head>
 
-    <script type="text/javascript">
-    function displayButton() {
-        let total = document.getElementById("total").innerText;
-        let buttonsToHide = document.getElementsByClassName("btn btn-success");
-        if (total === "0"){
-            document.getElementById("emptyCart").style.display = "block";
-            for(let i = 0; i < buttonsToHide.length; i++){
-                buttonsToHide[i].innerText = "Find properties";
-                buttonsToHide[i].setAttribute("onclick", "window.location.href = '{% url 'frontpage' %}'");
-                buttonsToHide[i].style.display = "inline-block";
-    }
-        } else {
-            for(let i = 0; i < buttonsToHide.length; i++){
-                buttonsToHide[i].style.display = "inline-block";
-    }
-        }
-    }
-    </script>
-
-    <body onload="displayButton()"></body>
+    <body onload="emptyCart()"></body>
 
     <div id="cart_title">
         <h1>My Cart</h1>
+        <p>Here you can see all the properties you currently have in your cart and their total value.</p>
 
         <h6>Total: <div id="total" style="display:inline">{{ total|floatformat:"0"|intcomma }}</div>kr</h6>
         <button type="button" id="button1" class="btn btn-success" style="margin-top: 1rem; display: none" onclick="window.location.href = '{% url 'contact_info' %}'">Proceed to Checkout</button>
@@ -38,13 +20,18 @@
 
     <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto">
         {% for property in properties.all %}
-            {% include 'property/single_property.html' with property=property %}
-            <form method="post">
-                {% csrf_token %}
-                {{ delete_form }}
-                <input type="hidden" name="property_id" value="{{ property.id }}" />
-                <button type="submit" class="btn btn-primary" name='delete_property' style="float: left; margin-right: 2%;">Delete</button>
-            </form>
+            <div class="wrapped_flex_properties">
+                <div>
+                    {% include 'property/single_property.html' with property=property %}
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ delete_form }}
+                    <input type="hidden" name="property_id" value="{{ property.id }}" />
+                    <button type="submit" class="btn btn-primary" name='delete_property' style="float: left; margin-right: 2%;">Delete</button>
+                </form>
+            </div>
         {% endfor %}
     </div>
     <div id="cart_title">
