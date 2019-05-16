@@ -42,15 +42,13 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            {{ property_form.zip|as_crispy_field }}
-                        </div>
-                        <div class="col-6">
-                            {{ formset.management_form }}
-                            {% for form in formset %}
-                                {{ form }}
-                            {% endfor %}
+                            {{ property_form.zip|as_crispy_field}}
                         </div>
                     </div>
+                    {{ formset.management_form }}
+                    {% for form in formset %}
+                        {{ form }}<br>
+                    {% endfor %}
                     <div class="row">
                         <div class="col-6" style="text-align: center; margin: auto;">
                             <button type="submit" class="btn btn-success" >Save Changes</button>
