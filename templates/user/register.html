@@ -24,6 +24,14 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
+                            {{ form.first_name|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.last_name|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
                             {{ form.email|as_crispy_field }}
                         </div>
                         <div class="col-6">
