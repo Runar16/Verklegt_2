@@ -5,11 +5,33 @@
     <head>
         <title>Cart</title>
     </head>
+
+    <script type="text/javascript">
+    function displayButton() {
+        let total = document.getElementById("total").innerText;
+        let buttonsToHide = document.getElementsByClassName("btn btn-success");
+        if (total === "0"){
+            document.getElementById("emptyCart").style.display = "block";
+            for(let i = 0; i < buttonsToHide.length; i++){
+                buttonsToHide[i].innerText = "Find properties";
+                buttonsToHide[i].setAttribute("onclick", "window.location.href = '{% url 'frontpage' %}'");
+                buttonsToHide[i].style.display = "inline-block";
+    }
+        } else {
+            for(let i = 0; i < buttonsToHide.length; i++){
+                buttonsToHide[i].style.display = "inline-block";
+    }
+        }
+    }
+    </script>
+
+    <body onload="displayButton()"></body>
+
     <div id="cart_title">
         <h1>My Cart</h1>
 
-        <h6>Total: {{ total|floatformat:"0"|intcomma }}kr</h6>
-        <button type="button" class="btn btn-success" style="margin-top: 1rem;" onclick="window.location.href = '{% url 'contact_info' %}'">Proceed to Checkout</button>
+        <h6>Total: <div id="total" style="display:inline">{{ total|floatformat:"0"|intcomma }}</div>kr</h6>
+        <button type="button" id="button1" class="btn btn-success" style="margin-top: 1rem; display: none" onclick="window.location.href = '{% url 'contact_info' %}'">Proceed to Checkout</button>
 
         <h4 style="margin-top: 3rem;" class="decorated"><span>My Items</span></h4>
     </div>
@@ -21,7 +43,8 @@
     </div>
     <div id="cart_title">
         <hr>
-        <button type="button" class="btn btn-success" style="margin-top: 1rem; margin-bottom: 6rem;" onclick="window.location.href = '{% url 'contact_info' %}'">Proceed to Checkout</button>
+        <h2 id="emptyCart" style="display:none">Your cart is empty</h2>
+        <button type="button" id="button2" class="btn btn-success" style="margin-top: 1rem;  margin-bottom: 6rem; display: none" onclick="window.location.href = '{% url 'contact_info' %}'">Proceed to Checkout</button>
 
     </div>
 {% endblock %}
