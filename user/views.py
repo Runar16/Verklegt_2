@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import update_session_auth_hash, authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.db import transaction
@@ -20,21 +20,24 @@ def index(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
-        profile_form = RegisterProfileForm(data=request.POST)
-        if form.is_valid() and profile_form.is_valid():
-            form.save()
-            profile_form.save(commit=False)
-            profile_form.user = form
-            return redirect('login')
+        form = RegisterProfileForm(data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()
+            user.profile.phone_number = form.cleaned_data.get('phone_number')
+            user.profile.zip = form.cleaned_data.get('zip')
+            user.profile.city = form.cleaned_data.get('city')
+            user.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+            return redirect('profile')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
-        form = UserCreationForm()
-        profile_form = RegisterProfileForm()
+        form = RegisterProfileForm()
     return render(request, 'user/register.html', {
         'form': form,
-        'profile_form': profile_form,
     })
 
 

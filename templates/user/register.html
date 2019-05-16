@@ -24,26 +24,26 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            {{ form.email}}
+                            {{ form.email|as_crispy_field }}
                         </div>
                         <div class="col-6">
-                            {{ profile_form.phone_number|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            {{ profile_form.street_name|as_crispy_field }}
-                        </div>
-                        <div class="col-6">
-                            {{ profile_form.street_number|as_crispy_field }}
+                            {{ form.phone_number|as_crispy_field }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            {{ profile_form.zip|as_crispy_field }}
+                            {{ form.street_name|as_crispy_field }}
                         </div>
                         <div class="col-6">
-                            {{ profile_form.city|as_crispy_field }}
+                            {{ form.street_number|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            {{ form.zip|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.city|as_crispy_field }}
                         </div>
                     </div>
                     <div style="display: flex; justify-content: center;">
