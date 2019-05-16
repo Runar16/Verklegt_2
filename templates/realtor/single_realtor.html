@@ -2,7 +2,7 @@
     <a href="/realtor/{{ realtor.id }}" id="realtor-link">
         <div class="media">
             <div>
-                <img src="{{ realtor.profile_picture }}" class="align-self-start" alt="Realtor Picture" id="realtor-media-picture">
+                <img src="{{ realtor.user.profile.profile_picture.url }}" class="align-self-start" alt="Realtor Picture" id="realtor-media-picture">
             </div>
           <div class="media-body">
             <h5 class="media-header">{{ realtor.user.first_name }} {{ realtor.user.last_name }}</h5>
