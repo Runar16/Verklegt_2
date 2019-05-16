@@ -5,16 +5,29 @@
     <head>
         <title>Favourites</title>
     </head>
+
+    <script type="text/javascript">
+    function emptyCart() {
+        let total = document.getElementById("total").innerText;
+        if (total === "0"){
+            document.getElementById("noFavourites").style.display = "inline";
+        }
+    }
+    </script>
+
+    <body onload="emptyCart()"></body>
+
     <div id="cart_title">
         <h1>My Favourites</h1>
 
-        <!--<h6>Total: {{ total|floatformat:"0"|intcomma }}kr</h6>-->
+        <h6 style="display:none">Total: <div id="total">{{ total|floatformat:"0"|intcomma }}</div>kr</h6>
         <p>This site displays all the properties you have tagged as 'favourites'. Here you have easy access to those properties and can add them to your cart.</p>
 
         <h4 style="margin-top: 3rem;" class="decorated"><span>My Favorites</span></h4>
     </div>
 
     <div class="card-group properties" style="justify-content: center; width: 80%; margin: 0 auto">
+        <h2 id="noFavourites" style="display: none">You don't have any favourite properties.</h2>
         {% for property in properties.all %}
             <div style="display: flex; flex-flow: column; margin-top:1rem; margin-left:0.5rem; margin-right:0.5rem; margin-bottom:2rem;">
                 <div>

@@ -7,7 +7,7 @@
     </head>
 
     <script type="text/javascript">
-    function displayButton() {
+    function emptyCart() {
         let total = document.getElementById("total").innerText;
         let buttonsToHide = document.getElementsByClassName("btn btn-success");
         if (total === "0"){
@@ -25,7 +25,7 @@
     }
     </script>
 
-    <body onload="displayButton()"></body>
+    <body onload="emptyCart()"></body>
 
     <div id="cart_title">
         <h1>My Cart</h1>
