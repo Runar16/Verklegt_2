@@ -77,7 +77,7 @@ def index(request):
     if request.user.is_authenticated:
         context['history'] = History.objects.filter(user=request.user).order_by('-datetime_stamp')[:4]
 
-    if 'heh' in request.GET:
+    if 'order' in request.GET:
         filtered_properties = [{
             'id': x.id,
             'street_name': x.street_name,

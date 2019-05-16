@@ -1,7 +1,7 @@
 $(document).ready(function (){
     $.ajax({
     type: 'GET',
-    url: '?heh=',
+    url: '?order=',
     success: function(resp){
        window.properties = resp
     }});
@@ -89,7 +89,7 @@ $(document).ready(function (){
 
 function display_searched(resp) {
     var newHtml = resp.data.map(d => {
-        d.price = numberWithCommas(d.price);
+        d.price = d.price.toLocaleString();
         return `
 <div class="property" style="margin-right:1%">
                     <a href="/property/${d.id}">
@@ -128,10 +128,6 @@ var sort_by = function(field, reverse, primer){
        return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
      }
 };
-
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
 
 var order = true;
 var price_order = true;
