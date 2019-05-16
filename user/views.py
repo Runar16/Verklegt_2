@@ -11,7 +11,7 @@ from property.models import Property
 from realtor.forms.realtor_forms import DeleteProperty
 from user.forms.profile_form import ProfileForm, UserForm
 from user.forms.register_form import RegisterProfileForm
-from user.models import History, Cart
+from user.models import History, Cart, Favourite
 from user.models import Profile
 
 
@@ -122,12 +122,26 @@ def cart(request):
 
 def favourite(request):
     total = 0
+    user_id = request.user.id
     properties = Property.objects.filter(favourite__user=request.user.id)
     for pro in properties:
         total += pro.price
+    if request.method == 'POST':
+        prop = request.POST['property_id']
+        if 'add_to_cart' in request.POST:
+            try:
+                Cart.objects.create(property_id=prop, user_id=user_id)
+            except IntegrityError:
+                pass
+        if 'delete_property' in request.POST:
+            try:
+                Favourite.objects.filter(property=prop, user=user_id).delete()
+            except IntegrityError:
+                pass
     return render(request, 'user/favourite.html', {
         'properties': Property.objects.filter(favourite__user=request.user.id),
-        'total': total
+        'total': total,
+        'delete_form': DeleteProperty()
     })
 
 
