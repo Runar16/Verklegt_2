@@ -144,8 +144,10 @@ def payment_info(request):
         if form.is_valid():
             request.session['pay_info'] = form.data
             return redirect('review_purchase')
+    else:
+        form = PaymentInfo()
     return render(request, 'property/payment_info.html', {
-        'payment_form': PaymentInfo(),
+        'payment_form': form,
     })
 
 @login_required
