@@ -9,7 +9,18 @@ from django import forms
 class ContactInfoUser(ModelForm):
     class Meta:
         model = User
-        exclude = ['id', 'password', 'last_login', 'is_superuser', 'is_active', 'is_staff', 'date_joined', 'user_permissions', 'groups', 'username']
+        exclude = [
+            'id',
+            'password',
+            'last_login',
+            'is_superuser',
+            'is_active',
+            'is_staff',
+            'date_joined',
+            'user_permissions',
+            'groups',
+            'username'
+        ]
         widgets = {
             'first_name': widgets.TextInput(attrs={'class': 'form-control'}),
             'last_name': widgets.TextInput(attrs={'class': 'form-control'}),
