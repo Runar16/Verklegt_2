@@ -3,13 +3,8 @@
     <head>
         <title>My Properties</title>
     </head>
-    <div style="display: flex; text-align: center; flex-flow: column; margin-top: 1rem;">
-        <h1 class="decorated">Managed Properties</h1>
-        <p>Here you can manage all of your registered properties, delete them or change information in their description.</p>
-        <a class="btn btn-primary" style="margin:0 auto 2rem auto; width: 10rem;" href="{% url 'add_property' %}" class="btn btn-primary"> Add Property </a>
-        <h4 class="decorated"><span>My Properties</span></h4>
-    </div>
 
+    <h4 class="decorated"><span>Managed properties</span></h4>
     <div class="property" style="margin-right: 1%">
         <div id="realtor_properties">
             <div class="card-deck"  style="justify-content: center; width: 80%; margin: 0 auto;">
@@ -30,6 +25,15 @@
                     {% endif %}
                 {% endfor %}
             </div>
+        <h4 class="decorated"><span>Add Properties</span></h4>
+        <div class="row  d-flex p-2 bd-highlight containter-fluid justify-content-around">
+            <div>
+            <a id="add_property_button" href="{% url 'add_property' %}" class="btn btn-primary"> Add Property </a>
+            </div>
+            <div>
+            <a id="button" class="btn btn-primary " href ="{% url 'frontpage' %}">Back</a>
+            </div>
+        </div>
         </div>
     </div>
 {% endblock %}
