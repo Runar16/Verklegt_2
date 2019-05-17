@@ -1,14 +1,14 @@
 {% load humanize %}
 <div>
 
-    <div class="card" style="width: 20rem; display:flex; flex-direction: row;">
+    <div class="card" style="width: 20rem; display:flex;">
         <div class="top-block-container">
             <div class="card-header" id="property-card-header">
 
                 <h4 style="color: white; opacity: 1;">{{ property.price|floatformat:"0"|intcomma }}kr.</h4>
             </div>
-           <a href="/property/{{ property.id }}"> <img src="{{ property.propertyimage_set.first.image.url }}" class="card-img-top"
-                                                       alt="{{ property.propertyimage_set.first.image_tag }}"></a>
+           <a href="/property/{{ property.id }}"><img src="{{ property.propertyimage_set.first.image.url }}"
+                                                      alt="{{ property.propertyimage_set.first.image_tag }}" class="card-img-top"></a>
             <div class="card-body" style="padding: 0">
                 <div class="left-block-container">
                     <span style="display: block; font-weight: bold">{{ property.street_name }} {{ property.street_number }}</span>
