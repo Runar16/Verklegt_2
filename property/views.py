@@ -151,7 +151,7 @@ def payment_info(request):
 @login_required
 @transaction.atomic
 def review_purchase(request):
-    if request.META.get('HTTP_REFERER') != 'http://127.0.0.1:8000/property/payment':
+    if request.META.get('HTTP_REFERER') == None:
         return redirect('frontpage')
     total = 0
     user = request.user
@@ -198,6 +198,8 @@ def about_us(request):
 @login_required
 @transaction.atomic
 def contact_info(request):
+    if request.META.get('HTTP_REFERER') is None:
+        return redirect('frontpage')
     if request.method == 'POST':
         user_form = ContactInfoUser(request.POST, instance=request.user)
         profile_form = ContactInfoProfile(request.POST, instance=request.user.profile)
