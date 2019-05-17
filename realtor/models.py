@@ -9,3 +9,6 @@ class Realtor(models.Model):
 
     def get_licence(self):
         return "%s" % self.license_number
+
+    def __str__(self):
+        return str(self.user.first_name + ' ' + self.user.last_name)
