@@ -7,7 +7,7 @@ class ProfileForm(ModelForm):
     class Meta:
         model = Profile
         exclude = ['id', 'user']
-        fields = ('profile_picture', 'phone_number', 'street_name', 'zip', 'city', 'country', 'ssn')
+        fields = ['profile_picture','phone_number', 'street_name', 'zip', 'city', 'country', 'ssn']
 
         widgets = {
             'phone_number': widgets.TextInput(attrs={'class': 'form-control'}),
@@ -20,10 +20,12 @@ class ProfileForm(ModelForm):
         }
 
 
+
 class UserForm(ModelForm):
     class Meta:
         model = User
-        exclude = ['id', 'password', 'last_login', 'is_superuser', 'is_active', 'is_staff', 'date_joined', 'user_permissions', 'groups']
+        exclude = ['id', 'password', 'last_login', 'is_superuser', 'is_active', 'is_staff', 'date_joined',
+                   'user_permissions', 'groups']
         widgets = {
             'username': widgets.TextInput(attrs={'class': 'form-control'}),
             'first_name': widgets.TextInput(attrs={'class': 'form-control'}),

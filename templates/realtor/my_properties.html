@@ -3,14 +3,30 @@
     <head>
         <title>My Properties</title>
     </head>
-    <a id="add_property_button" href="{% url 'add_property' %}" class="btn btn-primary"> Add Property </a>
-     <h4 class="decorated"><span>Managed properties</span></h4>
+    <div style="display: flex; text-align: center; flex-flow: column; margin-top: 1rem;">
+        <h1 class="decorated">Managed Properties</h1>
+        <p>Here you can manage all of your registered properties, delete them or change information in their description.</p>
+        <a class="btn btn-primary" style="margin:0 auto 2rem auto; width: 10rem;" href="{% url 'add_property' %}" class="btn btn-primary"> Add Property </a>
+        <h4 class="decorated"><span>My Properties</span></h4>
+    </div>
+
     <div class="property" style="margin-right: 1%">
         <div id="realtor_properties">
             <div class="card-deck"  style="justify-content: center; width: 80%; margin: 0 auto;">
                 {% for property in properties %}
                     {% if property.is_active %}
-                        {% include 'property/relator_properties.html' with property=property %}
+                        <div style="display: flex; flex-flow: column;">
+                            <div>
+                                {% include 'property/single_property.html' with property=property %}
+                            </div>
+
+                            <form method="post" style="margin: 0.5rem 0 0 1rem; ">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success" name="edit_property">Edit Property</button>
+                                <button type="submit" class="btn btn-danger" name='delete_property'>Remove</button>
+                            </form>
+
+                        </div>
                     {% endif %}
                 {% endfor %}
             </div>

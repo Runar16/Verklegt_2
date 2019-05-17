@@ -57,6 +57,8 @@ def edit_profile(request):
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
+    print(profile_form)
+    #profile_form.fields['profile_picture'].
     return render(request, 'user/change_profile.html', {
         'user_form': user_form,
         'profile_form': profile_form

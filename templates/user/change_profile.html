@@ -15,7 +15,7 @@
                         <div class="col-6">
                             {{ user_form.username | as_crispy_field }}
                         </div>
-                        <div class="col-6" style="display: flex; justify-content: center; align-items: center">
+                        <div class="col-6" style="display: flex; justify-content: left; align-items: center; margin-bottom: 1rem;">
                             <a id="change_password_button" href = "{% url 'change_password' %}" class="btn btn-primary"> Change Password </a>
                         </div>
                     </div>
@@ -59,19 +59,11 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-
+                              {{ profile_form.profile_picture | as_crispy_field }}
                         </div>
-                        <div class="col-6" style="text-align: center; margin: auto;">
-                           <!-- <button type="submit" class="btn btn-success" >Save Changes</button> --> <!-- Gamli takkin -->
-                            <!-- kóði gunnars byrjar -->
 
-
-                                {{ profile_form.profile_picture | as_crispy_field }}
+                        <div class="col-6" style="text-align: end; margin: auto;">
                                 <button type="submit" class="btn btn-primary" style="margin-bottom: 7rem;">Save Changes</button>
-
-
-                            <!-- kóði gunnars endar -->
-
                             <button type="button" class="btn btn-primary" style="margin-bottom:7rem;" onclick="window.location.href = '{% url "profile" %}'">Back</button>
                         </div>
                     </div>
