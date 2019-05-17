@@ -40,11 +40,17 @@ class Property(models.Model):
     is_active = models.BooleanField(default=True)
     realtor = models.ForeignKey(Realtor, default=Realtor.DEFAULT_REALTOR, on_delete=models.SET_DEFAULT)
 
+    def __str__(self):
+        return str(self.street_name + ' ' + self.street_number)
+
 
 class PropertyImage(models.Model):
     image = models.ImageField(upload_to="properties/", verbose_name="Image")
     image_tag = models.CharField(max_length=999, blank=True)
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.property.street_name + ' ' + self.property.street_number + ' ' + self.image.url)
 
 
 class Order(models.Model):
@@ -56,3 +62,15 @@ class Order(models.Model):
     realtor_licence_num = models.IntegerField(blank=True)
     sold_zip = models.CharField(max_length=10)
     sale_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return str(
+            'Property: ' +
+            self.sold_street_name +
+            ' ' +
+            self.sold_street_number +
+            ' Buyer SSN: ' +
+            self.buyer_ssn +
+            ' Realtor Licence: ' +
+            str(self.realtor_licence_num)
+        )
