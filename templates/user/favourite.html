@@ -37,8 +37,9 @@
                     <form method="post">
                         {% csrf_token %}
                         <input type="hidden" name="property_id" value="{{ property.id }}" />
-                        <button type="submit" class="btn btn-primary" name='add_to_cart' style="float: left; margin-right: 2%;">Add To Cart</button>
-                        <button type="submit" class="btn btn-primary" name='delete_property' style="float: left; margin-right: 2%;">Remove</button>
+                        <button type="submit" class="btn btn-success" name='add_to_cart' style="float: left; margin-right: 2%; margin-top:-1.5rem;">Add To Cart</button>
+                        <button type="submit" class="btn btn-danger" name='delete_property' style="float: left; margin-right: 2%; margin-top:-1.5rem;">Delete</button>
+
                     </form>
                 </div>
             </div>

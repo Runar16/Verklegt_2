@@ -19,11 +19,10 @@
                     <p class="realtor_item">Town: {{ user_info.zip }}, {{ user_info.city }}</p>
                 </div>
         </div>
-        <button type="button" class="btn btn-secondary" onclick="window.location.href = '{% url 'edit_profile' %}'">Edit Profile</button>
+        <button id="edit-profile-btn" type="button" class="btn btn-secondary" onclick="window.location.href = '{% url 'edit_profile' %}'">Edit Profile</button>
         <form method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-primary" name='delete_user'
-                    style="float: left; margin-right: 2%; background-color: red;">Delete
+            <button id="delete-profile-btn" type="submit" class="btn btn-danger" name='delete_user'>Delete
             </button>
         </form>
     </div>
