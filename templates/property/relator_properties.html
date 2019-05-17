@@ -1,13 +1,14 @@
 {% load humanize %}
 <div>
-    <a href="/property/{{ property.id }}">
+
     <div class="card" style="width: 20rem; display:flex; flex-direction: row;">
         <div class="top-block-container">
             <div class="card-header" id="property-card-header">
+
                 <h4 style="color: white; opacity: 1;">{{ property.price|floatformat:"0"|intcomma }}kr.</h4>
             </div>
-            <img src="{{ property.propertyimage_set.first.image.url }}" class="card-img-top"
-                 alt="{{ property.propertyimage_set.first.image_tag }}">
+           <a href="/property/{{ property.id }}"> <img src="{{ property.propertyimage_set.first.image.url }}" class="card-img-top"
+                                                       alt="{{ property.propertyimage_set.first.image_tag }}"></a>
             <div class="card-body" style="padding: 0">
                 <div class="left-block-container">
                     <span style="display: block; font-weight: bold">{{ property.street_name }} {{ property.street_number }}</span>
@@ -21,11 +22,11 @@
 
                 </div>
 
-            </div></a>
+            </div>
         </div>
     </div>
 
-    <div class="card-footer bg-transparent row">
+    <div class="card-footer bg-transparent row border border-light">
         <div class="left-block-container">
             <a href="change_property/{{ property.id }}" class="btn btn-success"> Change
                 Property </a>
