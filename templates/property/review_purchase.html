@@ -36,8 +36,8 @@
             <p style="font-weight: bold; display: inline; margin-top: 0rem;">Total:</p> <p style="display: inline;">{{ total|floatformat:"0"|intcomma }}</p>
 
             <form method="post">
-            {% csrf_token %}
-            <button style="margin-top:5rem;" type="submit" class="btn btn-success">Confirm Purchase</button>
+                {% csrf_token %}
+                <button style="margin-top:5rem;" type="submit" name="Confirm Purchases" class="btn btn-success">Confirm Purchase</button>
             </form>
         </div>
 

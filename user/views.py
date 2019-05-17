@@ -2,14 +2,16 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash, authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
 from django.db import transaction, IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from property.models import Property
+from realtor.models import Realtor
 from user.forms.profile_form import ProfileForm, UserForm
 from user.forms.register_form import RegisterProfileForm
-from user.models import History, Cart, Favourite
+from user.models import History, Cart, Favourite, Profile
 
 
 def index(request):
@@ -142,6 +144,18 @@ def favourite(request):
 
 
 def profile(request):
+    if request.method == 'POST':
+        user = request.user
+        try:
+            User.objects.filter(pk=user.id).delete()
+            Cart.objects.filter(user=user.id).delete()
+            History.objects.filter(user=user.id).delete()
+            Profile.objects.filter(user=user.id).delete()
+            if user.is_staff:
+                Realtor.objects.filter(user=user.id).delete()
+            return redirect('frontpage')
+        except IntegrityError:
+            pass
     context = {'user_info': request.user.profile,
                'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')}
     return render(request, 'user/profile.html', context)

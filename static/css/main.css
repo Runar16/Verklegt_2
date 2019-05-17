@@ -214,3 +214,7 @@
     opacity: 1;
      -webkit-text-stroke: 2px black;
 }
+
+#search-btn{
+    justify-content: right;
+}
