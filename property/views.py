@@ -151,6 +151,8 @@ def payment_info(request):
 @login_required
 @transaction.atomic
 def review_purchase(request):
+    if request.META.get('HTTP_REFERER') != 'http://127.0.0.1:8000/property/payment':
+        return redirect('frontpage')
     total = 0
     user = request.user
     profile = Profile.objects.get(user=user.id)
