@@ -22,6 +22,7 @@
 
 #auka
 
+- [x] Admin panel added
 - [x] Skrá inn sem fasteignasali með meiri veldi
 - [x] Eyða aðgang
 - [x] Afskrá fasteign
