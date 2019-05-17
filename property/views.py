@@ -159,6 +159,7 @@ def review_purchase(request):
     timestamp = timezone.now()
     properties = Property.objects.filter(cart__user=user.id)
     for pro in properties:
+        print(pro.id)
         total += pro.price
     if request.method == 'POST':
         try:
@@ -176,7 +177,7 @@ def review_purchase(request):
                 Property.objects.filter(pk=prop.id).update(is_active=False)
                 Cart.objects.filter(property=prop.id).delete()
                 History.objects.filter(property=prop.id).delete()
-                return redirect('frontpage')
+            return redirect('frontpage')
         except IntegrityError:
             pass
     return render(request, 'property/review_purchase.html',
