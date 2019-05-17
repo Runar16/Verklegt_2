@@ -136,6 +136,8 @@ def get_property_by_realtor_id(request, id):
 @login_required
 @transaction.atomic
 def payment_info(request):
+    if request.META.get('HTTP_REFERER') is None:
+        return redirect('frontpage')
     if request.method == 'POST':
         form = PaymentInfo(data=request.POST)
         if form.is_valid():
