@@ -38,3 +38,4 @@
 - [x] Hægt er að bæta eignum í 'favourites'
 - [x] Kaupa fleira ein eina eign í einu með 'Cart'
 - [x] Fleiri upplýsingar í profile eins og contact information
+- [x] Leit virkar með mörgum filterum saman
