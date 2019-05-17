@@ -3,13 +3,25 @@
     <head>
         <title>My Properties</title>
     </head>
-     <h4 class="decorated"><span>Managed properties</span></h4>
+
+    <h4 class="decorated"><span>Managed properties</span></h4>
     <div class="property" style="margin-right: 1%">
         <div id="realtor_properties">
             <div class="card-deck"  style="justify-content: center; width: 80%; margin: 0 auto;">
                 {% for property in properties %}
                     {% if property.is_active %}
-                        {% include 'property/relator_properties.html' with property=property %}
+                        <div style="display: flex; flex-flow: column;">
+                            <div>
+                                {% include 'property/single_property.html' with property=property %}
+                            </div>
+
+                            <form method="post" style="margin: 0.5rem 0 0 1rem; ">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success" name="edit_property">Edit Property</button>
+                                <button type="submit" class="btn btn-danger" name='delete_property'>Remove</button>
+                            </form>
+
+                        </div>
                     {% endif %}
                 {% endfor %}
             </div>

@@ -31,3 +31,13 @@
     flex-flow: column;
     margin: 1rem 0.5rem 2rem 0.5rem;
 }
+
+#profile_picture-clear_id {
+    display: none;
+}
+
+label[for=profile_picture-clear_id]
+{
+    display: none;
+}
+
