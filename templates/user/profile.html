@@ -20,6 +20,12 @@
                 </div>
         </div>
         <button type="button" class="btn btn-secondary" onclick="window.location.href = '{% url 'edit_profile' %}'">Edit Profile</button>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary" name='delete_user'
+                    style="float: left; margin-right: 2%; background-color: red;">Delete
+            </button>
+        </form>
     </div>
 
     <div class="card-group properties" style="justify-content: center; width: 100%; margin: 0 auto;">
