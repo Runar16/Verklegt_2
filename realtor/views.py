@@ -33,7 +33,7 @@ def add_property(request):
     if request.method == 'POST':
         property_form = NewProperty(data=request.POST)
         formset = ImageFormSet(request.POST, request.FILES, queryset=PropertyImage.objects.none())
-        if property_form.is_valid and formset.is_valid():
+        if property_form.is_valid() and formset.is_valid():
             property_form = property_form.save(commit=False)
             property_form.realtor = request.user.realtor
             property_form.save()
@@ -60,7 +60,7 @@ def change_property(request, id):
     if request.method == 'POST':
         property_form = NewProperty(data=request.POST, instance=property)
         formset = ImageInlineFormSet(request.POST, request.FILES, instance=property)
-        if property_form.is_valid and formset.is_valid():
+        if property_form.is_valid() and formset.is_valid():
             property_form = property_form.save(commit=False)
             property_form.realtor = request.user.realtor
             property_form.save()
@@ -77,6 +77,7 @@ def change_property(request, id):
     })
 
 
+@staff_member_required
 def my_properties(request):
     realtor_id = request.user.realtor.id
     prop = Property.objects.filter(realtor_id__exact=realtor_id)
