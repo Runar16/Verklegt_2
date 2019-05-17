@@ -12,14 +12,8 @@
                     {% if property.is_active %}
                         <div style="display: flex; flex-flow: column;">
                             <div>
-                                {% include 'property/single_property.html' with property=property %}
+                                {% include 'property/relator_properties.html' with property=property %}
                             </div>
-
-                            <form method="post" style="margin: 0.5rem 0 0 1rem; ">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-success" name="edit_property">Edit Property</button>
-                                <button type="submit" class="btn btn-danger" name='delete_property'>Remove</button>
-                            </form>
 
                         </div>
                     {% endif %}
