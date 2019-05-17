@@ -80,7 +80,6 @@ def change_property(request, id):
 @staff_member_required
 def my_properties(request):
     realtor_id = request.user.realtor.id
-    prop = Property.objects.filter(realtor_id__exact=realtor_id)
     if request.method == 'POST':
         prop = request.POST['property_id']
         try:
@@ -91,5 +90,5 @@ def my_properties(request):
             pass
     return render(request, 'realtor/my_properties.html', {
         'realtor': get_object_or_404(Realtor, pk=realtor_id),
-        'properties': prop
+        'properties': Property.objects.filter(realtor_id__exact=realtor_id)
     })
