@@ -3,7 +3,6 @@
     <head>
         <title>My Properties</title>
     </head>
-    <a id="add_property_button" href="{% url 'add_property' %}" class="btn btn-primary"> Add Property </a>
      <h4 class="decorated"><span>Managed properties</span></h4>
     <div class="property" style="margin-right: 1%">
         <div id="realtor_properties">
@@ -14,6 +13,15 @@
                     {% endif %}
                 {% endfor %}
             </div>
+        <h4 class="decorated"><span>Add Properties</span></h4>
+        <div class="row  d-flex p-2 bd-highlight containter-fluid justify-content-around">
+            <div>
+            <a id="add_property_button" href="{% url 'add_property' %}" class="btn btn-primary"> Add Property </a>
+            </div>
+            <div>
+            <a id="button" class="btn btn-primary " href ="{% url 'frontpage' %}">Back</a>
+            </div>
+        </div>
         </div>
     </div>
 {% endblock %}

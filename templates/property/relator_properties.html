@@ -12,22 +12,32 @@
                 <div class="left-block-container">
                     <span style="display: block; font-weight: bold">{{ property.street_name }} {{ property.street_number }}</span>
                     <span style="display: block; padding-top: 10px">{{ property.zip.get_city }}, {{ property.zip.get_zip }}</span>
-                    <form method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="property_id" value="{{ property.id }}">
-                        <button type="submit" class="btn btn-primary" name='delete_property'
-                                style="float: left; margin-right: 2%; background-color: red;">Delete
-                        </button>
-                    </form>
+
                 </div>
                 <div class="right-block-container">
 
                     <span style="display: block;">{{ property.size }}m&sup2;</span>
                     <span style="display: block; padding-top: 10px; font-weight: lighter">{{ property.type.get_type }}</span>
-                    <a href="change_property/{{ property.id }}" class="btn btn-primary" style="background-color: chartreuse;"> Change
-                        Property </a>
+
                 </div>
+
             </div>
+        </div>
+    </div>
+
+    <div class="card-footer bg-transparent row">
+        <div class="left-block-container">
+            <a href="change_property/{{ property.id }}" class="btn btn-success"> Change
+                Property </a>
+        </div>
+        <div class="right-block-container">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="property_id" value="{{ property.id }}">
+                <button type="submit" class="btn btn-danger" name='delete_property'
+                        style="float: left; margin-right: 2%;">Delete
+                </button>
+            </form>
         </div>
     </div>
 </div>
