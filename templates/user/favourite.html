@@ -36,7 +36,6 @@
                 <div>
                     <form method="post">
                         {% csrf_token %}
-                        {{ delete_form }}
                         <input type="hidden" name="property_id" value="{{ property.id }}" />
                         <button type="submit" class="btn btn-primary" name='add_to_cart' style="float: left; margin-right: 2%;">Add To Cart</button>
                         <button type="submit" class="btn btn-primary" name='delete_property' style="float: left; margin-right: 2%;">Delete</button>

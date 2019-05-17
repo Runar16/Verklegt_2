@@ -1,29 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
     <a id="add_property_button" href="{% url 'add_property' %}" class="btn btn-primary"> Add Property </a>
-
      <h4 class="decorated"><span>Managed properties</span></h4>
     <div class="property" style="margin-right: 1%">
         <div id="realtor_properties">
-
-
-                <div class="card-deck"  style="justify-content: center; width: 80%; margin: 0 auto;">
-
-                    {% for property in properties %}
-                        {% if property.is_active %}
-
-                            {% include 'property/relator_properties.html' with property=property %}
-
-
-
-                        {% endif %}
-
-                    {% endfor %}
-
-
-                </div>
-
-
+            <div class="card-deck"  style="justify-content: center; width: 80%; margin: 0 auto;">
+                {% for property in properties %}
+                    {% if property.is_active %}
+                        {% include 'property/relator_properties.html' with property=property %}
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
-</div>
+    </div>
 {% endblock %}

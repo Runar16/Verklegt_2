@@ -4,8 +4,7 @@ from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import IntegrityError
-from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo, CartForm, \
-    OrderForm
+from property.forms.contact_information_form import ContactInfoUser, ContactInfoProfile, PaymentInfo
 from property.models import Property, PropertyZip, PropertyType, Order
 from django.utils import timezone
 from user.models import History, Cart, Profile, Favourite
@@ -125,8 +124,7 @@ def get_property_by_id(request, id):
             existing_history_obj = History.objects.get(property_id=id, user_id=current_user)
             History.objects.filter(pk=existing_history_obj.id).update(datetime_stamp=timestamp)
     return render(request, 'property/details.html', {
-        'property': get_object_or_404(Property, pk=id),
-        'cart_form': CartForm()
+        'property': get_object_or_404(Property, pk=id)
     })
 
 
@@ -187,8 +185,7 @@ def review_purchase(request):
                       "properties": properties,
                       "user": user,
                       "profile": profile,
-                      "total": total,
-                      "confirm_form": OrderForm
+                      "total": total
                   })
 
 

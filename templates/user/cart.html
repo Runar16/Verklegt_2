@@ -27,7 +27,6 @@
 
                 <form method="post">
                     {% csrf_token %}
-                    {{ delete_form }}
                     <input type="hidden" name="property_id" value="{{ property.id }}" />
                     <button type="submit" class="btn btn-primary" name='delete_property' style="float: left; margin-right: 2%;">Delete</button>
                 </form>

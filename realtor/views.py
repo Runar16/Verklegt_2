@@ -3,7 +3,7 @@ from django.db import IntegrityError
 from django.forms import modelformset_factory, inlineformset_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from property.models import Property, PropertyImage
-from realtor.forms.realtor_forms import NewProperty, ImageForm, DeleteProperty
+from realtor.forms.realtor_forms import NewProperty, ImageForm
 from realtor.models import Realtor
 from user.models import Cart, History
 from property.models import Order
@@ -90,6 +90,5 @@ def my_properties(request):
             pass
     return render(request, 'realtor/my_properties.html', {
         'realtor': get_object_or_404(Realtor, pk=realtor_id),
-        'properties': prop,
-        'delete_form': DeleteProperty()
+        'properties': prop
     })

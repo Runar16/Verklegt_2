@@ -63,24 +63,3 @@ class PaymentInfo(forms.Form):
     expiration_month = forms.ChoiceField(choices=MONTHS, label="Expiration month", initial='', widget=forms.Select())
     expiration_year = forms.CharField(widget=forms.NumberInput(attrs={'placeholder': '2019'}), max_length=4)
     cvv = forms.CharField(widget=forms.NumberInput(attrs={'placeholder': 'CVV'}), max_length=3)
-
-
-class CartForm(ModelForm):
-    class Meta:
-        model = Cart
-        exclude = ['id', 'property', 'user']
-
-
-class OrderForm(ModelForm):
-    class Meta:
-        model = Order
-        exclude = [
-                    'id',
-                    'buyer_ssn',
-                    'sold_street_name',
-                    'sold_street_number',
-                    'realtor_licence_num',
-                    'sold_zip', 'sale_date',
-                    'customer',
-                    'sold_property'
-                   ]
