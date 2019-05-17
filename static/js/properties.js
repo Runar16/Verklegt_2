@@ -1,5 +1,5 @@
 $('frontpage.html').ready(function (){
-    if(window.location.pathname === "/"){
+    if(window.location.pathname === "/" || window.location.pathname === "/property/"){
         $.ajax({
         type: 'GET',
         url: '?order=',
