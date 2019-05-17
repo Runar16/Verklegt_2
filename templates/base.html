@@ -42,6 +42,9 @@
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
                     <div class="dropdown-menu">
                         {% if user.is_authenticated %}
+                            {% if user.is_superuser %}
+                                <a href="{% url 'admin:index' %}" class="dropdown-item">Admin</a>
+                            {% endif %}
                             <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
                             <a href="{% url 'favourite' %}" class="dropdown-item">Favourites</a>
                             <a href="{% url 'logout' %}" class="dropdown-item">Log-Out</a>
