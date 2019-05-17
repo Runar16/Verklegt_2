@@ -1,12 +1,16 @@
 from django.forms import ModelForm, widgets
-
-from property.models import Order
-from user.models import Profile, Cart
+from user.models import Profile
 from django.contrib.auth.models import User
 from django import forms
 
 
 class ContactInfoUser(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ContactInfoUser, self).__init__(*args, **kwargs)
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['email'].required = True
+
     class Meta:
         model = User
         exclude = [
@@ -29,6 +33,16 @@ class ContactInfoUser(ModelForm):
 
 
 class ContactInfoProfile(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ContactInfoProfile, self).__init__(*args, **kwargs)
+        self.fields['phone_number'].required = True
+        self.fields['street_name'].required = True
+        self.fields['street_number'].required = True
+        self.fields['zip'].required = True
+        self.fields['city'].required = True
+        self.fields['country'].required = True
+        self.fields['ssn'].required = True
+
     class Meta:
         model = Profile
         exclude = ['id', 'user', 'profile_picture']

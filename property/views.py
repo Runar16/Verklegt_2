@@ -204,8 +204,6 @@ def contact_info(request):
             user_form.save()
             profile_form.save()
             return redirect('payment_info')
-        else:
-            messages.error(request, 'Please correct the error below.')
     else:
         user_form = ContactInfoUser(instance=request.user)
         profile_form = ContactInfoProfile(instance=request.user.profile)
