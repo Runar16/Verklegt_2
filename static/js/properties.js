@@ -1,12 +1,14 @@
-$(document).ready(function (){
-    $.ajax({
-    type: 'GET',
-    url: '?order=',
-    success: function(resp){
-       window.properties = resp
-    }});
-    $('#search-btn').on('click', function (e) {
+$('frontpage.html').ready(function (){
+    if(window.location.pathname === "/"){
+        $.ajax({
+        type: 'GET',
+        url: '?order=',
+        success: function(resp){
+           window.properties = resp
+        }});
+    }
 
+    $('#search-btn').on('click', function (e) {
         e.preventDefault();
         var searchText = $('#search-box').val();
         var zipVal = $('#zipSelect').val();
