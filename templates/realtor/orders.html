@@ -1,5 +1,26 @@
 {% extends 'base.html' %}
 
-{% for order in orders %}
-    <div>{{ order.customer }}</div>
-{% endfor %}
+{% block content %}
+    <div style="width: 60%; margin: 2% auto;">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date Sold</th>
+      <th scope="col">Address</th>
+      <th scope="col">Buyer SSN</th>
+      <th scope="col">Realtor Number</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for order in orders %}
+      <tr>
+        <th scope="row">{{ order.sale_date }}</th>
+        <td>{{ order.sold_street_name }} {{ order.sold_street_number }}</td>
+        <td>{{ order.buyer_ssn }}</td>
+        <td>{{ order.realtor_licence_num }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+    </div>
+{% endblock %}
