@@ -4,7 +4,8 @@
     <head>
         <title>Castle Real Estate</title>
     </head>
-    <h1 style="margin-left: 5rem; margin-top: 1rem;">Confirm</h1>
+    <h1 class="decorated" style="margin: 1%"><span>Confirm</span></h1>
+    <div style="justify-content: center">
     <div style="display: flex; justify-content: center;">
         <div class="info_row">
             <h4 style="margin-bottom: 2rem;">Property information</h4>
@@ -26,20 +27,48 @@
             Country: {{ profile.country }}<br>
             SSN: {{ profile.ssn }}<br>
             Credit Card Number: **** **** **** {{ pay_info.card_number|slice:"-4:" }}
-
-
-            <h4 style="margin-top: 2rem;">Payment information</h4>
+        </div>
+        <div class="info_row">
+            <h4>Payment information</h4>
             {% for property in properties %}
                 {{ property.street_name }} {{ property.street_number }} Price: {{ property.price|floatformat:"0"|intcomma }}<br>
             {% endfor %}
-            <hr style="margin-bottom: 0rem;">
-            <p style="font-weight: bold; display: inline; margin-top: 0rem;">Total:</p> <p style="display: inline;">{{ total|floatformat:"0"|intcomma }}</p>
-
-            <form method="post">
-                {% csrf_token %}
-                <button style="margin-top:5rem;" type="submit" name="Confirm Purchases" class="btn btn-success">Confirm Purchase</button>
-            </form>
+            <hr style="margin-bottom: 0;">
+            <p style="font-weight: bold; display: inline; margin-top: 0;">Total:</p> <p style="display: inline;">{{ total|floatformat:"0"|intcomma }}</p>
         </div>
+    </div>
+    <div style="width: 70%; margin: 2% auto">
+        <div>
+            <button type="button"  style="float: left" class="btn btn-primary" onclick="window.location.href = '{% url 'payment_info' %}'">Back</button>
+        </div>
+        <div>
+            <button type="button" class="btn btn-success" style="margin-left: 1%" data-toggle="modal" data-target="#exampleModal">Confirm Purchase</button>
+        </div>
+    </div>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to confirm this purchase
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <form method="post">
+            {% csrf_token %}
+                <button type="submit" name="Confirm Purchases" class="btn btn-success">Confirm Purchase</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
 {% endblock %}
+
+
