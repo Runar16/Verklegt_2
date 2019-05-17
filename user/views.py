@@ -153,6 +153,7 @@ def profile(request):
             Profile.objects.filter(user=user.id).delete()
             if user.is_staff:
                 Realtor.objects.filter(user=user.id).delete()
+            return redirect('frontpage')
         except IntegrityError:
             pass
     context = {'user_info': request.user.profile,
