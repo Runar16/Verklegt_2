@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Realtor(models.Model):
-    DEFAULT_REALTOR = 1
+    DEFAULT_REALTOR = 25
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     license_number = models.IntegerField(blank=True)
 
