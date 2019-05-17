@@ -20,11 +20,9 @@
                 </div>
         </div>
         <button id="edit-profile-btn" type="button" class="btn btn-secondary" onclick="window.location.href = '{% url 'edit_profile' %}'">Edit Profile</button>
-        <form method="post">
-            {% csrf_token %}
-            <button id="delete-profile-btn" type="submit" class="btn btn-danger" name='delete_user'>Delete
-            </button>
-        </form>
+        <button id="delete-profile-btn" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteProfile">
+            Delete
+        </button>
     </div>
 
     <div class="card-group properties" style="justify-content: center; width: 100%; margin: 0 auto;">
@@ -34,6 +32,29 @@
 
     </div>
 
+    <!-- Modal -->
+<div class="modal fade" id="deleteProfile" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteLabel">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your profile?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" name='delete_user'>Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 
