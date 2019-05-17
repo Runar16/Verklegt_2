@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.http import JsonResponse
@@ -60,10 +59,10 @@ def index(request):
         }for x in Property.objects.filter(street_name__icontains=search_filter,
                                           zip__zip__contains=str(zip_filter),
                                           type__type__contains=type_filter,
-                                          price__gt=price_from-1,
-                                          price__lt=price_to-1,
-                                          size__gt=size_from-1,
-                                          size__lt=size_to-1,
+                                          price__gt=float(price_from)-1,
+                                          price__lt=float(price_to)-1,
+                                          size__gt=int(size_from)-1,
+                                          size__lt=int(size_to)-1,
                                           rooms__contains=rooms_filter
                                           )
         ]
