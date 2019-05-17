@@ -16,6 +16,9 @@ class Profile(models.Model):
     country = models.CharField(max_length=100, blank=True)
     ssn = models.CharField(max_length=100, blank=True)
 
+    def __str__(self):
+        return str(self.user.first_name + ' ' + self.user.last_name)
+
 
 class History(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -25,6 +28,18 @@ class History(models.Model):
     class Meta:
         unique_together = (("user", "property"),)
 
+    def __str__(self):
+        return str(
+            'User: ' +
+            self.user.first_name +
+            ' ' +
+            self.user.last_name +
+            ' Property: ' +
+            self.property.street_name +
+            ' ' +
+            self.property.street_number
+        )
+
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -33,6 +48,18 @@ class Cart(models.Model):
     class Meta:
         unique_together = (("user", "property"),)
 
+    def __str__(self):
+        return str(
+            'User: ' +
+            self.user.first_name +
+            ' ' +
+            self.user.last_name +
+            ' Property: ' +
+            self.property.street_name +
+            ' ' +
+            self.property.street_number
+        )
+
 
 class Favourite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -40,6 +67,18 @@ class Favourite(models.Model):
 
     class Meta:
         unique_together = (("user", "property"),)
+
+    def __str__(self):
+        return str(
+            'User: ' +
+            self.user.first_name +
+            ' ' +
+            self.user.last_name +
+            ' Property: ' +
+            self.property.street_name +
+            ' ' +
+            self.property.street_number
+        )
 
 
 @receiver(post_save, sender=User)

@@ -48,21 +48,12 @@ def register(request):
 def edit_profile(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
-        print("i am the law")
-        print(request.FILES)
         profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
-
         if user_form.is_valid() and profile_form.is_valid():
-            print(profile_form.cleaned_data)
-
             user_form.save()
-            goat = profile_form.save()
-            print(goat.profile_picture)
-            #messages.success(request, 'Your profile was successfully updated!')
-
+            profile_form.save()
         else:
             messages.error(request, 'Please correct the error below.')
-
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
@@ -153,24 +144,9 @@ def profile(request):
             Profile.objects.filter(user=user.id).delete()
             if user.is_staff:
                 Realtor.objects.filter(user=user.id).delete()
+            return redirect('frontpage')
         except IntegrityError:
             pass
     context = {'user_info': request.user.profile,
                'history': History.objects.filter(user=request.user).order_by('-datetime_stamp')}
     return render(request, 'user/profile.html', context)
-
-
-def upload_image(request):
-    if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
-        image = request.FILES
-        profile_form = ProfileForm(request.POST, image or None, instance=request.user.profile)
-        if profile_form.is_valid() and user_form.is_valid():
-            if image is not None:
-                new_profile = profile_form.save()
-                return new_profile
-            else:
-                return None
-
-        else:
-            return edit_profile(profile_form)

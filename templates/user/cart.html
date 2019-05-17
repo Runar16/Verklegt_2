@@ -28,7 +28,7 @@
                 <form method="post">
                     {% csrf_token %}
                     <input type="hidden" name="property_id" value="{{ property.id }}" />
-                    <button type="submit" class="btn btn-primary" name='delete_property' style="float: left; margin-right: 2%;">Delete</button>
+                    <button type="submit" class="btn btn-primary" name='delete_property' style="float: left; margin-right: 2%;">Remove</button>
                 </form>
             </div>
         {% endfor %}

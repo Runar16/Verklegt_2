@@ -20,7 +20,7 @@
     <div id="cart_title">
         <h1>My Favourites</h1>
 
-        <h6 style="display:none">Total: <div id="total">{{ total|floatformat:"0"|intcomma }}</div>kr</h6>
+        <h6 style="display:none" id="total">Total: {{ total|floatformat:"0"|intcomma }}kr.</h6>
         <p>This site displays all the properties you have tagged as 'favourites'. Here you have easy access to those properties and can add them to your cart.</p>
 
         <h4 style="margin-top: 3rem;" class="decorated"><span>My Favorites</span></h4>
@@ -39,6 +39,7 @@
                         <input type="hidden" name="property_id" value="{{ property.id }}" />
                         <button type="submit" class="btn btn-success" name='add_to_cart' style="float: left; margin-right: 2%; margin-top:-1.5rem;">Add To Cart</button>
                         <button type="submit" class="btn btn-danger" name='delete_property' style="float: left; margin-right: 2%; margin-top:-1.5rem;">Delete</button>
+
                     </form>
                 </div>
             </div>

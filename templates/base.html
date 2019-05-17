@@ -23,7 +23,15 @@
             <a href="{% url 'realtor' %}" class="navbar-element">Relators</a>
             <a href="{% url 'frontpage' %}" class="navbar-logo"><img src="/static/images/Logo.png" alt="Castle Apartments Logo" style="width: 250px;"></a>
             {% if user.is_staff %}
-                <a href="{% url 'my_properties' %}" class="navbar-element">My Properties</a>
+                <ul class="navbar-element nav">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Properties</a>
+                    <div class="dropdown-menu">
+                            <a href="{% url 'my_properties' %}" class="dropdown-item">My Properties</a>
+                            <a href="{% url 'orders' %}" class="dropdown-item">Orders</a>
+                    </div>
+                </li>
+                </ul>
             {% elif user.is_authenticated %}
                 <a href="{% url 'cart' %}" class="navbar-element">My Cart</a>
             {% else %}
